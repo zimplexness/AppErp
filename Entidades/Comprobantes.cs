@@ -27,7 +27,7 @@ namespace Entidades
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<System.DateTime> FechaVencimiento { get; set; }
         public Nullable<int> IdTipoComprobante { get; set; }
-        public Nullable<int> IdCentroCosto { get; set; }
+        public Nullable<int> ConceptoGastoId { get; set; }
         public Nullable<int> IdTipoFactura { get; set; }
         public Nullable<double> Importe { get; set; }
         public Nullable<int> Contable { get; set; }
@@ -39,8 +39,11 @@ namespace Entidades
         public Nullable<double> ConceptosNograbado { get; set; }
         public Nullable<double> PercepcionIva { get; set; }
         public Nullable<double> ImporteNeto { get; set; }
+        public Nullable<int> CentroCostoID { get; set; }
     
-        public virtual CentroCostos CentroCostos { get; set; }
+        public virtual CentroCosto CentroCosto { get; set; }
+        public virtual ConceptoGasto ConceptoGasto { get; set; }
+        public virtual Proveedores Proveedores { get; set; }
         public virtual CondicionesCompra CondicionesCompra { get; set; }
         public virtual Contable Contable1 { get; set; }
         public virtual Estados Estados { get; set; }

@@ -39,12 +39,27 @@ namespace ErpGestion
 
         private void ComprobantesForm_Load(object sender, EventArgs e)
         {
-           //LLenar Comboboxes
+            //LLenar Comboboxes
+
+           
+            metroComboBoxConcepto.DataSource = comprobanteController.GetAllConceptoGasto() ;
+            metroComboBoxConcepto.DisplayMember = "ConceptoGasto1";
+            metroComboBoxConcepto.ValueMember = "IdConceptoGasto";
+
+            metroComboBoxCentroCosto.DataSource = comprobanteController.GetAllCentroCosto();
+            metroComboBoxCentroCosto.DisplayMember="CentroCostoNombre";
+            metroComboBoxCentroCosto.ValueMember= "CentroCostoId";
 
 
-            metroComboBoxCentroCosto.DataSource = comprobanteController.GetCentroCostos();
-            metroComboBoxCentroCosto.DisplayMember = "CentroCosto";
-            metroComboBoxCentroCosto.ValueMember = "IdCentroCosto";
+            //autocomplete
+
+            //metroComboBoxCentroCosto.AutoCompleteCustomSource.AddRange(comprobanteController.GetCentrosCostosString().ToArray());
+            //metroComboBoxCentroCosto.AutoCompleteMode = AutoCompleteMode.Suggest;
+            //metroComboBoxCentroCosto.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+
+
 
             metroComboBoxContable.DataSource = comprobanteController.GetContable();
             metroComboBoxContable.DisplayMember = "Contable1";
@@ -58,9 +73,7 @@ namespace ErpGestion
             metroComboBoxCondicionCompra.DisplayMember = "Condiciondecompra";
             metroComboBoxCondicionCompra.ValueMember = "IdCondicionCompra";
 
-            metroComboBoxTipoComprobante.DataSource = comprobanteController.GetTiposComprobante();
-            metroComboBoxTipoComprobante.DisplayMember = "TipoComprobante";
-            metroComboBoxTipoComprobante.ValueMember = "IdTipoComprobante";
+           
 
             //llenar combobox
             metroComboBoxMedioPago.DataSource = PagosController.GetMediosPago();
@@ -77,6 +90,7 @@ namespace ErpGestion
             metroTextBoxProveedor.AutoCompleteMode = AutoCompleteMode.Suggest;
             metroTextBoxProveedor.AutoCompleteSource = AutoCompleteSource.CustomSource;
             metroTextBoxProveedor.AutoCompleteCustomSource = sourcename;
+
             //autocompletar combobox articulos
 
             ArticuloController a = new ArticuloController();
@@ -93,8 +107,10 @@ namespace ErpGestion
             bindingSourceComprobantes.DataSource = comprobanteController.GetALLDetallesComprobanteArticulos(IDComprobante);
             if (Edition==true&&comprobantes!=null)
             {
-                metroComboBoxTipoComprobante.SelectedValue = comprobantes.IdTipoComprobante;
-                metroComboBoxCentroCosto.SelectedValue = comprobantes.IdCentroCosto;
+              
+                metroComboBoxConcepto.SelectedValue = comprobantes.ConceptoGastoId;
+                metroComboBoxCentroCosto.SelectedValue = comprobantes.CentroCostoID;
+
                 metroTextBoxProveedor.Text = proveedorController.GetProveedorById((int)comprobantes.IdProveedor).Nombre;
                 metroComboBoxTipoFactura.SelectedValue = comprobantes.IdTipoFactura;
                 metroTextBoxPuntoV.Text = comprobantes.Sucursal;
@@ -109,6 +125,12 @@ namespace ErpGestion
                 metroTextBoxPercepcion.Text = comprobantes.PercepcionIva.Value.ToString();
                 metroTextBoxSubTotal.Text = comprobantes.ImporteNeto.Value.ToString();
                 metroTextBoxTotal.Text = comprobantes.Importe.Value.ToString();
+
+                if (comprobantes.CentroCostoID==null)
+                {
+                    metroComboBoxCentroCosto.SelectedValue = 1;
+                }
+
                 
             }
             else if(Edition==false)
@@ -135,8 +157,9 @@ namespace ErpGestion
                 {
                     Comprobantes Comprobante = new Comprobantes();
                     var IdProveedor = proveedorController.GetProveedorByName(metroTextBoxProveedor.Text);
-                    Comprobante.IdTipoComprobante = (int)metroComboBoxTipoComprobante.SelectedValue;
-                    Comprobante.IdCentroCosto = (int)metroComboBoxCentroCosto.SelectedValue;
+                   
+                    Comprobante.ConceptoGastoId = (int)metroComboBoxConcepto.SelectedValue;
+                    comprobantes.CentroCostoID = (int)metroComboBoxCentroCosto.SelectedValue;
                     Comprobante.IdProveedor = (int)IdProveedor.IdProveedores;
                     Comprobante.IdTipoFactura = (int)metroComboBoxTipoFactura.SelectedValue;
                     Comprobante.Sucursal = metroTextBoxPuntoV.Text;
@@ -146,6 +169,7 @@ namespace ErpGestion
                     Comprobante.Fecha = metroDateTimeFecha.Value;
                     Comprobante.FechaVencimiento = metroDateTimeVencimiento.Value;
                     comprobanteController.AddorUpdateComprobantes(Comprobante);
+                    
                     MessageBox.Show("Comprobante Insertado con exito","Sistem de Gestion Integral",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
                     //metroPanelProducto.Enabled = true;
@@ -155,9 +179,9 @@ namespace ErpGestion
                     metroTextBoxPuntoV.Enabled = false;
                     metroTextBoxNoFactura.Enabled = false;
                     metroComboBoxCondicionCompra.Enabled = false;
-                    metroComboBoxTipoComprobante.Enabled = false;
+                   
                     metroComboBoxContable.Enabled = false;
-                    metroComboBoxCentroCosto.Enabled = false;
+                    metroComboBoxConcepto.Enabled = false;
                     metroDateTimeFecha.Enabled = false;
                     metroDateTimeVencimiento.Enabled = false;
                     metroComboBoxTipoFactura.Enabled = false;
@@ -174,22 +198,7 @@ namespace ErpGestion
 
         private void metroButtonCancelarComprobante_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-                if (metroTextBoxProveedor.Text == "" || metroTextBoxPuntoV.Text == "" || metroTextBoxNoFactura.Text == "")
-                {
-                    MessageBox.Show("No tiene Factura para Cancelar, ingrese Punto V, No Factura, y Proveedor", "Sistema de Gestion de Compras", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                }
-                
-
-                 
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+           
         }
 
         private void metroButtonAgregarProducto_Click(object sender, EventArgs e)
@@ -420,9 +429,10 @@ namespace ErpGestion
                         //metroComboBoxEstadoCivil.DataBindings.Add("Text", bindingSourceEmpleado, "EstadoCivil", true);
                         var detallesComprobantes = comprobanteController.GetALLDetallesComprobanteArticulos(SelectedComprobante.IdComprobante);
                        
-                        metroComboBoxTipoComprobante.Text=SelectedComprobante.TiposComprobante.TipoComprobante;
+                       
 
-                        metroComboBoxCentroCosto.Text = SelectedComprobante.CentroCostos.CentroCosto;
+                        metroComboBoxConcepto.Text = SelectedComprobante.ConceptoGasto.ConceptoGasto1;
+                        metroComboBoxCentroCosto.Text = SelectedComprobante.CentroCosto.CentroCostoNombre;
                         metroComboBoxTipoFactura.Text = SelectedComprobante.TiposFactura.TipoFactura;
                         metroComboBoxCondicionCompra.Text = SelectedComprobante.CondicionesCompra.Condiciondecompra;
                         metroComboBoxContable.Text = SelectedComprobante.Contable1.Contable1;
@@ -486,15 +496,135 @@ namespace ErpGestion
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void metroTextBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+
+                    
+                    if (string.IsNullOrEmpty(metroTextBoxProductTest.Text) == true || string.IsNullOrEmpty(metroTextBoxCantTest.Text) == true || string.IsNullOrEmpty(metroTextBoxIvaTest.Text) == true)
+                    {
+                        MessageBox.Show("Debe Ingresar el Articulo", "Sistema de Gestion de Compras", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {                      
+                        double ImporteConIva = 0;
+                        double ImporteSinIva = 0;
+                        double IvaCalculado = 0;
+                        double TotalIvaCalculado = 0;
+                        double subtotal = 0;
+                        double IvaDecimal = 0;
+                        double Iva = 0;
+                       
+                        double Total = 0;
+                        if (float.Parse(metroTextBoxIvaTest.Text.ToString())==0)
+                        {
+                            
+                            ImporteSinIva = (Convert.ToDouble(metroTextBoxPrecioTest.Text.Replace(".", ",")) * Convert.ToDouble(metroTextBoxCantTest.Text.Replace(".", ",")));
+                            IvaCalculado = 0;
+                            var ProductoList = new string[] { "0", metroTextBoxProductTest.Text,metroTextBoxCantTest.Text,metroTextBoxPrecioTest.Text.Replace(".", ","), Iva.ToString(),IvaCalculado.ToString(),ImporteSinIva.ToString()};
+                            metroGridTest.Rows.Add(ProductoList);
+                        }
+                        else
+                        {
+                            Iva = Convert.ToDouble(metroTextBoxIvaTest.Text.Replace(".", ","));
+                            IvaDecimal = (Convert.ToDouble(metroTextBoxIvaTest.Text.Replace(".", ",")) / 100)+1;
+                            ImporteConIva = (Convert.ToDouble(metroTextBoxPrecioTest.Text.Replace(".", ",")) * Convert.ToDouble(metroTextBoxCantTest.Text.Replace(".", ","))) * IvaDecimal;
+                            ImporteSinIva = (Convert.ToDouble(metroTextBoxPrecioTest.Text.Replace(".", ",")) * Convert.ToDouble(metroTextBoxCantTest.Text.Replace(".", ",")));
+                            IvaCalculado = ImporteConIva - ImporteSinIva;
+                            var ProductoList = new string[] {"0" ,metroTextBoxProductTest.Text, metroTextBoxCantTest.Text, metroTextBoxPrecioTest.Text.Replace(".", ","), Iva.ToString() , IvaCalculado.ToString(),ImporteConIva.ToString() };
+                            metroGridTest.Rows.Add(ProductoList);
+                            
+                           
+                        }
+
+                       
+
+                        if (metroGridTest.Rows.Count!=0)
+                        {
+                            foreach (DataGridViewRow row2 in metroGridTest.Rows)
+                            {
+                               
+                                TotalIvaCalculado += Convert.ToDouble(row2.Cells["IvaCalculado"].Value.ToString());
+                                Total+= Convert.ToDouble(row2.Cells["importeDataGridViewTextBoxColumn"].Value.ToString());
+                                
+                               
+                            }
+                            subtotal = Total - TotalIvaCalculado;
+                            metroTextBoxSubTotal.Text =subtotal.ToString();
+                            metroTextBoxTotal.Text = Total.ToString();
+                        }
+
+                        
+                        
+
+
+                    }
+
+                    metroTextBoxProductTest.Clear();
+                    metroTextBoxCantTest.Clear();
+                    metroTextBoxIvaTest.Clear();
+                    metroTextBoxPrecioTest.Clear();
+
+
+
+
+
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.Message);
+                }
+
+
+            }
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTextBoxIIBB_Leave(object sender, EventArgs e)
+        {
+            
+            metroTextBoxTotalGeneral.Text =( Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text)+ Convert.ToDouble(metroTextBoxRetenciones.Text)+ Convert.ToDouble(metroTextBoxPercepcion.Text)+ Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
+        }
+
+        private void metroTextBoxRetenciones_Leave(object sender, EventArgs e)
+        {
+            metroTextBoxTotalGeneral.Text = (Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text) + Convert.ToDouble(metroTextBoxRetenciones.Text) + Convert.ToDouble(metroTextBoxPercepcion.Text) + Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
+        }
+
+        private void metroTextBoxOtrosGastos_Leave(object sender, EventArgs e)
+        {
+            metroTextBoxTotalGeneral.Text = (Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text) + Convert.ToDouble(metroTextBoxRetenciones.Text) + Convert.ToDouble(metroTextBoxPercepcion.Text) + Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
+        }
+
+        private void metroTextBoxPercepcion_Leave(object sender, EventArgs e)
+        {
+            metroTextBoxTotalGeneral.Text = (Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text) + Convert.ToDouble(metroTextBoxRetenciones.Text) + Convert.ToDouble(metroTextBoxPercepcion.Text) + Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
             try
             {
-               if(string.IsNullOrEmpty(metroTextBoxPuntoV.Text) || string.IsNullOrEmpty(metroTextBoxNoFactura.Text) || metroGridTest.Rows.Count == 0)
+                if (string.IsNullOrEmpty(metroTextBoxPuntoV.Text) || string.IsNullOrEmpty(metroTextBoxNoFactura.Text) || metroGridTest.Rows.Count == 0)
                 {
                     MessageBox.Show("Error, No posee ningun comprobante para Confirmar", "Sistema de Gestion de Compras", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    if (Edition==false&& comprobantes==null)
+                    if (Edition == false && comprobantes == null)
                     {
 
                         if ((int)metroComboBoxCondicionCompra.SelectedValue == 1)
@@ -503,8 +633,9 @@ namespace ErpGestion
 
                             Comprobantes Comprobante = new Comprobantes();
                             var IdProveedor = proveedorController.GetProveedorByName(metroTextBoxProveedor.Text);
-                            Comprobante.IdTipoComprobante = (int)metroComboBoxTipoComprobante.SelectedValue;
-                            Comprobante.IdCentroCosto = (int)metroComboBoxCentroCosto.SelectedValue;
+                           
+                            Comprobante.ConceptoGastoId = (int)metroComboBoxConcepto.SelectedValue;
+                            //comprobantes.CentroCostoID = (int)metroComboBoxCentroCosto.SelectedValue;
                             Comprobante.IdProveedor = (int)IdProveedor.IdProveedores;
                             Comprobante.IdTipoFactura = (int)metroComboBoxTipoFactura.SelectedValue;
                             Comprobante.Sucursal = metroTextBoxPuntoV.Text;
@@ -527,7 +658,7 @@ namespace ErpGestion
                             foreach (DataGridViewRow row2 in metroGridTest.Rows)
                             {
                                 //Insertar Tabla Comprobantes Articulos
-                                 DetallesComprobanteArticulos _DetalleComprobanteArticulos = new DetallesComprobanteArticulos();
+                                DetallesComprobanteArticulos _DetalleComprobanteArticulos = new DetallesComprobanteArticulos();
                                 _DetalleComprobanteArticulos.idTable_DetallesComprobanteArticulos = int.Parse(row2.Cells["idTableDetallesComprobanteArticulosDataGridViewTextBoxColumn"].Value.ToString());
                                 _DetalleComprobanteArticulos.IdArticulo = comprobanteController.GetArticuloByName(row2.Cells["articulosNombreDataGridViewTextBoxColumn"].Value.ToString()).IDArticulo;
                                 _DetalleComprobanteArticulos.Cantidad = Convert.ToDouble(row2.Cells["cantidadDataGridViewTextBoxColumn"].Value.ToString());
@@ -586,19 +717,20 @@ namespace ErpGestion
 
 
                             metroGridTest.Rows.Clear();
-                            this.Close();
+
 
 
                         }
-                        else
+                        else if ((int)metroComboBoxCondicionCompra.SelectedValue == 2)
                         {
 
                             //var Idproveedor = proveedorController.GetProveedorByName(metroTextBoxProveedor.Text).IdProveedores;
                             //var Comprobante = comprobanteController.GetComprobanteByFacturaPRoveedor(Idproveedor, metroTextBoxPuntoV.Text, metroTextBoxNoFactura.Text);
                             Comprobantes Comprobante = new Comprobantes();
                             var IdProveedor = proveedorController.GetProveedorByName(metroTextBoxProveedor.Text);
-                            Comprobante.IdTipoComprobante = (int)metroComboBoxTipoComprobante.SelectedValue;
-                            Comprobante.IdCentroCosto = (int)metroComboBoxCentroCosto.SelectedValue;
+                          
+                            Comprobante.ConceptoGastoId = (int)metroComboBoxConcepto.SelectedValue;
+                            //comprobantes.CentroCostoID = (int)metroComboBoxCentroCosto.SelectedValue;
                             Comprobante.IdProveedor = (int)IdProveedor.IdProveedores;
                             Comprobante.IdTipoFactura = (int)metroComboBoxTipoFactura.SelectedValue;
                             Comprobante.Sucursal = metroTextBoxPuntoV.Text;
@@ -615,7 +747,7 @@ namespace ErpGestion
                             Comprobante.IdEstado = 2;
                             Comprobante.Importe = Convert.ToDouble(metroTextBoxTotal.Text); ;
 
-                            var IDComp=  comprobanteController.AddorUpdateComprobantes(Comprobante);
+                            var IDComp = comprobanteController.AddorUpdateComprobantes(Comprobante);
 
 
                             foreach (DataGridViewRow row2 in metroGridTest.Rows)
@@ -633,7 +765,7 @@ namespace ErpGestion
 
                                 comprobanteController.AddorUpdateComprobantesArticulos(_DetalleComprobanteArticulos);
                             }
-                           
+
 
                             MessageBox.Show("Se Actualizaron todos los Datos del Comprobante con el pago", "Sistema de Gestion de Compras", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -658,15 +790,16 @@ namespace ErpGestion
 
                         }
                     }
-                    else if(Edition==true&&comprobantes!=null)
+                    else if (Edition == true && comprobantes != null)
                     {
                         if ((int)metroComboBoxCondicionCompra.SelectedValue == 1)
                         {
 
 
                             var IdProveedor = proveedorController.GetProveedorByName(metroTextBoxProveedor.Text);
-                            comprobantes.IdTipoComprobante = (int)metroComboBoxTipoComprobante.SelectedValue;
-                            comprobantes.IdCentroCosto = (int)metroComboBoxCentroCosto.SelectedValue;
+                           
+                            comprobantes.ConceptoGastoId = (int)metroComboBoxConcepto.SelectedValue;
+                            comprobantes.CentroCostoID = (int)metroComboBoxCentroCosto.SelectedValue;
                             comprobantes.IdProveedor = (int)IdProveedor.IdProveedores;
                             comprobantes.IdTipoFactura = (int)metroComboBoxTipoFactura.SelectedValue;
                             comprobantes.Sucursal = metroTextBoxPuntoV.Text;
@@ -696,7 +829,7 @@ namespace ErpGestion
                                 _DetalleComprobanteArticulos.Precio = Convert.ToDouble(row2.Cells["precioDataGridViewTextBoxColumn"].Value.ToString());
                                 _DetalleComprobanteArticulos.Iva = Convert.ToDouble(row2.Cells["ivaDataGridViewTextBoxColumn"].Value.ToString());
                                 _DetalleComprobanteArticulos.IvaCalculado = Convert.ToDouble(row2.Cells["IvaCalculado"].Value.ToString());
-                                _DetalleComprobanteArticulos.IdComprobante =comprobantes.IdComprobante;
+                                _DetalleComprobanteArticulos.IdComprobante = comprobantes.IdComprobante;
                                 _DetalleComprobanteArticulos.Importe = Convert.ToDouble(row2.Cells["importeDataGridViewTextBoxColumn"].Value.ToString());
 
                                 comprobanteController.AddorUpdateComprobantesArticulos(_DetalleComprobanteArticulos);
@@ -750,12 +883,13 @@ namespace ErpGestion
 
 
                         }
-                        else 
+                        else
                         {
-                                                                                  
+
                             var IdProveedor = proveedorController.GetProveedorByName(metroTextBoxProveedor.Text);
-                            comprobantes.IdTipoComprobante = (int)metroComboBoxTipoComprobante.SelectedValue;
-                            comprobantes.IdCentroCosto = (int)metroComboBoxCentroCosto.SelectedValue;
+                           
+                            comprobantes.ConceptoGastoId = (int)metroComboBoxConcepto.SelectedValue;
+                            comprobantes.CentroCostoID = (int)metroComboBoxCentroCosto.SelectedValue;
                             comprobantes.IdProveedor = (int)IdProveedor.IdProveedores;
                             comprobantes.IdTipoFactura = (int)metroComboBoxTipoFactura.SelectedValue;
                             comprobantes.Sucursal = metroTextBoxPuntoV.Text;
@@ -774,7 +908,7 @@ namespace ErpGestion
 
                             comprobanteController.AddorUpdateComprobantes(comprobantes);
 
-                           
+
                             foreach (DataGridViewRow row2 in metroGridTest.Rows)
                             {
                                 //Insertar Tabla Comprobantes Articulos
@@ -821,8 +955,8 @@ namespace ErpGestion
 
 
                 }
-                   
-                
+
+
 
             }
             catch (Exception ex)
@@ -832,96 +966,27 @@ namespace ErpGestion
             }
         }
 
-        private void metroTextBox2_KeyDown(object sender, KeyEventArgs e)
+        private void metroTile1_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                try
+
+                if (metroTextBoxProveedor.Text == "" || metroTextBoxPuntoV.Text == "" || metroTextBoxNoFactura.Text == "")
                 {
-
-                    
-                    if (string.IsNullOrEmpty(metroTextBoxProductTest.Text) == true || string.IsNullOrEmpty(metroTextBoxCantTest.Text) == true || string.IsNullOrEmpty(metroTextBoxIvaTest.Text) == true)
-                    {
-                        MessageBox.Show("Debe Ingresar el Articulo", "Sistema de Gestion de Compras", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {                      
-                        double ImporteConIva = 0;
-                        double ImporteSinIva = 0;
-                        double IvaCalculado = 0;
-                        double TotalIvaCalculado = 0;
-                        double subtotal = 0;
-                        double IvaDecimal = 0;
-                        double Iva = 0;
-                       
-                        double Total = 0;
-                        if (float.Parse(metroTextBoxIvaTest.Text.ToString())==0)
-                        {
-                            
-                            ImporteSinIva = (Convert.ToDouble(metroTextBoxPrecioTest.Text.Replace(".", ",")) * Convert.ToDouble(metroTextBoxCantTest.Text.Replace(".", ",")));
-                            IvaCalculado = 0;
-                            var ProductoList = new string[] { "0", metroTextBoxProductTest.Text,metroTextBoxCantTest.Text,metroTextBoxPrecioTest.Text,Iva.ToString(),IvaCalculado.ToString(),ImporteSinIva.ToString()};
-                            metroGridTest.Rows.Add(ProductoList);
-                        }
-                        else
-                        {
-                            Iva = Convert.ToDouble(metroTextBoxIvaTest.Text.Replace(".", ","));
-                            IvaDecimal = (Convert.ToDouble(metroTextBoxIvaTest.Text.Replace(".", ",")) / 100)+1;
-                            ImporteConIva = (Convert.ToDouble(metroTextBoxPrecioTest.Text.Replace(".", ",")) * Convert.ToDouble(metroTextBoxCantTest.Text.Replace(".", ","))) * IvaDecimal;
-                            ImporteSinIva = (Convert.ToDouble(metroTextBoxPrecioTest.Text.Replace(".", ",")) * Convert.ToDouble(metroTextBoxCantTest.Text.Replace(".", ",")));
-                            IvaCalculado = ImporteConIva - ImporteSinIva;
-                            var ProductoList = new string[] {"0" ,metroTextBoxProductTest.Text, metroTextBoxCantTest.Text, metroTextBoxPrecioTest.Text, Iva.ToString() , IvaCalculado.ToString(),ImporteConIva.ToString() };
-                            metroGridTest.Rows.Add(ProductoList);
-                            
-                           
-                        }
-
-                       
-
-                        if (metroGridTest.Rows.Count!=0)
-                        {
-                            foreach (DataGridViewRow row2 in metroGridTest.Rows)
-                            {
-                               
-                                TotalIvaCalculado += Convert.ToDouble(row2.Cells["IvaCalculado"].Value.ToString());
-                                Total+= Convert.ToDouble(row2.Cells["importeDataGridViewTextBoxColumn"].Value.ToString());
-                                
-                               
-                            }
-                            subtotal = Total - TotalIvaCalculado;
-                            metroTextBoxSubTotal.Text =subtotal.ToString();
-                            metroTextBoxTotal.Text = Total.ToString();
-                        }
-
-                        
-                        
-
-
-                    }
-
-                    metroTextBoxProductTest.Clear();
-                    metroTextBoxCantTest.Clear();
-                    metroTextBoxIvaTest.Clear();
-                    metroTextBoxPrecioTest.Clear();
-
-
-
-
-
-
-
+                    MessageBox.Show("No tiene Factura para Cancelar, ingrese Punto V, No Factura, y Proveedor", "Sistema de Gestion de Compras", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 }
-                catch (Exception ex)
-                {
 
-                    throw new Exception(ex.Message);
-                }
 
 
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        private void metroButton2_Click(object sender, EventArgs e)
+        private void metroTile2_Click(object sender, EventArgs e)
         {
             try
             {
@@ -944,27 +1009,6 @@ namespace ErpGestion
 
                 throw;
             }
-        }
-
-        private void metroTextBoxIIBB_Leave(object sender, EventArgs e)
-        {
-            
-            metroTextBoxTotalGeneral.Text =( Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text)+ Convert.ToDouble(metroTextBoxRetenciones.Text)+ Convert.ToDouble(metroTextBoxPercepcion.Text)+ Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
-        }
-
-        private void metroTextBoxRetenciones_Leave(object sender, EventArgs e)
-        {
-            metroTextBoxTotalGeneral.Text = (Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text) + Convert.ToDouble(metroTextBoxRetenciones.Text) + Convert.ToDouble(metroTextBoxPercepcion.Text) + Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
-        }
-
-        private void metroTextBoxOtrosGastos_Leave(object sender, EventArgs e)
-        {
-            metroTextBoxTotalGeneral.Text = (Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text) + Convert.ToDouble(metroTextBoxRetenciones.Text) + Convert.ToDouble(metroTextBoxPercepcion.Text) + Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
-        }
-
-        private void metroTextBoxPercepcion_Leave(object sender, EventArgs e)
-        {
-            metroTextBoxTotalGeneral.Text = (Convert.ToDouble(metroTextBoxIIBB.Text) + Convert.ToDouble(metroTextBoxTotal.Text) + Convert.ToDouble(metroTextBoxRetenciones.Text) + Convert.ToDouble(metroTextBoxPercepcion.Text) + Convert.ToDouble(metroTextBoxOtrosGastos.Text)).ToString();
         }
     }
 }

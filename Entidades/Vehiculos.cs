@@ -41,6 +41,7 @@ namespace Entidades
         public Nullable<int> TenantID { get; set; }
         public Nullable<int> UserTransac { get; set; }
         public Nullable<bool> Gps { get; set; }
+        public string DireccionRadicacion { get; set; }
     
         public virtual Combustibles Combustibles { get; set; }
         public virtual Empleados Empleados { get; set; }

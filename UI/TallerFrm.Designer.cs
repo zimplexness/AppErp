@@ -29,29 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TallerFrm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.bindingNavigatorTaller = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingSourceTaller = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripTextBoxFiltroNombre = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPageNuevoTaller = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroComboBoxtipotaller = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -64,206 +42,18 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBoxNombre = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTabPageBuscar = new MetroFramework.Controls.MetroTabPage();
-            this.metroGridTalleres = new MetroFramework.Controls.MetroGrid();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorTaller)).BeginInit();
-            this.bindingNavigatorTaller.SuspendLayout();
+            this.groupBoxInfo = new System.Windows.Forms.GroupBox();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTaller)).BeginInit();
-            this.metroTabControl1.SuspendLayout();
-            this.metroTabPageNuevoTaller.SuspendLayout();
-            this.metroTabPageBuscar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGridTalleres)).BeginInit();
+            this.groupBoxInfo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // bindingNavigatorTaller
-            // 
-            this.bindingNavigatorTaller.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigatorTaller.BindingSource = this.bindingSourceTaller;
-            this.bindingNavigatorTaller.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigatorTaller.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigatorTaller.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bindingNavigatorTaller.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.toolStripButton1,
-            this.bindingNavigatorDeleteItem,
-            this.toolStripSeparator1,
-            this.toolStripTextBoxFiltroNombre,
-            this.toolStripSeparator2});
-            this.bindingNavigatorTaller.Location = new System.Drawing.Point(23, 325);
-            this.bindingNavigatorTaller.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigatorTaller.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigatorTaller.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigatorTaller.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigatorTaller.Name = "bindingNavigatorTaller";
-            this.bindingNavigatorTaller.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorTaller.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.bindingNavigatorTaller.Size = new System.Drawing.Size(755, 25);
-            this.bindingNavigatorTaller.TabIndex = 26;
-            this.bindingNavigatorTaller.Text = "bindingNavigatorTaller";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
-            this.bindingNavigatorCountItem.Text = "de {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = global::ErpGestion.Properties.Resources.if_minus_1645995;
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Mover primero";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Mover anterior";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Posición";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(58, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Posición actual";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Mover siguiente";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Mover último";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::ErpGestion.Properties.Resources.if_floppy_285657;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripTextBoxFiltroNombre
-            // 
-            this.toolStripTextBoxFiltroNombre.Name = "toolStripTextBoxFiltroNombre";
-            this.toolStripTextBoxFiltroNombre.Size = new System.Drawing.Size(116, 25);
-            this.toolStripTextBoxFiltroNombre.TextChanged += new System.EventHandler(this.toolStripTextBoxFiltroNombre_TextChanged);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // metroTabControl1
-            // 
-            this.metroTabControl1.Controls.Add(this.metroTabPageNuevoTaller);
-            this.metroTabControl1.Controls.Add(this.metroTabPageBuscar);
-            this.metroTabControl1.Location = new System.Drawing.Point(7, 31);
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(784, 278);
-            this.metroTabControl1.TabIndex = 27;
-            this.metroTabControl1.UseSelectable = true;
-            // 
-            // metroTabPageNuevoTaller
-            // 
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroLabel6);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroComboBoxtipotaller);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroLabel5);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroComboBoxlocalidad);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroTextBoxdireccion);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroLabel4);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroTextBoxtelefono);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroLabel3);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroTextBoxencargado);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroLabel2);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroTextBoxNombre);
-            this.metroTabPageNuevoTaller.Controls.Add(this.metroLabel1);
-            this.metroTabPageNuevoTaller.HorizontalScrollbarBarColor = true;
-            this.metroTabPageNuevoTaller.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPageNuevoTaller.HorizontalScrollbarSize = 6;
-            this.metroTabPageNuevoTaller.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPageNuevoTaller.Name = "metroTabPageNuevoTaller";
-            this.metroTabPageNuevoTaller.Size = new System.Drawing.Size(776, 236);
-            this.metroTabPageNuevoTaller.TabIndex = 0;
-            this.metroTabPageNuevoTaller.Text = "Nuevo";
-            this.metroTabPageNuevoTaller.VerticalScrollbarBarColor = true;
-            this.metroTabPageNuevoTaller.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPageNuevoTaller.VerticalScrollbarSize = 8;
-            this.metroTabPageNuevoTaller.Click += new System.EventHandler(this.metroTabPageNuevoTaller_Click);
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(-1, 121);
+            this.metroLabel6.Location = new System.Drawing.Point(307, 36);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(88, 19);
             this.metroLabel6.TabIndex = 37;
@@ -273,16 +63,16 @@
             // 
             this.metroComboBoxtipotaller.FormattingEnabled = true;
             this.metroComboBoxtipotaller.ItemHeight = 23;
-            this.metroComboBoxtipotaller.Location = new System.Drawing.Point(-1, 143);
+            this.metroComboBoxtipotaller.Location = new System.Drawing.Point(401, 24);
             this.metroComboBoxtipotaller.Name = "metroComboBoxtipotaller";
-            this.metroComboBoxtipotaller.Size = new System.Drawing.Size(241, 29);
+            this.metroComboBoxtipotaller.Size = new System.Drawing.Size(186, 29);
             this.metroComboBoxtipotaller.TabIndex = 36;
             this.metroComboBoxtipotaller.UseSelectable = true;
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(307, 65);
+            this.metroLabel5.Location = new System.Drawing.Point(6, 167);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(65, 19);
             this.metroLabel5.TabIndex = 35;
@@ -292,7 +82,7 @@
             // 
             this.metroComboBoxlocalidad.FormattingEnabled = true;
             this.metroComboBoxlocalidad.ItemHeight = 23;
-            this.metroComboBoxlocalidad.Location = new System.Drawing.Point(307, 89);
+            this.metroComboBoxlocalidad.Location = new System.Drawing.Point(84, 157);
             this.metroComboBoxlocalidad.Name = "metroComboBoxlocalidad";
             this.metroComboBoxlocalidad.Size = new System.Drawing.Size(203, 29);
             this.metroComboBoxlocalidad.TabIndex = 34;
@@ -304,18 +94,19 @@
             // 
             // 
             this.metroTextBoxdireccion.CustomButton.Image = null;
-            this.metroTextBoxdireccion.CustomButton.Location = new System.Drawing.Point(233, 1);
+            this.metroTextBoxdireccion.CustomButton.Location = new System.Drawing.Point(188, 1);
             this.metroTextBoxdireccion.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroTextBoxdireccion.CustomButton.Name = "";
-            this.metroTextBoxdireccion.CustomButton.Size = new System.Drawing.Size(25, 22);
+            this.metroTextBoxdireccion.CustomButton.Size = new System.Drawing.Size(51, 51);
             this.metroTextBoxdireccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBoxdireccion.CustomButton.TabIndex = 1;
             this.metroTextBoxdireccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBoxdireccion.CustomButton.UseSelectable = true;
             this.metroTextBoxdireccion.CustomButton.Visible = false;
             this.metroTextBoxdireccion.Lines = new string[0];
-            this.metroTextBoxdireccion.Location = new System.Drawing.Point(0, 87);
+            this.metroTextBoxdireccion.Location = new System.Drawing.Point(84, 98);
             this.metroTextBoxdireccion.MaxLength = 32767;
+            this.metroTextBoxdireccion.Multiline = true;
             this.metroTextBoxdireccion.Name = "metroTextBoxdireccion";
             this.metroTextBoxdireccion.PasswordChar = '\0';
             this.metroTextBoxdireccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -323,7 +114,7 @@
             this.metroTextBoxdireccion.SelectionLength = 0;
             this.metroTextBoxdireccion.SelectionStart = 0;
             this.metroTextBoxdireccion.ShortcutsEnabled = true;
-            this.metroTextBoxdireccion.Size = new System.Drawing.Size(302, 31);
+            this.metroTextBoxdireccion.Size = new System.Drawing.Size(240, 53);
             this.metroTextBoxdireccion.TabIndex = 33;
             this.metroTextBoxdireccion.UseSelectable = true;
             this.metroTextBoxdireccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -332,7 +123,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(-1, 65);
+            this.metroLabel4.Location = new System.Drawing.Point(6, 132);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(63, 19);
             this.metroLabel4.TabIndex = 32;
@@ -344,17 +135,17 @@
             // 
             // 
             this.metroTextBoxtelefono.CustomButton.Image = null;
-            this.metroTextBoxtelefono.CustomButton.Location = new System.Drawing.Point(89, 1);
+            this.metroTextBoxtelefono.CustomButton.Location = new System.Drawing.Point(104, 1);
             this.metroTextBoxtelefono.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroTextBoxtelefono.CustomButton.Name = "";
-            this.metroTextBoxtelefono.CustomButton.Size = new System.Drawing.Size(25, 22);
+            this.metroTextBoxtelefono.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBoxtelefono.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBoxtelefono.CustomButton.TabIndex = 1;
             this.metroTextBoxtelefono.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBoxtelefono.CustomButton.UseSelectable = true;
             this.metroTextBoxtelefono.CustomButton.Visible = false;
             this.metroTextBoxtelefono.Lines = new string[0];
-            this.metroTextBoxtelefono.Location = new System.Drawing.Point(516, 89);
+            this.metroTextBoxtelefono.Location = new System.Drawing.Point(401, 59);
             this.metroTextBoxtelefono.MaxLength = 32767;
             this.metroTextBoxtelefono.Name = "metroTextBoxtelefono";
             this.metroTextBoxtelefono.PasswordChar = '\0';
@@ -372,7 +163,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(517, 65);
+            this.metroLabel3.Location = new System.Drawing.Point(337, 71);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(58, 19);
             this.metroLabel3.TabIndex = 30;
@@ -384,17 +175,17 @@
             // 
             // 
             this.metroTextBoxencargado.CustomButton.Image = null;
-            this.metroTextBoxencargado.CustomButton.Location = new System.Drawing.Point(301, 1);
+            this.metroTextBoxencargado.CustomButton.Location = new System.Drawing.Point(167, 1);
             this.metroTextBoxencargado.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroTextBoxencargado.CustomButton.Name = "";
-            this.metroTextBoxencargado.CustomButton.Size = new System.Drawing.Size(25, 22);
+            this.metroTextBoxencargado.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBoxencargado.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBoxencargado.CustomButton.TabIndex = 1;
             this.metroTextBoxencargado.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBoxencargado.CustomButton.UseSelectable = true;
             this.metroTextBoxencargado.CustomButton.Visible = false;
             this.metroTextBoxencargado.Lines = new string[0];
-            this.metroTextBoxencargado.Location = new System.Drawing.Point(307, 31);
+            this.metroTextBoxencargado.Location = new System.Drawing.Point(84, 61);
             this.metroTextBoxencargado.MaxLength = 32767;
             this.metroTextBoxencargado.Name = "metroTextBoxencargado";
             this.metroTextBoxencargado.PasswordChar = '\0';
@@ -403,7 +194,7 @@
             this.metroTextBoxencargado.SelectionLength = 0;
             this.metroTextBoxencargado.SelectionStart = 0;
             this.metroTextBoxencargado.ShortcutsEnabled = true;
-            this.metroTextBoxencargado.Size = new System.Drawing.Size(381, 31);
+            this.metroTextBoxencargado.Size = new System.Drawing.Size(197, 31);
             this.metroTextBoxencargado.TabIndex = 29;
             this.metroTextBoxencargado.UseSelectable = true;
             this.metroTextBoxencargado.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -412,7 +203,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(307, 9);
+            this.metroLabel2.Location = new System.Drawing.Point(6, 73);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(72, 19);
             this.metroLabel2.TabIndex = 28;
@@ -424,17 +215,17 @@
             // 
             // 
             this.metroTextBoxNombre.CustomButton.Image = null;
-            this.metroTextBoxNombre.CustomButton.Location = new System.Drawing.Point(233, 1);
+            this.metroTextBoxNombre.CustomButton.Location = new System.Drawing.Point(167, 1);
             this.metroTextBoxNombre.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroTextBoxNombre.CustomButton.Name = "";
-            this.metroTextBoxNombre.CustomButton.Size = new System.Drawing.Size(25, 22);
+            this.metroTextBoxNombre.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBoxNombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBoxNombre.CustomButton.TabIndex = 1;
             this.metroTextBoxNombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBoxNombre.CustomButton.UseSelectable = true;
             this.metroTextBoxNombre.CustomButton.Visible = false;
             this.metroTextBoxNombre.Lines = new string[0];
-            this.metroTextBoxNombre.Location = new System.Drawing.Point(0, 31);
+            this.metroTextBoxNombre.Location = new System.Drawing.Point(84, 24);
             this.metroTextBoxNombre.MaxLength = 32767;
             this.metroTextBoxNombre.Name = "metroTextBoxNombre";
             this.metroTextBoxNombre.PasswordChar = '\0';
@@ -443,7 +234,7 @@
             this.metroTextBoxNombre.SelectionLength = 0;
             this.metroTextBoxNombre.SelectionStart = 0;
             this.metroTextBoxNombre.ShortcutsEnabled = true;
-            this.metroTextBoxNombre.Size = new System.Drawing.Size(302, 31);
+            this.metroTextBoxNombre.Size = new System.Drawing.Size(197, 31);
             this.metroTextBoxNombre.TabIndex = 27;
             this.metroTextBoxNombre.UseSelectable = true;
             this.metroTextBoxNombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -452,91 +243,84 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 9);
+            this.metroLabel1.Location = new System.Drawing.Point(6, 36);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(59, 19);
             this.metroLabel1.TabIndex = 26;
             this.metroLabel1.Text = "Nombre";
             // 
-            // metroTabPageBuscar
-            // 
-            this.metroTabPageBuscar.Controls.Add(this.metroGridTalleres);
-            this.metroTabPageBuscar.HorizontalScrollbarBarColor = true;
-            this.metroTabPageBuscar.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPageBuscar.HorizontalScrollbarSize = 6;
-            this.metroTabPageBuscar.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPageBuscar.Name = "metroTabPageBuscar";
-            this.metroTabPageBuscar.Size = new System.Drawing.Size(776, 236);
-            this.metroTabPageBuscar.TabIndex = 1;
-            this.metroTabPageBuscar.Text = "Buscar Talleres";
-            this.metroTabPageBuscar.VerticalScrollbarBarColor = true;
-            this.metroTabPageBuscar.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPageBuscar.VerticalScrollbarSize = 8;
-            // 
-            // metroGridTalleres
-            // 
-            this.metroGridTalleres.AllowUserToResizeRows = false;
-            this.metroGridTalleres.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroGridTalleres.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridTalleres.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGridTalleres.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGridTalleres.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridTalleres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.metroGridTalleres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGridTalleres.DefaultCellStyle = dataGridViewCellStyle2;
-            this.metroGridTalleres.EnableHeadersVisualStyles = false;
-            this.metroGridTalleres.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGridTalleres.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridTalleres.Location = new System.Drawing.Point(0, 17);
-            this.metroGridTalleres.Name = "metroGridTalleres";
-            this.metroGridTalleres.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridTalleres.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.metroGridTalleres.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGridTalleres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGridTalleres.Size = new System.Drawing.Size(772, 204);
-            this.metroGridTalleres.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroGridTalleres.TabIndex = 2;
-            // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(317, 9);
+            this.metroLabel7.Location = new System.Drawing.Point(4, 39);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(198, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(159, 19);
             this.metroLabel7.TabIndex = 33;
-            this.metroLabel7.Text = "ADMINISTRACION DE TALLERES";
+            this.metroLabel7.Text = "FORMULARIO DE TALLER";
+            // 
+            // groupBoxInfo
+            // 
+            this.groupBoxInfo.Controls.Add(this.metroTile4);
+            this.groupBoxInfo.Controls.Add(this.metroTile1);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxNombre);
+            this.groupBoxInfo.Controls.Add(this.metroLabel1);
+            this.groupBoxInfo.Controls.Add(this.metroLabel2);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxencargado);
+            this.groupBoxInfo.Controls.Add(this.metroLabel3);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxlocalidad);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxtelefono);
+            this.groupBoxInfo.Controls.Add(this.metroLabel5);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxtipotaller);
+            this.groupBoxInfo.Controls.Add(this.metroLabel6);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxdireccion);
+            this.groupBoxInfo.Controls.Add(this.metroLabel4);
+            this.groupBoxInfo.Location = new System.Drawing.Point(4, 61);
+            this.groupBoxInfo.Name = "groupBoxInfo";
+            this.groupBoxInfo.Size = new System.Drawing.Size(603, 200);
+            this.groupBoxInfo.TabIndex = 52;
+            this.groupBoxInfo.TabStop = false;
+            // 
+            // metroTile4
+            // 
+            this.metroTile4.ActiveControl = null;
+            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile4.Location = new System.Drawing.Point(503, 147);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(86, 39);
+            this.metroTile4.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroTile4.TabIndex = 160;
+            this.metroTile4.Text = "GUARDAR";
+            this.metroTile4.TileImage = global::ErpGestion.Properties.Resources.iconfinder_save_3325027;
+            this.metroTile4.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile4.UseSelectable = true;
+            this.metroTile4.UseTileImage = true;
+            this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile1.Location = new System.Drawing.Point(411, 147);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(86, 39);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroTile1.TabIndex = 161;
+            this.metroTile1.Text = "CANCELAR";
+            this.metroTile1.TileImage = global::ErpGestion.Properties.Resources.iconfinder_x_circle_3324917;
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // TallerFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 376);
+            this.ClientSize = new System.Drawing.Size(616, 268);
+            this.Controls.Add(this.groupBoxInfo);
             this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.metroTabControl1);
-            this.Controls.Add(this.bindingNavigatorTaller);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -544,40 +328,15 @@
             this.Padding = new System.Windows.Forms.Padding(23, 78, 23, 26);
             this.Resizable = false;
             this.Load += new System.EventHandler(this.TallerFrm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorTaller)).EndInit();
-            this.bindingNavigatorTaller.ResumeLayout(false);
-            this.bindingNavigatorTaller.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTaller)).EndInit();
-            this.metroTabControl1.ResumeLayout(false);
-            this.metroTabPageNuevoTaller.ResumeLayout(false);
-            this.metroTabPageNuevoTaller.PerformLayout();
-            this.metroTabPageBuscar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.metroGridTalleres)).EndInit();
+            this.groupBoxInfo.ResumeLayout(false);
+            this.groupBoxInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingNavigator bindingNavigatorTaller;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxFiltroNombre;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
-        private MetroFramework.Controls.MetroTabPage metroTabPageNuevoTaller;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroComboBox metroComboBoxtipotaller;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -590,9 +349,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox metroTextBoxNombre;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroTabPage metroTabPageBuscar;
-        private MetroFramework.Controls.MetroGrid metroGridTalleres;
         private System.Windows.Forms.BindingSource bindingSourceTaller;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.GroupBox groupBoxInfo;
+        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }

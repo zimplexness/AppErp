@@ -12,18 +12,19 @@ namespace Entidades
     using System;
     using System.Collections.Generic;
     
-    public partial class CentroCostos
+    public partial class Alicuotas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CentroCostos()
+        public Alicuotas()
         {
-            this.Comprobantes = new HashSet<Comprobantes>();
+            this.ImpuestoIva = new HashSet<ImpuestoIva>();
         }
     
-        public int IdCentroCosto { get; set; }
-        public string CentroCosto { get; set; }
+        public int IdAlicuota { get; set; }
+        public Nullable<double> Porcentaje { get; set; }
+        public Nullable<decimal> Valor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comprobantes> Comprobantes { get; set; }
+        public virtual ICollection<ImpuestoIva> ImpuestoIva { get; set; }
     }
 }

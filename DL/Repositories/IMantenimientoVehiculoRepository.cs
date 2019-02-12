@@ -38,6 +38,28 @@ namespace DL.Repositories
         ActividadMantenimiento GetActividadMantenimientoByID(int ID);
         IEnumerable<RegistrosConducir> FilterRegistrosConducirxDni(string dni);
         PolizasSeguro DeletePolizaSeguro(int ID);
+        IEnumerable<Vehiculos> FilterVehiculoByPatente(string Patente);
+        IEnumerable<Vehiculos> FilterVehiculosbyMarca(string marca);
+        IEnumerable<Vehiculos> FilterVehiculosModelos(string modelo);
+        IEnumerable<Vehiculos> FilterVehiculosbyYear(int year);
+        IEnumerable<MarcasVehiculos> GetMarcasVehiculos();
+        IEnumerable<ModelosVehiculos> GetModeloxMarca(int IdMarca);
+        IEnumerable<Combustibles> GetCombustibles();
+        Vehiculos GetVehiculosById(int Id);
+        Vehiculos AddorUpdateVehiculo(Vehiculos vehiculos);
+        IEnumerable<ModelosVehiculos> GetModelosVehiculos();
+        Vehiculos DeleteVehiculo(int ID);
+        IEnumerable<Talleres> GetAllTalleres();
+        IEnumerable<Talleres> FilterByTaller(string nombre);
+        IEnumerable<Talleres> FilterByDireccion(string direccion);
+        Talleres GetTallerByID(int ID);
+        Talleres AddorUpdateTaller(Talleres taller);
+        IEnumerable<TipoTaller> GetAllTiposTalleres();
+        Talleres DeleteTaller(int ID);
+
+
+
+
 
     }
 }

@@ -37,6 +37,10 @@ namespace Controllers
         {
             return sharedRepository.GetZonas();
         }
+        public IEnumerable<Choferes> GetChoferes()
+        {
+            return sharedRepository.GetChoferes();
+        }
 
     }
 }

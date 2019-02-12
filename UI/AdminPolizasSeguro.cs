@@ -76,9 +76,6 @@ namespace ErpGestion
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PolizaSeguroFrm polizaSeguroFrm = new PolizaSeguroFrm();
-           
-            polizaSeguroFrm.ShowDialog();
         }
 
         private void metroGridPolizas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -92,6 +89,44 @@ namespace ErpGestion
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+
+           
+        }
+
+        private void metroTextBoxFiltro_Click(object sender, EventArgs e)
+        {
+            metroTextBoxFiltro.Clear();
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+
+            PolizaSeguroFrm polizaSeguroFrm = new PolizaSeguroFrm();
+
+            polizaSeguroFrm.ShowDialog();
+        }
+
+        private void metroTile6_Click(object sender, EventArgs e)
+        {
             int ID = (int)metroGridPolizas.CurrentRow.Cells["iDPolizaSeguroDataGridViewTextBoxColumn"].Value;
             PolizaSeguroFrm polizafrm = new PolizaSeguroFrm();
             polizafrm.FormClosing += AdminPolizasSeguro_FormClosing;
@@ -99,7 +134,7 @@ namespace ErpGestion
             polizafrm.Show();
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void metroTile5_Click(object sender, EventArgs e)
         {
             try
             {
@@ -124,6 +159,11 @@ namespace ErpGestion
 
                 throw new Exception(EX.Message);
             }
+        }
+
+        private void metroToggleFiltro_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

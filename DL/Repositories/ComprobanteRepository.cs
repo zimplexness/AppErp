@@ -122,10 +122,7 @@ namespace DL.Repositories
             return _context.Articulos.Where(x => x.Nombre == name).FirstOrDefault();
         }
 
-        public IEnumerable<CentroCostos> GetCentroCostos()
-        {
-            return _context.CentroCostos.ToList();
-        }
+        
 
         public Comprobantes GetComprobantesByNofacuraProveedor(int IdProveedor, string Pventa, string Nofactura)
         {
@@ -274,6 +271,21 @@ namespace DL.Repositories
             return comprobante;
 
 
+        }
+
+        public IEnumerable<ConceptoGasto> GetAllConceptoGasto()
+        {
+            return _context.ConceptoGasto.ToList();
+        }
+
+        public IEnumerable<CentroCosto> GetAllCentroCosto()
+        {
+            return _context.CentroCosto.ToList();
+        }
+
+        public IEnumerable<string> GetCentrosCostosString()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -56,21 +56,7 @@ namespace ErpGestion
 
         private void metroButtonCreate_Click(object sender, EventArgs e)
         {
-            if (metroRadioButtonporFecha.Checked==true)
-            {
-                bindingSourceComprobantes.DataSource = comprobanteController.GetAllComprobantes(metroDateTimeFechainicio.Value,metroDateTimeFechaFin.Value);
-                bindingSourceComprobantes.ResetBindings(true);
-            }
-            else if(metroRadioButtonProveedor.Checked==true)
-            {
-                bindingSourceComprobantes.DataSource = comprobanteController.GetAllComprobantesxProveedor(metroTextBoxProveedor.Text,metroDateTimeFechainicio.Value, metroDateTimeFechaFin.Value);
-                bindingSourceComprobantes.ResetBindings(true);
-            }
-            else if (metroRadioButtonFacturaFecha.Checked==true)
-            {
-                bindingSourceComprobantes.DataSource = comprobanteController.GetAllComprobantesxFactura(metroTextBoxSucursal.Text,metroTextBoxNoFactura.Text,metroDateTimeFechainicio.Value, metroDateTimeFechaFin.Value);
-                bindingSourceComprobantes.ResetBindings(true);
-            }
+           
         }
 
         private void metroGridComprobantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -97,24 +83,7 @@ namespace ErpGestion
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //abrir formulario de comprobantes
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f.GetType() == typeof(ComprobantesFrm))
-                {
-                    f.Activate();
-                    return;
-                }
-            }
-            int IdComprobante = (int)metroGridComprobantes.CurrentRow.Cells["idComprobanteDataGridViewTextBoxColumn"].Value;
-
-            ComprobantesFrm ComprobanteForm = new ComprobantesFrm();
-
-            ComprobanteForm.IDComprobante = IdComprobante;
-            ComprobanteForm.Edition = true;
-            ComprobanteForm.FormClosed += AdminComprobantesForm_FormClosed;
-            ComprobanteForm.Show();
-
+            
         }
 
         private void AdminComprobantesForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -125,15 +94,7 @@ namespace ErpGestion
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            //abrir formulario de comprobantes
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f.GetType() == typeof(ComprobantesFrm))
-                {
-                    f.Activate();
-                    return;
-                }
-            }
+            
            
 
             ComprobantesFrm ComprobanteForm = new ComprobantesFrm();
@@ -168,13 +129,59 @@ namespace ErpGestion
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+          
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            //abrir formulario de comprobantes
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(ComprobantesFrm))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            ComprobantesFrm ComprobanteForm = new ComprobantesFrm();
+
+           
+           
+            ComprobanteForm.FormClosed += AdminComprobantesForm_FormClosed;
+            ComprobanteForm.Show();
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            //abrir formulario de comprobantes
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(ComprobantesFrm))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            int IdComprobante = (int)metroGridComprobantes.CurrentRow.Cells["idComprobanteDataGridViewTextBoxColumn"].Value;
+
+            ComprobantesFrm ComprobanteForm = new ComprobantesFrm();
+
+            ComprobanteForm.IDComprobante = IdComprobante;
+            ComprobanteForm.Edition = true;
+            ComprobanteForm.FormClosed += AdminComprobantesForm_FormClosed;
+            ComprobanteForm.Show();
+
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
             try
             {
                 DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Estas seguro que quieres eliminar la Factura seleccionada?", "Sistema de Gestion", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation & MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     comprobanteController.DeleteComprobantes((int)metroGridComprobantes.CurrentRow.Cells["idComprobanteDataGridViewTextBoxColumn"].Value);
-                    
+
                     MetroFramework.MetroMessageBox.Show(this, "Comprobante elimminado con exito", "Sistema de Gestiòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -188,6 +195,64 @@ namespace ErpGestion
             {
 
                 throw new Exception(EX.Message);
+            }
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            if (metroRadioButtonporFecha.Checked == true)
+            {
+                bindingSourceComprobantes.DataSource = comprobanteController.GetAllComprobantes(metroDateTimeFechainicio.Value, metroDateTimeFechaFin.Value);
+                bindingSourceComprobantes.ResetBindings(true);
+                //Total Gastos y IVa
+                double TotalC = 0;
+                double IVA = 0;
+
+                foreach (DataGridViewRow row in metroGridComprobantes.Rows)
+                {
+                    TotalC += Convert.ToDouble(row.Cells["totalDataGridViewTextBoxColumn"].Value);
+                    IVA += Convert.ToDouble(row.Cells["ivaDataGridViewTextBoxColumn"].Value);
+                }
+                metroTextBoxTotal.Text = TotalC.ToString();
+                metroTextBoxIva.Text = IVA.ToString();
+                metroTextBoxTotal.Enabled = false;
+                metroTextBoxIva.Enabled = false;
+            }
+            else if (metroRadioButtonProveedor.Checked == true)
+            {
+                bindingSourceComprobantes.DataSource = comprobanteController.GetAllComprobantesxProveedor(metroTextBoxProveedor.Text, metroDateTimeFechainicio.Value, metroDateTimeFechaFin.Value);
+                bindingSourceComprobantes.ResetBindings(true);
+                //Total Gastos y IVa
+                double TotalC = 0;
+                double IVA = 0;
+
+                foreach (DataGridViewRow row in metroGridComprobantes.Rows)
+                {
+                    TotalC += Convert.ToDouble(row.Cells["totalDataGridViewTextBoxColumn"].Value);
+                    IVA += Convert.ToDouble(row.Cells["ivaDataGridViewTextBoxColumn"].Value);
+                }
+                metroTextBoxTotal.Text = TotalC.ToString();
+                metroTextBoxIva.Text = IVA.ToString();
+                metroTextBoxTotal.Enabled = false;
+                metroTextBoxIva.Enabled = false;
+            }
+            else if (metroRadioButtonFacturaFecha.Checked == true)
+            {
+                bindingSourceComprobantes.DataSource = comprobanteController.GetAllComprobantesxFactura(metroTextBoxSucursal.Text, metroTextBoxNoFactura.Text, metroDateTimeFechainicio.Value, metroDateTimeFechaFin.Value);
+                bindingSourceComprobantes.ResetBindings(true);
+                //Total Gastos y IVa
+                double TotalC = 0;
+                double IVA = 0;
+
+                foreach (DataGridViewRow row in metroGridComprobantes.Rows)
+                {
+                    TotalC += Convert.ToDouble(row.Cells["totalDataGridViewTextBoxColumn"].Value);
+                    IVA += Convert.ToDouble(row.Cells["ivaDataGridViewTextBoxColumn"].Value);
+                }
+                metroTextBoxTotal.Text = TotalC.ToString();
+                metroTextBoxIva.Text = IVA.ToString();
+                metroTextBoxTotal.Enabled = false;
+                metroTextBoxIva.Enabled = false;
             }
         }
     }

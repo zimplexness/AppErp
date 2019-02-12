@@ -34,5 +34,17 @@ namespace ErpGestion.Properties {
                 return ((string)(this["dbsitemfacturacionConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DropDownList")]
+        public global::System.Windows.Forms.ComboBoxStyle Dropdown {
+            get {
+                return ((global::System.Windows.Forms.ComboBoxStyle)(this["Dropdown"]));
+            }
+            set {
+                this["Dropdown"] = value;
+            }
+        }
     }
 }

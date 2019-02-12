@@ -21,6 +21,11 @@ namespace DL.Repositories
             return _context.EmpresasClientes.ToList();
         }
 
+        public IEnumerable<Choferes> GetChoferes()
+        {
+            return _context.Choferes.ToList();
+        }
+
         public IEnumerable<Localidades> GetLocalidades()
         {
             return _context.Localidades.ToList();

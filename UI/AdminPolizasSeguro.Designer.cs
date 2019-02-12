@@ -42,14 +42,15 @@
             this.proveedoresNombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bindingSourcePolizas = new System.Core.ComponentModel.ObjectBindingSource(this.components);
-            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBoxFiltro = new MetroFramework.Controls.MetroTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.metroTile5 = new MetroFramework.Controls.MetroTile();
+            this.metroTile6 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridPolizas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePolizas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -96,7 +97,7 @@
             this.metroGridPolizas.EnableHeadersVisualStyles = false;
             this.metroGridPolizas.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridPolizas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridPolizas.Location = new System.Drawing.Point(8, 156);
+            this.metroGridPolizas.Location = new System.Drawing.Point(8, 107);
             this.metroGridPolizas.Name = "metroGridPolizas";
             this.metroGridPolizas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -110,7 +111,7 @@
             this.metroGridPolizas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridPolizas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGridPolizas.ShowEditingIcon = false;
-            this.metroGridPolizas.Size = new System.Drawing.Size(929, 267);
+            this.metroGridPolizas.Size = new System.Drawing.Size(895, 407);
             this.metroGridPolizas.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroGridPolizas.TabIndex = 28;
             this.metroGridPolizas.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -178,22 +179,13 @@
             this.bindingSourcePolizas.DataSource = typeof(Entidades.PolizasSeguro);
             this.bindingSourcePolizas.CurrentChanged += new System.EventHandler(this.bindingSourcePolizas_CurrentChanged);
             // 
-            // metroLabel16
-            // 
-            this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(13, 19);
-            this.metroLabel16.Name = "metroLabel16";
-            this.metroLabel16.Size = new System.Drawing.Size(65, 19);
-            this.metroLabel16.TabIndex = 17;
-            this.metroLabel16.Text = "No Poliza";
-            // 
             // metroTextBoxFiltro
             // 
             // 
             // 
             // 
             this.metroTextBoxFiltro.CustomButton.Image = null;
-            this.metroTextBoxFiltro.CustomButton.Location = new System.Drawing.Point(291, 1);
+            this.metroTextBoxFiltro.CustomButton.Location = new System.Drawing.Point(126, 1);
             this.metroTextBoxFiltro.CustomButton.Name = "";
             this.metroTextBoxFiltro.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.metroTextBoxFiltro.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -201,8 +193,9 @@
             this.metroTextBoxFiltro.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBoxFiltro.CustomButton.UseSelectable = true;
             this.metroTextBoxFiltro.CustomButton.Visible = false;
-            this.metroTextBoxFiltro.Lines = new string[0];
-            this.metroTextBoxFiltro.Location = new System.Drawing.Point(13, 44);
+            this.metroTextBoxFiltro.Lines = new string[] {
+        "No Poliza"};
+            this.metroTextBoxFiltro.Location = new System.Drawing.Point(6, 12);
             this.metroTextBoxFiltro.MaxLength = 32767;
             this.metroTextBoxFiltro.Name = "metroTextBoxFiltro";
             this.metroTextBoxFiltro.PasswordChar = '\0';
@@ -211,29 +204,29 @@
             this.metroTextBoxFiltro.SelectionLength = 0;
             this.metroTextBoxFiltro.SelectionStart = 0;
             this.metroTextBoxFiltro.ShortcutsEnabled = true;
-            this.metroTextBoxFiltro.Size = new System.Drawing.Size(317, 27);
+            this.metroTextBoxFiltro.Size = new System.Drawing.Size(152, 27);
             this.metroTextBoxFiltro.TabIndex = 16;
+            this.metroTextBoxFiltro.Text = "No Poliza";
             this.metroTextBoxFiltro.UseSelectable = true;
             this.metroTextBoxFiltro.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBoxFiltro.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBoxFiltro.Click += new System.EventHandler(this.metroTextBoxFiltro_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Controls.Add(this.metroLabel16);
             this.groupBox1.Controls.Add(this.metroTextBoxFiltro);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(8, 64);
+            this.groupBox1.Location = new System.Drawing.Point(354, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(339, 86);
+            this.groupBox1.Size = new System.Drawing.Size(171, 51);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtros";
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(399, 12);
+            this.metroLabel1.Location = new System.Drawing.Point(8, 24);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(195, 19);
             this.metroLabel1.TabIndex = 31;
@@ -242,67 +235,101 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox2.Controls.Add(this.metroTile4);
+            this.groupBox2.Controls.Add(this.metroToggle1);
             this.groupBox2.Controls.Add(this.linkLabel2);
-            this.groupBox2.Controls.Add(this.linkLabel3);
-            this.groupBox2.Controls.Add(this.linkLabel4);
-            this.groupBox2.Location = new System.Drawing.Point(8, 12);
+            this.groupBox2.Controls.Add(this.metroTile5);
+            this.groupBox2.Controls.Add(this.metroTile6);
+            this.groupBox2.Location = new System.Drawing.Point(8, 46);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(255, 46);
-            this.groupBox2.TabIndex = 43;
+            this.groupBox2.Size = new System.Drawing.Size(340, 57);
+            this.groupBox2.TabIndex = 53;
             this.groupBox2.TabStop = false;
+            // 
+            // metroTile4
+            // 
+            this.metroTile4.ActiveControl = null;
+            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile4.Location = new System.Drawing.Point(6, 10);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(75, 39);
+            this.metroTile4.TabIndex = 54;
+            this.metroTile4.Text = "NUEVO";
+            this.metroTile4.TileImage = global::ErpGestion.Properties.Resources.iconfinder_circle_add_226591;
+            this.metroTile4.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile4.UseSelectable = true;
+            this.metroTile4.UseTileImage = true;
+            this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
+            // 
+            // metroToggle1
+            // 
+            this.metroToggle1.AutoSize = true;
+            this.metroToggle1.Location = new System.Drawing.Point(257, 26);
+            this.metroToggle1.Name = "metroToggle1";
+            this.metroToggle1.Size = new System.Drawing.Size(80, 17);
+            this.metroToggle1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroToggle1.TabIndex = 4;
+            this.metroToggle1.Text = "Off";
+            this.metroToggle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroToggle1.UseSelectable = true;
             // 
             // linkLabel2
             // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.DarkTurquoise;
             this.linkLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel2.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.linkLabel2.Location = new System.Drawing.Point(6, 19);
+            this.linkLabel2.LinkColor = System.Drawing.Color.Teal;
+            this.linkLabel2.Location = new System.Drawing.Point(272, 9);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(86, 13);
-            this.linkLabel2.TabIndex = 29;
+            this.linkLabel2.Size = new System.Drawing.Size(45, 13);
+            this.linkLabel2.TabIndex = 38;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "NUEVO POLIZA";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.linkLabel2.Text = "FILTRO";
             // 
-            // linkLabel3
+            // metroTile5
             // 
-            this.linkLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel3.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.linkLabel3.Location = new System.Drawing.Point(151, 19);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(58, 13);
-            this.linkLabel3.TabIndex = 37;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "ELIMINAR";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.metroTile5.ActiveControl = null;
+            this.metroTile5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile5.Location = new System.Drawing.Point(168, 9);
+            this.metroTile5.Name = "metroTile5";
+            this.metroTile5.Size = new System.Drawing.Size(83, 39);
+            this.metroTile5.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroTile5.TabIndex = 56;
+            this.metroTile5.Text = "ELIMINAR";
+            this.metroTile5.TileImage = global::ErpGestion.Properties.Resources.iconfinder_trash_227551;
+            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile5.UseSelectable = true;
+            this.metroTile5.UseTileImage = true;
+            this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
             // 
-            // linkLabel4
+            // metroTile6
             // 
-            this.linkLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel4.LinkColor = System.Drawing.Color.Teal;
-            this.linkLabel4.Location = new System.Drawing.Point(98, 19);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(47, 13);
-            this.linkLabel4.TabIndex = 36;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "EDITAR";
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            this.metroTile6.ActiveControl = null;
+            this.metroTile6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile6.Location = new System.Drawing.Point(87, 10);
+            this.metroTile6.Name = "metroTile6";
+            this.metroTile6.Size = new System.Drawing.Size(75, 39);
+            this.metroTile6.Style = MetroFramework.MetroColorStyle.Teal;
+            this.metroTile6.TabIndex = 55;
+            this.metroTile6.Text = "EDITAR";
+            this.metroTile6.TileImage = global::ErpGestion.Properties.Resources.iconfinder_edit_3_3324936;
+            this.metroTile6.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile6.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile6.UseSelectable = true;
+            this.metroTile6.UseTileImage = true;
+            this.metroTile6.Click += new System.EventHandler(this.metroTile6_Click);
             // 
             // AdminPolizasSeguro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 446);
+            this.ClientSize = new System.Drawing.Size(918, 525);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.metroGridPolizas);
-            this.Controls.Add(this.groupBox2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AdminPolizasSeguro";
@@ -312,7 +339,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGridPolizas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePolizas)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -322,15 +348,10 @@
 
         #endregion
         private MetroFramework.Controls.MetroGrid metroGridPolizas;
-        private MetroFramework.Controls.MetroLabel metroLabel16;
         private MetroFramework.Controls.MetroTextBox metroTextBoxFiltro;
         private System.Core.ComponentModel.ObjectBindingSource bindingSourcePolizas;
         private System.Windows.Forms.GroupBox groupBox1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDPolizaSeguroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nopolizaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
@@ -338,5 +359,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaFinDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn proveedoresNombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroToggle metroToggle1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private MetroFramework.Controls.MetroTile metroTile5;
+        private MetroFramework.Controls.MetroTile metroTile6;
     }
 }

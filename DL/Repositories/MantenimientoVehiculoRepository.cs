@@ -188,6 +188,62 @@ namespace DL.Repositories
            
         }
 
+        public Talleres AddorUpdateTaller(Talleres taller)
+        {
+            try
+            {
+                if (_context.Talleres.Any(x => x.IDTalleres == taller.IDTalleres))
+                {
+                    _context.Talleres.Attach(taller);
+                    _context.Entry(taller).State = EntityState.Modified;
+                }
+                else
+                {
+                    _context.Talleres.Add(taller);
+
+                }
+                if (_context.SaveChanges() > 0)
+                {
+                    return taller;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+
+            }
+            return taller = null;
+        }
+
+        public Vehiculos AddorUpdateVehiculo(Vehiculos vehiculos)
+        {
+            try
+            {
+                if (_context.Vehiculos.AsNoTracking().Where(x => x.IDVehiculo == vehiculos.IDVehiculo).FirstOrDefault() != null)
+                {
+
+                    _context.Vehiculos.Attach(vehiculos);
+                    _context.Entry(vehiculos).State = EntityState.Modified;
+                }
+                else
+                {
+                    _context.Vehiculos.Add(vehiculos);
+
+
+                }
+                if (_context.SaveChanges() > 0)
+                    return vehiculos;
+            }
+            catch (Exception exception)
+            {
+
+                throw new Exception(exception.Message);
+            }
+            return vehiculos= null;
+        }
+
         public Mantenimiento DeleteManteniento(int ID)
         {
             Mantenimiento mantenimiento = new Mantenimiento();
@@ -249,9 +305,46 @@ namespace DL.Repositories
             }
         }
 
+        public Talleres DeleteTaller(int ID)
+        {
+            Talleres Taller = new Talleres();
+            try
+            {
+                
+                Taller = _context.Talleres.Where(x => x.IDTalleres == ID).FirstOrDefault();
+
+                _context.Talleres.Remove(Taller);
+                if (_context.SaveChanges() > 0)
+                {
+                    return Taller;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+            return Taller = null;
+        }
+
+        public Vehiculos DeleteVehiculo(int ID)
+        {
+            var Vehiculo = _context.Vehiculos.Where(x => x.IDVehiculo == ID).FirstOrDefault();
+            _context.Vehiculos.Remove(Vehiculo);
+            _context.SaveChanges();
+            return Vehiculo;
+        }
+
         public IEnumerable<MantenimientoVehiculos> FilterByDetalleMantenimiento(string detalle)
         {
             return _context.MantenimientoVehiculos.Where(x => x.Detalle.Contains(detalle)).ToList();
+        }
+
+        public IEnumerable<Talleres> FilterByDireccion(string direccion)
+        {
+            return _context.Talleres.Where(x=>x.Direccion.Contains(direccion.ToUpper())).Include(x => x.Localidades).
+                                    Include(x => x.TipoTaller).ToList();
         }
 
         public IEnumerable<MantenimientoVehiculos> FilterByPantente(string patente)
@@ -259,9 +352,55 @@ namespace DL.Repositories
             return _context.MantenimientoVehiculos.Where(x => x.Patente.Contains(patente)).ToList();
         }
 
+        public IEnumerable<Talleres> FilterByTaller(string nombre)
+        {
+            return _context.Talleres.Where(x => x.NombreTaller.Contains(nombre.ToUpper())).Include(x => x.Localidades).
+                                    Include(x => x.TipoTaller).ToList();
+        }
+
         public IEnumerable<RegistrosConducir> FilterRegistrosConducirxDni(string dni)
         {
             return _context.RegistrosConducir.Where(x => x.Empleados.DNI.Contains(dni.ToUpper())).ToList();
+        }
+
+        public IEnumerable<Vehiculos> FilterVehiculoByPatente(string Patente)
+        {
+            return _context.Vehiculos.Where(x => x.Patente.Contains(Patente.ToUpper()))
+               .Include(x => x.MarcasVehiculos)
+                                     .Include(x => x.ModelosVehiculos)
+                                     .Include(x => x.Combustibles)
+                                     .Include(x => x.Empleados)
+                .ToList();
+        }
+
+        public IEnumerable<Vehiculos> FilterVehiculosbyMarca(string marca)
+        {
+            return _context.Vehiculos.Where(x => x.MarcasVehiculos.Marcas.Contains(marca.ToUpper()))
+                .Include(x => x.MarcasVehiculos)
+                                     .Include(x => x.ModelosVehiculos)
+                                     .Include(x => x.Combustibles)
+                                     .Include(x => x.Empleados).
+               ToList();
+        }
+
+        public IEnumerable<Vehiculos> FilterVehiculosbyYear(int year)
+        {
+            return _context.Vehiculos.Where(x => x.Year==year)
+               .Include(x => x.MarcasVehiculos)
+                                     .Include(x => x.ModelosVehiculos)
+                                     .Include(x => x.Combustibles)
+                                     .Include(x => x.Empleados)
+                .ToList();
+        }
+
+        public IEnumerable<Vehiculos> FilterVehiculosModelos(string modelo)
+        {
+            return _context.Vehiculos.Where(x => x.ModelosVehiculos.Modelo.Contains(modelo.ToUpper())) 
+                .Include(x => x.MarcasVehiculos)
+                                     .Include(x => x.ModelosVehiculos)
+                                     .Include(x => x.Combustibles)
+                                     .Include(x => x.Empleados).
+                ToList();
         }
 
         public ActividadMantenimiento GetActividadMantenimiento(string Actividad)
@@ -299,14 +438,34 @@ namespace DL.Repositories
 
         }
 
+        public IEnumerable<Talleres> GetAllTalleres()
+        {
+            return _context.Talleres.Include(x => x.Localidades).
+                                     Include(x => x.TipoTaller).ToList();
+        }
+
+        public IEnumerable<TipoTaller> GetAllTiposTalleres()
+        {
+            return _context.TipoTaller.ToList();
+        }
+
         public IEnumerable<Vehiculos> GetAllVehiculos()
         {
-            return _context.Vehiculos.ToList();
+            return _context.Vehiculos.Include(x=>x.MarcasVehiculos)
+                                     .Include(x=>x.ModelosVehiculos)
+                                     .Include(x=>x.Combustibles)
+                                     .Include(x=>x.Empleados)
+                .ToList();
         }
 
         public RegistrosConducir GetByID(int ID)
         {
             return _context.RegistrosConducir.Where(x => x.IDRegistroConducir == ID).FirstOrDefault();
+        }
+
+        public IEnumerable<Combustibles> GetCombustibles()
+        {
+            return _context.Combustibles.ToList();
         }
 
         public Mantenimiento GetMantenimientoByID(int ID)
@@ -330,6 +489,21 @@ namespace DL.Repositories
             return _context.MantenimientoVehiculos.ToList();
         }
 
+        public IEnumerable<MarcasVehiculos> GetMarcasVehiculos()
+        {
+            return _context.MarcasVehiculos.ToList();
+        }
+
+        public IEnumerable<ModelosVehiculos> GetModelosVehiculos()
+        {
+            return _context.ModelosVehiculos.ToList();
+        }
+
+        public IEnumerable<ModelosVehiculos> GetModeloxMarca(int IdMarca)
+        {
+            return _context.ModelosVehiculos.Where(x => x.MarcaID == IdMarca).ToList();
+        }
+
         public PolizasSeguro GetPolizaSeguro(int ID)
         {
             return _context.PolizasSeguro.Where(x => x.IDPolizaSeguro == ID).Include(x=>x.Proveedores).FirstOrDefault();
@@ -341,9 +515,19 @@ namespace DL.Repositories
                 Include(x=>x.Proveedores).ToList();
         }
 
+        public Talleres GetTallerByID(int ID)
+        {
+            return _context.Talleres.Where(x => x.IDTalleres == ID).FirstOrDefault();
+        }
+
         public IEnumerable<TiposRegistrosConducir> GetTiposRegistrosConducir()
         {
             return _context.TiposRegistrosConducir.ToList();
+        }
+
+        public Vehiculos GetVehiculosById(int Id)
+        {
+            return _context.Vehiculos.Where(x => x.IDVehiculo == Id).FirstOrDefault();
         }
 
         public IEnumerable<string> GetVencimientoRegistros(DateTime fecha)

@@ -18,7 +18,7 @@ namespace Entidades
         public Nullable<int> idComprobante { get; set; }
         public Nullable<int> IdPago { get; set; }
     
-        public virtual Comprobantes Comprobantes { get; set; }
         public virtual Pagos Pagos { get; set; }
+        public virtual Comprobantes Comprobantes { get; set; }
     }
 }

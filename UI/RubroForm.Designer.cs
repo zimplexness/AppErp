@@ -39,9 +39,9 @@
             // 
             this.metroButton1.BackgroundImage = global::ErpGestion.Properties.Resources.if_17_330399__1_;
             this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton1.Location = new System.Drawing.Point(304, 98);
+            this.metroButton1.Location = new System.Drawing.Point(323, 98);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(49, 50);
+            this.metroButton1.Size = new System.Drawing.Size(41, 38);
             this.metroButton1.TabIndex = 32;
             this.metroButton1.UseSelectable = true;
             // 
@@ -49,9 +49,9 @@
             // 
             this.metroButtonAgregarPago.BackgroundImage = global::ErpGestion.Properties.Resources._1497285414_Checkmark;
             this.metroButtonAgregarPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButtonAgregarPago.Location = new System.Drawing.Point(360, 98);
+            this.metroButtonAgregarPago.Location = new System.Drawing.Point(370, 98);
             this.metroButtonAgregarPago.Name = "metroButtonAgregarPago";
-            this.metroButtonAgregarPago.Size = new System.Drawing.Size(49, 50);
+            this.metroButtonAgregarPago.Size = new System.Drawing.Size(41, 38);
             this.metroButtonAgregarPago.TabIndex = 31;
             this.metroButtonAgregarPago.UseSelectable = true;
             this.metroButtonAgregarPago.Click += new System.EventHandler(this.metroButtonAgregarPago_Click);

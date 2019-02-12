@@ -21,7 +21,7 @@ namespace Entidades
         public Nullable<double> Cantidad { get; set; }
         public Nullable<double> Precio { get; set; }
     
-        public virtual Articulos Articulos { get; set; }
         public virtual Mantenimiento Mantenimiento { get; set; }
+        public virtual Articulos Articulos { get; set; }
     }
 }

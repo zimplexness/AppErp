@@ -97,5 +97,42 @@ namespace ErpGestion
             ActividadForm.FormClosed += AdminActividadesMantenimientoForm_FormClosed;
             ActividadForm.Show();
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            ActividadMantenimientoForm mantenimientoForm = new ActividadMantenimientoForm();
+            mantenimientoForm.ShowDialog();
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            //abrir formulario de comprobantes
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(ActividadMantenimientoForm))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            int IdActividad = (int)metroGridActividad.CurrentRow.Cells["iDActividadMantenimientoDataGridViewTextBoxColumn"].Value;
+
+            ActividadMantenimientoForm ActividadForm = new ActividadMantenimientoForm();
+
+            ActividadForm.IDActividadMantenimiento = IdActividad;
+            ActividadForm.Edition = true;
+            ActividadForm.FormClosed += AdminActividadesMantenimientoForm_FormClosed;
+            ActividadForm.Show();
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

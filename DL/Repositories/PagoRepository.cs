@@ -229,5 +229,15 @@ namespace DL.Repositories
         {
             return _context.SelectPagosProveedores(fechainicio,fechafin);
         }
+
+        public IEnumerable<Pagos> GetAllpagos(DateTime fecha1, DateTime fecha2)
+        {
+            using (_context)
+            {
+                var PagoList = _context.Pagos.Where(x => x.Fecha >= fecha1 && x.Fecha <= fecha2).Include(x => x.DetallesPago.Select(x1=>x1.Comprobantes.Proveedores)).ToList();
+                return PagoList;
+            }
+            
+        }
     }
 }

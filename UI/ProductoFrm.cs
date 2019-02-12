@@ -141,5 +141,61 @@ namespace ErpGestion
         {
 
         }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(metroTextBoxProducto.Text) == true)
+                {
+                    MessageBox.Show("Debe insertar al menos el nombre del articulo", "Sistema de Gestion de Compras", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else
+                {
+                    if (Articulo != null)
+                    {
+                        Articulo.Nombre = metroTextBoxProducto.Text;
+                        Articulo.Descripcion = metroTextBoxDescripcion.Text;
+                        Articulo.Codigo = metroTextBoxCodigo.Text;
+                        Articulo.Iva = int.Parse(metroTextBoxIva.Text);
+                        Articulo.IDCategoria = (int)metroComboBoxCategoria.SelectedValue;
+                        Articulo.IdUbicacion = (int)metroComboBoxUbicacion.SelectedValue;
+                        articuloController.InsertarArticulos(Articulo);
+                    }
+                    else if (Articulo == null)
+
+                    {
+                        Articulo = new Articulos();
+                        Articulo.Nombre = metroTextBoxProducto.Text;
+                        Articulo.Descripcion = metroTextBoxDescripcion.Text;
+                        Articulo.Codigo = metroTextBoxCodigo.Text;
+                        Articulo.Iva = int.Parse(metroTextBoxIva.Text);
+                        Articulo.IDCategoria = (int)metroComboBoxCategoria.SelectedValue;
+                        Articulo.IdUbicacion = (int)metroComboBoxUbicacion.SelectedValue;
+                        articuloController.InsertarArticulos(Articulo);
+                    }
+
+                    MessageBox.Show("Producto agregado con exito", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void metroButton2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

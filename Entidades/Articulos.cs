@@ -17,28 +17,30 @@ namespace Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Articulos()
         {
-            this.DetallesComprobanteArticulos = new HashSet<DetallesComprobanteArticulos>();
-            this.IngresoMateriales = new HashSet<IngresoMateriales>();
             this.DetalleMantenimientoRepuestos = new HashSet<DetalleMantenimientoRepuestos>();
+            this.DetallesComprobanteArticulos = new HashSet<DetallesComprobanteArticulos>();
         }
     
         public int IDArticulo { get; set; }
-        public int IDCategoria { get; set; }
-        public Nullable<int> IdAlmacen { get; set; }
         public Nullable<int> IdUbicacion { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Codigo { get; set; }
-        public Nullable<double> Stock { get; set; }
         public Nullable<double> Iva { get; set; }
+        public int IDCategoria { get; set; }
+        public Nullable<int> SubCategoriaProductoID { get; set; }
+        public Nullable<int> TipoBienUsoID { get; set; }
+        public Nullable<int> UM { get; set; }
+        public Nullable<int> TipoAlmacenDestino { get; set; }
+        public Nullable<int> IvaCategoriaId { get; set; }
+        public Nullable<System.DateTime> FechaEntrada { get; set; }
     
+        public virtual ImpuestoIva ImpuestoIva { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetalleMantenimientoRepuestos> DetalleMantenimientoRepuestos { get; set; }
         public virtual Categorias Categorias { get; set; }
         public virtual Ubicacion Ubicacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetallesComprobanteArticulos> DetallesComprobanteArticulos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IngresoMateriales> IngresoMateriales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleMantenimientoRepuestos> DetalleMantenimientoRepuestos { get; set; }
     }
 }

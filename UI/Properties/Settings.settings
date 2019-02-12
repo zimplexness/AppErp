@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-A2QQEPH\SQLEXPRESS;Initial Catalog=dbsitemfacturacion;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework</Value>
     </Setting>
+    <Setting Name="Dropdown" Type="System.Windows.Forms.ComboBoxStyle" Scope="User">
+      <Value Profile="(Default)">DropDownList</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

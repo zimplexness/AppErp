@@ -10,7 +10,8 @@ namespace DL.Repositories
    public interface IComprobanteRepository
     {
         IEnumerable< TiposComprobante> GetTiposComprobante();
-        IEnumerable< CentroCostos> GetCentroCostos();
+        IEnumerable<ConceptoGasto> GetAllConceptoGasto();
+        IEnumerable<CentroCosto> GetAllCentroCosto();
         IEnumerable<TiposFactura> GetTiposFactura();
         IEnumerable< CondicionesCompra> GetCondicionesCompra();
         IEnumerable< Contable> GetContable();
@@ -36,6 +37,6 @@ namespace DL.Repositories
         IEnumerable<GetAllComprobantesxFechas_Result> GetAllComprobantesxFactura(string Puntov, string Nofactura,DateTime fecha1,DateTime fecha2);
         Comprobantes GetComprobanteById(int ID);
         IEnumerable<DetallesComprobanteArticulos> GetComprobantesArticulos(int ID);
-
+        IEnumerable<string> GetCentrosCostosString();
     }
 }

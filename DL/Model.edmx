@@ -20,6 +20,14 @@
           <Property Name="IdEmpresaCliente" Type="int" />
           <Property Name="IdEmpleado" Type="int" />
         </EntityType>
+        <EntityType Name="Alicuotas">
+          <Key>
+            <PropertyRef Name="IdAlicuota" />
+          </Key>
+          <Property Name="IdAlicuota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Porcentaje" Type="float" />
+          <Property Name="Valor" Type="decimal" Precision="5" Scale="4" />
+        </EntityType>
         <EntityType Name="Almacenes">
           <Key>
             <PropertyRef Name="IdAlmacen" />
@@ -31,19 +39,35 @@
           <Property Name="IdEncargado" Type="int" />
           <Property Name="IDZona" Type="int" />
         </EntityType>
+        <EntityType Name="AperturaCaja">
+          <Key>
+            <PropertyRef Name="AperturaCajaId" />
+          </Key>
+          <Property Name="AperturaCajaId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="FechaCierre" Type="datetime" />
+          <Property Name="ImporteInicial" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ImporteCierre" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="UsuarioAperturaId" Type="int" />
+          <Property Name="UsuarioCierreId" Type="int" />
+        </EntityType>
         <EntityType Name="Articulos">
           <Key>
             <PropertyRef Name="IDArticulo" />
           </Key>
           <Property Name="IDArticulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDCategoria" Type="int" Nullable="false" />
-          <Property Name="IdAlmacen" Type="int" />
           <Property Name="IdUbicacion" Type="int" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" />
           <Property Name="Descripcion" Type="varchar" MaxLength="100" />
           <Property Name="Codigo" Type="varchar" MaxLength="50" />
-          <Property Name="Stock" Type="float" />
           <Property Name="Iva" Type="float" />
+          <Property Name="IDCategoria" Type="int" Nullable="false" />
+          <Property Name="SubCategoriaProductoID" Type="int" />
+          <Property Name="TipoBienUsoID" Type="int" />
+          <Property Name="UM" Type="int" />
+          <Property Name="TipoAlmacenDestino" Type="int" />
+          <Property Name="IvaCategoriaId" Type="int" />
+          <Property Name="FechaEntrada" Type="date" />
         </EntityType>
         <EntityType Name="Bancos">
           <Key>
@@ -71,12 +95,12 @@
           <Property Name="IDCategoria" Type="int" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="CentroCostos">
+        <EntityType Name="CentroCosto">
           <Key>
-            <PropertyRef Name="IdCentroCosto" />
+            <PropertyRef Name="CentroCostoId" />
           </Key>
-          <Property Name="IdCentroCosto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CentroCosto" Type="varchar" MaxLength="50" />
+          <Property Name="CentroCostoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CentroCostoNombre" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Combustibles">
           <Key>
@@ -95,7 +119,7 @@
           <Property Name="Fecha" Type="date" />
           <Property Name="FechaVencimiento" Type="date" />
           <Property Name="IdTipoComprobante" Type="int" />
-          <Property Name="IdCentroCosto" Type="int" />
+          <Property Name="ConceptoGastoId" Type="int" />
           <Property Name="IdTipoFactura" Type="int" />
           <Property Name="Importe" Type="float" />
           <Property Name="Contable" Type="int" />
@@ -107,6 +131,14 @@
           <Property Name="ConceptosNograbado" Type="float" />
           <Property Name="PercepcionIva" Type="float" />
           <Property Name="ImporteNeto" Type="float" />
+          <Property Name="CentroCostoID" Type="int" />
+        </EntityType>
+        <EntityType Name="ConceptoGasto">
+          <Key>
+            <PropertyRef Name="IdConceptoGasto" />
+          </Key>
+          <Property Name="IdConceptoGasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConceptoGasto" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CondicionesCompra">
           <Key>
@@ -121,6 +153,13 @@
           </Key>
           <Property Name="IdContable" Type="int" Nullable="false" />
           <Property Name="Contable" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="ControlsAction">
+          <Key>
+            <PropertyRef Name="IdAction" />
+          </Key>
+          <Property Name="IdAction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControlAction" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CuentaCorriente">
           <Key>
@@ -139,6 +178,13 @@
           <Property Name="IdDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="DestinoImpuesto">
+          <Key>
+            <PropertyRef Name="DestinoImpuestoId" />
+          </Key>
+          <Property Name="DestinoImpuestoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Destino" Type="varchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="DetalleActividadMantenimiento">
           <Key>
             <PropertyRef Name="IdDetalleActividadMantenimiento" />
@@ -146,6 +192,13 @@
           <Property Name="IdDetalleActividadMantenimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdMantenimiento" Type="int" />
           <Property Name="IdActividadMantenimiento" Type="int" />
+        </EntityType>
+        <EntityType Name="DetalleCaja">
+          <Key>
+            <PropertyRef Name="DetalleDescripcionCajaId" />
+          </Key>
+          <Property Name="DetalleDescripcionCajaId" Type="int" Nullable="false" />
+          <Property Name="DetalleCaja" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="DetalleMantenimientoRepuestos">
           <Key>
@@ -177,6 +230,21 @@
           <Property Name="IdDetalleProveedor_ProductorSeguro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdProveedor" Type="int" />
           <Property Name="IdProductorSeguro" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.DetalleRecepcionMateriales' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="DetalleRecepcionMateriales">
+          <Key>
+            <PropertyRef Name="RecepcionID" />
+            <PropertyRef Name="CodigoArticulo" />
+          </Key>
+          <Property Name="DetalleRecepcionArticuloID" Type="int" />
+          <Property Name="NombreArticulo" Type="varchar" MaxLength="100" />
+          <Property Name="UmID" Type="int" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="RecepcionID" Type="int" Nullable="false" />
+          <Property Name="CodigoArticulo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DetallesComprobanteArticulos">
           <Key>
@@ -288,17 +356,28 @@
           <Property Name="IDEstudios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="IngresoMateriales">
+        <EntityType Name="FamiliaArticulos">
           <Key>
-            <PropertyRef Name="iDingresoMateriales" />
+            <PropertyRef Name="FamiliaArticuloID" />
           </Key>
-          <Property Name="iDingresoMateriales" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" />
-          <Property Name="NoRemito" Type="nchar" MaxLength="12" />
-          <Property Name="IdAlmacen" Type="int" />
-          <Property Name="IdRecepcion" Type="int" />
-          <Property Name="idArticulo" Type="int" />
-          <Property Name="Cantidad" Type="float" />
+          <Property Name="FamiliaArticuloID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamiliaArticulo" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ImpuestoIva">
+          <Key>
+            <PropertyRef Name="IvaImpuestoID" />
+          </Key>
+          <Property Name="IvaImpuestoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdImpuesto" Type="int" />
+          <Property Name="IdAlicuota" Type="int" />
+        </EntityType>
+        <EntityType Name="Impuestos">
+          <Key>
+            <PropertyRef Name="IDImpuestos" />
+          </Key>
+          <Property Name="IDImpuestos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="DestinoImpuestoId" Type="int" />
         </EntityType>
         <EntityType Name="Localidades">
           <Key>
@@ -447,6 +526,13 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.NetUsersRoles' no tiene defini
           <Property Name="Importe" Type="float" />
           <Property Name="Concepto" Type="varchar" MaxLength="400" />
         </EntityType>
+        <EntityType Name="PartidaDoble">
+          <Key>
+            <PropertyRef Name="PartidadID" />
+          </Key>
+          <Property Name="PartidadID" Type="int" Nullable="false" />
+          <Property Name="PartidaDoble" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="PermissionMenus">
           <Key>
             <PropertyRef Name="Id" />
@@ -478,6 +564,22 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.NetUsersRoles' no tiene defini
           <Property Name="LibretaFondoDesempleo" Type="bit" />
           <Property Name="IdSexo" Type="int" />
           <Property Name="RegistroConducir" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.PlanCuentas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PlanCuentas">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="descriptionCuenta" />
+          </Key>
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="parentID" Type="int" />
+          <Property Name="descriptionCuenta" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="depth" Type="int" />
+          <Property Name="pathIndex" Type="int" />
+          <Property Name="numericalmapping" Type="nvarchar" MaxLength="300" />
+          <Property Name="operacion" Type="nchar" MaxLength="10" />
+          <Property Name="partidadobleID" Type="int" />
         </EntityType>
         <EntityType Name="PolizasSeguro">
           <Key>
@@ -542,6 +644,17 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.NetUsersRoles' no tiene defini
           <Property Name="IDProvincias" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Provincias" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Recepciones">
+          <Key>
+            <PropertyRef Name="RecepcionID" />
+          </Key>
+          <Property Name="RecepcionID" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="NoRemito" Type="nchar" MaxLength="12" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="ComprobanteID" Type="int" />
+          <Property Name="Observacion" Type="varchar" MaxLength="300" />
+        </EntityType>
         <EntityType Name="Referencias">
           <Key>
             <PropertyRef Name="IDReferencia" />
@@ -604,6 +717,14 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.NetUsersRoles' no tiene defini
           <Property Name="AntecedentesLaborales" Type="varchar" MaxLength="300" />
           <Property Name="PretencionRemunerativa" Type="float" />
         </EntityType>
+        <EntityType Name="SubCategoriaProducto">
+          <Key>
+            <PropertyRef Name="SubCategoriaProductoID" />
+          </Key>
+          <Property Name="SubCategoriaProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoriaProducto" Type="int" />
+          <Property Name="CategoriaID" Type="int" />
+        </EntityType>
         <EntityType Name="SubMenus">
           <Key>
             <PropertyRef Name="Id" />
@@ -632,6 +753,13 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.NetUsersRoles' no tiene defini
           <Property Name="TelefonoCotacto" Type="varchar" MaxLength="150" />
           <Property Name="NombreEncargado" Type="varchar" MaxLength="150" />
           <Property Name="IdTipoTaller" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoAlmacen">
+          <Key>
+            <PropertyRef Name="TipoAlmacenID" />
+          </Key>
+          <Property Name="TipoAlmacenID" Type="int" Nullable="false" />
+          <Property Name="TipoAlmacen" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TiposComprobante">
           <Key>
@@ -669,6 +797,13 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.NetUsersRoles' no tiene defini
           <Property Name="IdUbicacion" Type="int" Nullable="false" />
           <Property Name="Ubicacion" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="UnidadMedidaID" />
+          </Key>
+          <Property Name="UnidadMedidaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnidadMedida" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="IDUser" />
@@ -704,6 +839,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.NetUsersRoles' no tiene defini
           <Property Name="TenantID" Type="int" />
           <Property Name="UserTransac" Type="int" />
           <Property Name="Gps" Type="bit" />
+          <Property Name="DireccionRadicacion" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="Vencimientos">
           <Key>
@@ -962,6 +1098,18 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Articulos_ImpuestoIva">
+          <End Role="ImpuestoIva" Type="Self.ImpuestoIva" Multiplicity="0..1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImpuestoIva">
+              <PropertyRef Name="IvaImpuestoID" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="IvaCategoriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AspNetUserRoles_AspNetRoles_RoleId">
           <End Role="NetRoles" Type="Self.NetRoles" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -999,6 +1147,42 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Principal>
             <Dependent Role="CategoriaEmpleado">
               <PropertyRef Name="IDSindicato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comprobantes_CentroCosto">
+          <End Role="CentroCosto" Type="Self.CentroCosto" Multiplicity="0..1" />
+          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentroCosto">
+              <PropertyRef Name="CentroCostoId" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="CentroCostoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comprobantes_ConceptoGasto">
+          <End Role="ConceptoGasto" Type="Self.ConceptoGasto" Multiplicity="0..1" />
+          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConceptoGasto">
+              <PropertyRef Name="IdConceptoGasto" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="ConceptoGastoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comprobantes_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedores" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="IdProveedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1134,6 +1318,42 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ImpuestoIva_Alicuotas">
+          <End Role="Alicuotas" Type="Self.Alicuotas" Multiplicity="0..1" />
+          <End Role="ImpuestoIva" Type="Self.ImpuestoIva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alicuotas">
+              <PropertyRef Name="IdAlicuota" />
+            </Principal>
+            <Dependent Role="ImpuestoIva">
+              <PropertyRef Name="IdAlicuota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImpuestoIva_Impuestos">
+          <End Role="Impuestos" Type="Self.Impuestos" Multiplicity="0..1" />
+          <End Role="ImpuestoIva" Type="Self.ImpuestoIva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Impuestos">
+              <PropertyRef Name="IDImpuestos" />
+            </Principal>
+            <Dependent Role="ImpuestoIva">
+              <PropertyRef Name="IdImpuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Impuestos_DestinoImpuesto">
+          <End Role="DestinoImpuesto" Type="Self.DestinoImpuesto" Multiplicity="0..1" />
+          <End Role="Impuestos" Type="Self.Impuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DestinoImpuesto">
+              <PropertyRef Name="DestinoImpuestoId" />
+            </Principal>
+            <Dependent Role="Impuestos">
+              <PropertyRef Name="DestinoImpuestoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Mantenimiento_Talleres">
           <End Role="Talleres" Type="Self.Talleres" Multiplicity="0..1" />
           <End Role="Mantenimiento" Type="Self.Mantenimiento" Multiplicity="*" />
@@ -1215,6 +1435,18 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Principal>
             <Dependent Role="Personas">
               <PropertyRef Name="idObraSocial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanCuentas_PartidaDoble">
+          <End Role="PartidaDoble" Type="Self.PartidaDoble" Multiplicity="0..1" />
+          <End Role="PlanCuentas" Type="Self.PlanCuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartidaDoble">
+              <PropertyRef Name="PartidadID" />
+            </Principal>
+            <Dependent Role="PlanCuentas">
+              <PropertyRef Name="partidadobleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1350,6 +1582,18 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SubCategoriaProducto_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="SubCategoriaProducto" Type="Self.SubCategoriaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IDCategoria" />
+            </Principal>
+            <Dependent Role="SubCategoriaProducto">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SubMenus_Menus">
           <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
           <End Role="SubMenus" Type="Self.SubMenus" Multiplicity="*" />
@@ -1395,18 +1639,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Principal>
             <Dependent Role="Articulos">
               <PropertyRef Name="IdUbicacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Comprobante_Table_CentroCosto">
-          <End Role="CentroCostos" Type="Self.CentroCostos" Multiplicity="0..1" />
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CentroCostos">
-              <PropertyRef Name="IdCentroCosto" />
-            </Principal>
-            <Dependent Role="Comprobantes">
-              <PropertyRef Name="IdCentroCosto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1638,25 +1870,13 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
         </Association>
         <Association Name="FK_Table_IngresoMateriales_Table_Almacen">
           <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="0..1" />
-          <End Role="IngresoMateriales" Type="Self.IngresoMateriales" Multiplicity="*" />
+          <End Role="Recepciones" Type="Self.Recepciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Almacenes">
               <PropertyRef Name="IdAlmacen" />
             </Principal>
-            <Dependent Role="IngresoMateriales">
+            <Dependent Role="Recepciones">
               <PropertyRef Name="IdAlmacen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_IngresoMateriales_Table_Articulos">
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1" />
-          <End Role="IngresoMateriales" Type="Self.IngresoMateriales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IDArticulo" />
-            </Principal>
-            <Dependent Role="IngresoMateriales">
-              <PropertyRef Name="idArticulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1876,19 +2096,25 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
         <EntityContainer Name="ERP_SITEMModelStoreContainer">
           <EntitySet Name="ActividadMantenimiento" EntityType="Self.ActividadMantenimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AfectadoEmpresaCliente" EntityType="Self.AfectadoEmpresaCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alicuotas" EntityType="Self.Alicuotas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AperturaCaja" EntityType="Self.AperturaCaja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriaEmpleado" EntityType="Self.CategoriaEmpleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CentroCostos" EntityType="Self.CentroCostos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CentroCosto" EntityType="Self.CentroCosto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Combustibles" EntityType="Self.Combustibles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comprobantes" EntityType="Self.Comprobantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConceptoGasto" EntityType="Self.ConceptoGasto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CondicionesCompra" EntityType="Self.CondicionesCompra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contable" EntityType="Self.Contable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ControlsAction" EntityType="Self.ControlsAction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CuentaCorriente" EntityType="Self.CuentaCorriente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DestinoImpuesto" EntityType="Self.DestinoImpuesto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleActividadMantenimiento" EntityType="Self.DetalleActividadMantenimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleCaja" EntityType="Self.DetalleCaja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleMantenimientoRepuestos" EntityType="Self.DetalleMantenimientoRepuestos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleMediosPagos" EntityType="Self.DetalleMediosPagos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleProveedor_ProductorSeguro" EntityType="Self.DetalleProveedor_ProductorSeguro" Schema="dbo" store:Type="Tables" />
@@ -1901,7 +2127,9 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <EntitySet Name="EstadoCivil" EntityType="Self.EstadoCivil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstudiosRealizados" EntityType="Self.EstudiosRealizados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IngresoMateriales" EntityType="Self.IngresoMateriales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamiliaArticulos" EntityType="Self.FamiliaArticulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImpuestoIva" EntityType="Self.ImpuestoIva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Impuestos" EntityType="Self.Impuestos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mantenimiento" EntityType="Self.Mantenimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarcasVehiculos" EntityType="Self.MarcasVehiculos" Schema="dbo" store:Type="Tables" />
@@ -1916,6 +2144,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <EntitySet Name="ObraSocial" EntityType="Self.ObraSocial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PadronRgsRet" EntityType="Self.PadronRgsRet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartidaDoble" EntityType="Self.PartidaDoble" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PermissionMenus" EntityType="Self.PermissionMenus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PolizasSeguro" EntityType="Self.PolizasSeguro" Schema="dbo" store:Type="Tables" />
@@ -1923,6 +2152,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recepciones" EntityType="Self.Recepciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Referencias" EntityType="Self.Referencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistrosConducir" EntityType="Self.RegistrosConducir" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Retenciones" EntityType="Self.Retenciones" Schema="dbo" store:Type="Tables" />
@@ -1930,23 +2160,49 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <EntitySet Name="Sexos" EntityType="Self.Sexos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sindicatos" EntityType="Self.Sindicatos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SolicitudesEmpleo" EntityType="Self.SolicitudesEmpleo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategoriaProducto" EntityType="Self.SubCategoriaProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubMenus" EntityType="Self.SubMenus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TablaDivisorCalculo" EntityType="Self.TablaDivisorCalculo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Talleres" EntityType="Self.Talleres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAlmacen" EntityType="Self.TipoAlmacen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposComprobante" EntityType="Self.TiposComprobante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposFactura" EntityType="Self.TiposFactura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposRegistrosConducir" EntityType="Self.TiposRegistrosConducir" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoTaller" EntityType="Self.TipoTaller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadMedida" EntityType="Self.UnidadMedida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vencimientos" EntityType="Self.Vencimientos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zonas" EntityType="Self.Zonas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleRecepcionMateriales" EntityType="Self.DetalleRecepcionMateriales" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DetalleRecepcionMateriales].[DetalleRecepcionArticuloID] AS [DetalleRecepcionArticuloID], 
+    [DetalleRecepcionMateriales].[NombreArticulo] AS [NombreArticulo], 
+    [DetalleRecepcionMateriales].[UmID] AS [UmID], 
+    [DetalleRecepcionMateriales].[Cantidad] AS [Cantidad], 
+    [DetalleRecepcionMateriales].[PrecioUnitario] AS [PrecioUnitario], 
+    [DetalleRecepcionMateriales].[RecepcionID] AS [RecepcionID], 
+    [DetalleRecepcionMateriales].[CodigoArticulo] AS [CodigoArticulo]
+    FROM [dbo].[DetalleRecepcionMateriales] AS [DetalleRecepcionMateriales]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="NetUsersRoles" EntityType="Self.NetUsersRoles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [NetUsersRoles].[UserId] AS [UserId], 
     [NetUsersRoles].[RoleId] AS [RoleId]
     FROM [dbo].[NetUsersRoles] AS [NetUsersRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PlanCuentas" EntityType="Self.PlanCuentas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PlanCuentas].[codigo] AS [codigo], 
+    [PlanCuentas].[parentID] AS [parentID], 
+    [PlanCuentas].[descriptionCuenta] AS [descriptionCuenta], 
+    [PlanCuentas].[depth] AS [depth], 
+    [PlanCuentas].[pathIndex] AS [pathIndex], 
+    [PlanCuentas].[numericalmapping] AS [numericalmapping], 
+    [PlanCuentas].[operacion] AS [operacion], 
+    [PlanCuentas].[partidadobleID] AS [partidadobleID]
+    FROM [dbo].[PlanCuentas] AS [PlanCuentas]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Choferes" EntityType="Self.Choferes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -2123,6 +2379,10 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             <End Role="EmpresasClientes" EntitySet="EmpresasClientes" />
             <End Role="AfectadoEmpresaCliente" EntitySet="AfectadoEmpresaCliente" />
           </AssociationSet>
+          <AssociationSet Name="FK_Articulos_ImpuestoIva" Association="Self.FK_Articulos_ImpuestoIva">
+            <End Role="ImpuestoIva" EntitySet="ImpuestoIva" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
           <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles_RoleId" Association="Self.FK_AspNetUserRoles_AspNetRoles_RoleId">
             <End Role="NetRoles" EntitySet="NetRoles" />
             <End Role="NetUsersRoles" EntitySet="NetUsersRoles" />
@@ -2134,6 +2394,18 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <AssociationSet Name="FK_CategoriaEmpleado_Sindicatos" Association="Self.FK_CategoriaEmpleado_Sindicatos">
             <End Role="Sindicatos" EntitySet="Sindicatos" />
             <End Role="CategoriaEmpleado" EntitySet="CategoriaEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comprobantes_CentroCosto" Association="Self.FK_Comprobantes_CentroCosto">
+            <End Role="CentroCosto" EntitySet="CentroCosto" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comprobantes_ConceptoGasto" Association="Self.FK_Comprobantes_ConceptoGasto">
+            <End Role="ConceptoGasto" EntitySet="ConceptoGasto" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comprobantes_Proveedores" Association="Self.FK_Comprobantes_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleActividadMantenimiento_ActividadMantenimiento" Association="Self.FK_DetalleActividadMantenimiento_ActividadMantenimiento">
             <End Role="ActividadMantenimiento" EntitySet="ActividadMantenimiento" />
@@ -2179,6 +2451,18 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             <End Role="Zonas" EntitySet="Zonas" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
+          <AssociationSet Name="FK_ImpuestoIva_Alicuotas" Association="Self.FK_ImpuestoIva_Alicuotas">
+            <End Role="Alicuotas" EntitySet="Alicuotas" />
+            <End Role="ImpuestoIva" EntitySet="ImpuestoIva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImpuestoIva_Impuestos" Association="Self.FK_ImpuestoIva_Impuestos">
+            <End Role="Impuestos" EntitySet="Impuestos" />
+            <End Role="ImpuestoIva" EntitySet="ImpuestoIva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Impuestos_DestinoImpuesto" Association="Self.FK_Impuestos_DestinoImpuesto">
+            <End Role="DestinoImpuesto" EntitySet="DestinoImpuesto" />
+            <End Role="Impuestos" EntitySet="Impuestos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Mantenimiento_Talleres" Association="Self.FK_Mantenimiento_Talleres">
             <End Role="Talleres" EntitySet="Talleres" />
             <End Role="Mantenimiento" EntitySet="Mantenimiento" />
@@ -2206,6 +2490,10 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <AssociationSet Name="FK_Personas_ObraSocial" Association="Self.FK_Personas_ObraSocial">
             <End Role="ObraSocial" EntitySet="ObraSocial" />
             <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanCuentas_PartidaDoble" Association="Self.FK_PlanCuentas_PartidaDoble">
+            <End Role="PartidaDoble" EntitySet="PartidaDoble" />
+            <End Role="PlanCuentas" EntitySet="PlanCuentas" />
           </AssociationSet>
           <AssociationSet Name="FK_PolizasSeguro_Proveedores" Association="Self.FK_PolizasSeguro_Proveedores">
             <End Role="Proveedores" EntitySet="Proveedores" />
@@ -2251,6 +2539,10 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             <End Role="Personas" EntitySet="Personas" />
             <End Role="SolicitudesEmpleo" EntitySet="SolicitudesEmpleo" />
           </AssociationSet>
+          <AssociationSet Name="FK_SubCategoriaProducto_Categorias" Association="Self.FK_SubCategoriaProducto_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="SubCategoriaProducto" EntitySet="SubCategoriaProducto" />
+          </AssociationSet>
           <AssociationSet Name="FK_SubMenus_Menus" Association="Self.FK_SubMenus_Menus">
             <End Role="Menus" EntitySet="Menus" />
             <End Role="SubMenus" EntitySet="SubMenus" />
@@ -2266,10 +2558,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <AssociationSet Name="FK_Table_Articulos_Table_Ubicacion" Association="Self.FK_Table_Articulos_Table_Ubicacion">
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="Articulos" EntitySet="Articulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Comprobante_Table_CentroCosto" Association="Self.FK_Table_Comprobante_Table_CentroCosto">
-            <End Role="CentroCostos" EntitySet="CentroCostos" />
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Comprobante_Table_CondicionCompra" Association="Self.FK_Table_Comprobante_Table_CondicionCompra">
             <End Role="CondicionesCompra" EntitySet="CondicionesCompra" />
@@ -2345,11 +2633,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </AssociationSet>
           <AssociationSet Name="FK_Table_IngresoMateriales_Table_Almacen" Association="Self.FK_Table_IngresoMateriales_Table_Almacen">
             <End Role="Almacenes" EntitySet="Almacenes" />
-            <End Role="IngresoMateriales" EntitySet="IngresoMateriales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_IngresoMateriales_Table_Articulos" Association="Self.FK_Table_IngresoMateriales_Table_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="IngresoMateriales" EntitySet="IngresoMateriales" />
+            <End Role="Recepciones" EntitySet="Recepciones" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Proveedores_Table_Localidades" Association="Self.FK_Table_Proveedores_Table_Localidades">
             <End Role="Localidades" EntitySet="Localidades" />
@@ -2429,26 +2713,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <Property Name="IdEncargado" Type="Int32" />
           <Property Name="IDZona" Type="Int32" />
           <NavigationProperty Name="Zonas" Relationship="Self.FK_Table_Almacen_Table_Zonas" FromRole="Almacenes" ToRole="Zonas" />
-          <NavigationProperty Name="IngresoMateriales" Relationship="Self.FK_Table_IngresoMateriales_Table_Almacen" FromRole="Almacenes" ToRole="IngresoMateriales" />
-        </EntityType>
-        <EntityType Name="Articulos">
-          <Key>
-            <PropertyRef Name="IDArticulo" />
-          </Key>
-          <Property Name="IDArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDCategoria" Type="Int32" Nullable="false" />
-          <Property Name="IdAlmacen" Type="Int32" />
-          <Property Name="IdUbicacion" Type="Int32" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Stock" Type="Double" />
-          <Property Name="Iva" Type="Double" />
-          <NavigationProperty Name="Categorias" Relationship="Self.FK_Table_Articulos_Table_Categoria" FromRole="Articulos" ToRole="Categorias" />
-          <NavigationProperty Name="Ubicacion" Relationship="Self.FK_Table_Articulos_Table_Ubicacion" FromRole="Articulos" ToRole="Ubicacion" />
-          <NavigationProperty Name="DetallesComprobanteArticulos" Relationship="Self.FK_Table_DetallesComprobanteArticulos_Table_Articulos" FromRole="Articulos" ToRole="DetallesComprobanteArticulos" />
-          <NavigationProperty Name="IngresoMateriales" Relationship="Self.FK_Table_IngresoMateriales_Table_Articulos" FromRole="Articulos" ToRole="IngresoMateriales" />
-          <NavigationProperty Name="DetalleMantenimientoRepuestos" Relationship="ERP_SITEMModel.FK_DetalleMantenimientoRepuestos_Articulos" FromRole="Articulos" ToRole="DetalleMantenimientoRepuestos" />
+          <NavigationProperty Name="Recepciones" Relationship="ERP_SITEMModel.FK_Table_IngresoMateriales_Table_Almacen1" FromRole="Almacenes" ToRole="Recepciones" />
         </EntityType>
         <EntityType Name="Bancos">
           <Key>
@@ -2478,15 +2743,8 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </Key>
           <Property Name="IDCategoria" Type="Int32" Nullable="false" />
           <Property Name="Categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Articulos" Relationship="Self.FK_Table_Articulos_Table_Categoria" FromRole="Categorias" ToRole="Articulos" />
-        </EntityType>
-        <EntityType Name="CentroCostos">
-          <Key>
-            <PropertyRef Name="IdCentroCosto" />
-          </Key>
-          <Property Name="IdCentroCosto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CentroCosto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_Comprobante_Table_CentroCosto" FromRole="CentroCostos" ToRole="Comprobantes" />
+          <NavigationProperty Name="Articulos" Relationship="ERP_SITEMModel.FK_Table_Articulos_Table_Categoria" FromRole="Categorias" ToRole="Articulos" />
+          <NavigationProperty Name="SubCategoriaProducto" Relationship="ERP_SITEMModel.FK_SubCategoriaProducto_Categorias" FromRole="Categorias" ToRole="SubCategoriaProducto" />
         </EntityType>
         <EntityType Name="Combustibles">
           <Key>
@@ -2496,45 +2754,14 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Vehiculos" Relationship="Self.FK_Vehiculos_Combustibles" FromRole="Combustibles" ToRole="Vehiculos" />
         </EntityType>
-        <EntityType Name="Comprobantes">
-          <Key>
-            <PropertyRef Name="IdComprobante" />
-          </Key>
-          <Property Name="IdComprobante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sucursal" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="NoFactura" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha" Type="DateTime" Precision="0" />
-          <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
-          <Property Name="IdTipoComprobante" Type="Int32" />
-          <Property Name="IdCentroCosto" Type="Int32" />
-          <Property Name="IdTipoFactura" Type="Int32" />
-          <Property Name="Importe" Type="Double" />
-          <Property Name="Contable" Type="Int32" />
-          <Property Name="IdProveedor" Type="Int32" />
-          <Property Name="IdCondicionCompra" Type="Int32" />
-          <Property Name="IdEstado" Type="Int32" />
-          <Property Name="IIBB" Type="Double" />
-          <Property Name="Retenciones" Type="Double" />
-          <Property Name="ConceptosNograbado" Type="Double" />
-          <Property Name="PercepcionIva" Type="Double" />
-          <Property Name="ImporteNeto" Type="Double" />
-          <NavigationProperty Name="CentroCostos" Relationship="Self.FK_Table_Comprobante_Table_CentroCosto" FromRole="Comprobantes" ToRole="CentroCostos" />
-          <NavigationProperty Name="CondicionesCompra" Relationship="Self.FK_Table_Comprobante_Table_CondicionCompra" FromRole="Comprobantes" ToRole="CondicionesCompra" />
-          <NavigationProperty Name="Contable1" Relationship="Self.FK_Table_Comprobante_Table_Contable" FromRole="Comprobantes" ToRole="Contable" />
-          <NavigationProperty Name="Estados" Relationship="Self.FK_Table_Comprobante_Table_Estados" FromRole="Comprobantes" ToRole="Estados" />
-          <NavigationProperty Name="TiposComprobante" Relationship="Self.FK_Table_Comprobante_Table_TipoComprobante" FromRole="Comprobantes" ToRole="TiposComprobante" />
-          <NavigationProperty Name="TiposFactura" Relationship="Self.FK_Table_Comprobante_Table_TipoFactura" FromRole="Comprobantes" ToRole="TiposFactura" />
-          <NavigationProperty Name="DetallesPago" Relationship="Self.FK_Table_DetallePago_Table_Comprobante" FromRole="Comprobantes" ToRole="DetallesPago" />
-          <NavigationProperty Name="DetallesComprobanteArticulos" Relationship="Self.FK_Table_DetallesComprobanteArticulos_Table_Comprobante" FromRole="Comprobantes" ToRole="DetallesComprobanteArticulos" />
-        </EntityType>
         <EntityType Name="CondicionesCompra">
           <Key>
             <PropertyRef Name="IdCondicionCompra" />
           </Key>
           <Property Name="IdCondicionCompra" Type="Int32" Nullable="false" />
           <Property Name="Condiciondecompra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_Comprobante_Table_CondicionCompra" FromRole="CondicionesCompra" ToRole="Comprobantes" />
           <NavigationProperty Name="Proveedores" Relationship="ERP_SITEMModel.FK_Proveedores_CondicionesCompra" FromRole="CondicionesCompra" ToRole="Proveedores" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_CondicionCompra" FromRole="CondicionesCompra" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="Contable">
           <Key>
@@ -2542,7 +2769,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </Key>
           <Property Name="IdContable" Type="Int32" Nullable="false" />
           <Property Name="Contable1" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_Comprobante_Table_Contable" FromRole="Contable" ToRole="Comprobantes" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_Contable" FromRole="Contable" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="CuentaCorriente">
           <Key>
@@ -2570,10 +2797,10 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <Property Name="IDMantenimiento" Type="Int32" />
           <Property Name="IdRepuestos" Type="Int32" />
           <Property Name="Importe" Type="Double" />
-          <NavigationProperty Name="Articulos" Relationship="ERP_SITEMModel.FK_DetalleMantenimientoRepuestos_Articulos" FromRole="DetalleMantenimientoRepuestos" ToRole="Articulos" />
           <Property Name="Cantidad" Type="Double" />
           <Property Name="Precio" Type="Double" />
           <NavigationProperty Name="Mantenimiento" Relationship="ERP_SITEMModel.FK_DetalleMantenimientoRepuestos_Mantenimiento" FromRole="DetalleMantenimientoRepuestos" ToRole="Mantenimiento" />
+          <NavigationProperty Name="Articulos" Relationship="ERP_SITEMModel.FK_DetalleMantenimientoRepuestos_Articulos" FromRole="DetalleMantenimientoRepuestos" ToRole="Articulos" />
         </EntityType>
         <EntityType Name="DetalleMediosPagos">
           <Key>
@@ -2612,8 +2839,8 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <Property Name="Iva" Type="Double" />
           <Property Name="Importe" Type="Double" />
           <Property Name="IvaCalculado" Type="Double" />
-          <NavigationProperty Name="Articulos" Relationship="Self.FK_Table_DetallesComprobanteArticulos_Table_Articulos" FromRole="DetallesComprobanteArticulos" ToRole="Articulos" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_DetallesComprobanteArticulos_Table_Comprobante" FromRole="DetallesComprobanteArticulos" ToRole="Comprobantes" />
+          <NavigationProperty Name="Articulos" Relationship="ERP_SITEMModel.FK_Table_DetallesComprobanteArticulos_Table_Articulos" FromRole="DetallesComprobanteArticulos" ToRole="Articulos" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Table_DetallesComprobanteArticulos_Table_Comprobante" FromRole="DetallesComprobanteArticulos" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="DetallesPago">
           <Key>
@@ -2622,8 +2849,8 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <Property Name="IdDetallePago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idComprobante" Type="Int32" />
           <Property Name="IdPago" Type="Int32" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_DetallePago_Table_Comprobante" FromRole="DetallesPago" ToRole="Comprobantes" />
           <NavigationProperty Name="Pagos" Relationship="Self.FK_Table_DetallePago_Table_Pagos" FromRole="DetallesPago" ToRole="Pagos" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Table_DetallePago_Table_Comprobante" FromRole="DetallesPago" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="Empleados">
           <Key>
@@ -2726,7 +2953,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </Key>
           <Property Name="idEstado" Type="Int32" Nullable="false" />
           <Property Name="Estados1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_Comprobante_Table_Estados" FromRole="Estados" ToRole="Comprobantes" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_Estados" FromRole="Estados" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="EstudiosRealizados">
           <Key>
@@ -2734,20 +2961,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </Key>
           <Property Name="IDEstudios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="IngresoMateriales">
-          <Key>
-            <PropertyRef Name="iDingresoMateriales" />
-          </Key>
-          <Property Name="iDingresoMateriales" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <Property Name="NoRemito" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
-          <Property Name="IdAlmacen" Type="Int32" />
-          <Property Name="IdRecepcion" Type="Int32" />
-          <Property Name="idArticulo" Type="Int32" />
-          <Property Name="Cantidad" Type="Double" />
-          <NavigationProperty Name="Almacenes" Relationship="Self.FK_Table_IngresoMateriales_Table_Almacen" FromRole="IngresoMateriales" ToRole="Almacenes" />
-          <NavigationProperty Name="Articulos" Relationship="Self.FK_Table_IngresoMateriales_Table_Articulos" FromRole="IngresoMateriales" ToRole="Articulos" />
         </EntityType>
         <EntityType Name="Localidades">
           <Key>
@@ -2991,6 +3204,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <Property Name="CuentaCorriente" Type="Boolean" />
           <Property Name="Vencimiento" Type="Int32" />
           <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Comprobantes_Proveedores" FromRole="Proveedores" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="Provincias">
           <Key>
@@ -3099,7 +3313,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </Key>
           <Property Name="IdTipoComprobante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoComprobante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_Comprobante_Table_TipoComprobante" FromRole="TiposComprobante" ToRole="Comprobantes" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_TipoComprobante" FromRole="TiposComprobante" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="TiposFactura">
           <Key>
@@ -3107,7 +3321,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </Key>
           <Property Name="IdTipoFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comprobantes" Relationship="Self.FK_Table_Comprobante_Table_TipoFactura" FromRole="TiposFactura" ToRole="Comprobantes" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_TipoFactura" FromRole="TiposFactura" ToRole="Comprobantes" />
         </EntityType>
         <EntityType Name="TipoTaller">
           <Key>
@@ -3123,7 +3337,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           </Key>
           <Property Name="IdUbicacion" Type="Int32" Nullable="false" />
           <Property Name="Ubicacion1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Articulos" Relationship="Self.FK_Table_Articulos_Table_Ubicacion" FromRole="Ubicacion" ToRole="Articulos" />
+          <NavigationProperty Name="Articulos" Relationship="ERP_SITEMModel.FK_Table_Articulos_Table_Ubicacion" FromRole="Ubicacion" ToRole="Articulos" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -3169,6 +3383,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <NavigationProperty Name="Vehiculos2" Relationship="Self.FK_Vehiculos_Vehiculos" FromRole="Vehiculos1" ToRole="Vehiculos" />
           <NavigationProperty Name="Mantenimiento" Relationship="ERP_SITEMModel.FK_Mantenimiento_Vehiculos" FromRole="Vehiculos" ToRole="Mantenimiento" />
           <Property Name="Gps" Type="Boolean" />
+          <Property Name="DireccionRadicacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Vencimientos">
           <Key>
@@ -3399,68 +3614,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_IngresoMateriales_Table_Almacen">
-          <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="0..1" />
-          <End Role="IngresoMateriales" Type="Self.IngresoMateriales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Almacenes">
-              <PropertyRef Name="IdAlmacen" />
-            </Principal>
-            <Dependent Role="IngresoMateriales">
-              <PropertyRef Name="IdAlmacen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Articulos_Table_Categoria">
-          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categorias">
-              <PropertyRef Name="IDCategoria" />
-            </Principal>
-            <Dependent Role="Articulos">
-              <PropertyRef Name="IDCategoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Articulos_Table_Ubicacion">
-          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="0..1" />
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ubicacion">
-              <PropertyRef Name="IdUbicacion" />
-            </Principal>
-            <Dependent Role="Articulos">
-              <PropertyRef Name="IdUbicacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_DetallesComprobanteArticulos_Table_Articulos">
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DetallesComprobanteArticulos" Type="Self.DetallesComprobanteArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IDArticulo" />
-            </Principal>
-            <Dependent Role="DetallesComprobanteArticulos">
-              <PropertyRef Name="IdArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_IngresoMateriales_Table_Articulos">
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1" />
-          <End Role="IngresoMateriales" Type="Self.IngresoMateriales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IDArticulo" />
-            </Principal>
-            <Dependent Role="IngresoMateriales">
-              <PropertyRef Name="idArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Table_DetalleMediosPago_Table_Banco">
           <End Role="Bancos" Type="Self.Bancos" Multiplicity="0..1" />
           <End Role="DetalleMediosPagos" Type="Self.DetalleMediosPagos" Multiplicity="*" />
@@ -3497,18 +3650,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Comprobante_Table_CentroCosto">
-          <End Role="CentroCostos" Type="Self.CentroCostos" Multiplicity="0..1" />
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CentroCostos">
-              <PropertyRef Name="IdCentroCosto" />
-            </Principal>
-            <Dependent Role="Comprobantes">
-              <PropertyRef Name="IdCentroCosto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Vehiculos_Combustibles">
           <End Role="Combustibles" Type="Self.Combustibles" Multiplicity="0..1" />
           <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
@@ -3518,94 +3659,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Principal>
             <Dependent Role="Vehiculos">
               <PropertyRef Name="IDCombustible" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Comprobante_Table_CondicionCompra">
-          <End Role="CondicionesCompra" Type="Self.CondicionesCompra" Multiplicity="0..1" />
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CondicionesCompra">
-              <PropertyRef Name="IdCondicionCompra" />
-            </Principal>
-            <Dependent Role="Comprobantes">
-              <PropertyRef Name="IdCondicionCompra" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Comprobante_Table_Contable">
-          <End Role="Contable" Type="Self.Contable" Multiplicity="0..1" />
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Contable">
-              <PropertyRef Name="IdContable" />
-            </Principal>
-            <Dependent Role="Comprobantes">
-              <PropertyRef Name="Contable" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Comprobante_Table_Estados">
-          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estados">
-              <PropertyRef Name="idEstado" />
-            </Principal>
-            <Dependent Role="Comprobantes">
-              <PropertyRef Name="IdEstado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Comprobante_Table_TipoComprobante">
-          <End Role="TiposComprobante" Type="Self.TiposComprobante" Multiplicity="0..1" />
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TiposComprobante">
-              <PropertyRef Name="IdTipoComprobante" />
-            </Principal>
-            <Dependent Role="Comprobantes">
-              <PropertyRef Name="IdTipoComprobante" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Comprobante_Table_TipoFactura">
-          <End Role="TiposFactura" Type="Self.TiposFactura" Multiplicity="0..1" />
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TiposFactura">
-              <PropertyRef Name="IdTipoFactura" />
-            </Principal>
-            <Dependent Role="Comprobantes">
-              <PropertyRef Name="IdTipoFactura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_DetallePago_Table_Comprobante">
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DetallesPago" Type="Self.DetallesPago" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Comprobantes">
-              <PropertyRef Name="IdComprobante" />
-            </Principal>
-            <Dependent Role="DetallesPago">
-              <PropertyRef Name="idComprobante" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_DetallesComprobanteArticulos_Table_Comprobante">
-          <End Role="Comprobantes" Type="Self.Comprobantes" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DetallesComprobanteArticulos" Type="Self.DetallesComprobanteArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Comprobantes">
-              <PropertyRef Name="IdComprobante" />
-            </Principal>
-            <Dependent Role="DetallesComprobanteArticulos">
-              <PropertyRef Name="IdComprobante" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4065,13 +4118,10 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <EntitySet Name="ActividadMantenimiento" EntityType="Self.ActividadMantenimiento" />
           <EntitySet Name="AfectadoEmpresaCliente" EntityType="Self.AfectadoEmpresaCliente" />
           <EntitySet Name="Almacenes" EntityType="Self.Almacenes" />
-          <EntitySet Name="Articulos" EntityType="Self.Articulos" />
           <EntitySet Name="Bancos" EntityType="Self.Bancos" />
           <EntitySet Name="CategoriaEmpleado" EntityType="Self.CategoriaEmpleado" />
           <EntitySet Name="Categorias" EntityType="Self.Categorias" />
-          <EntitySet Name="CentroCostos" EntityType="Self.CentroCostos" />
           <EntitySet Name="Combustibles" EntityType="Self.Combustibles" />
-          <EntitySet Name="Comprobantes" EntityType="Self.Comprobantes" />
           <EntitySet Name="CondicionesCompra" EntityType="Self.CondicionesCompra" />
           <EntitySet Name="Contable" EntityType="Self.Contable" />
           <EntitySet Name="CuentaCorriente" EntityType="Self.CuentaCorriente" />
@@ -4088,7 +4138,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <EntitySet Name="EstadoCivil" EntityType="Self.EstadoCivil" />
           <EntitySet Name="Estados" EntityType="Self.Estados" />
           <EntitySet Name="EstudiosRealizados" EntityType="Self.EstudiosRealizados" />
-          <EntitySet Name="IngresoMateriales" EntityType="Self.IngresoMateriales" />
           <EntitySet Name="Localidades" EntityType="Self.Localidades" />
           <EntitySet Name="MarcasVehiculos" EntityType="Self.MarcasVehiculos" />
           <EntitySet Name="MediosPago" EntityType="Self.MediosPago" />
@@ -4150,26 +4199,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             <End Role="Zonas" EntitySet="Zonas" />
             <End Role="Almacenes" EntitySet="Almacenes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_IngresoMateriales_Table_Almacen" Association="Self.FK_Table_IngresoMateriales_Table_Almacen">
-            <End Role="Almacenes" EntitySet="Almacenes" />
-            <End Role="IngresoMateriales" EntitySet="IngresoMateriales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Articulos_Table_Categoria" Association="Self.FK_Table_Articulos_Table_Categoria">
-            <End Role="Categorias" EntitySet="Categorias" />
-            <End Role="Articulos" EntitySet="Articulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Articulos_Table_Ubicacion" Association="Self.FK_Table_Articulos_Table_Ubicacion">
-            <End Role="Ubicacion" EntitySet="Ubicacion" />
-            <End Role="Articulos" EntitySet="Articulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_DetallesComprobanteArticulos_Table_Articulos" Association="Self.FK_Table_DetallesComprobanteArticulos_Table_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="DetallesComprobanteArticulos" EntitySet="DetallesComprobanteArticulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_IngresoMateriales_Table_Articulos" Association="Self.FK_Table_IngresoMateriales_Table_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="IngresoMateriales" EntitySet="IngresoMateriales" />
-          </AssociationSet>
           <AssociationSet Name="FK_Table_DetalleMediosPago_Table_Banco" Association="Self.FK_Table_DetalleMediosPago_Table_Banco">
             <End Role="Bancos" EntitySet="Bancos" />
             <End Role="DetalleMediosPagos" EntitySet="DetalleMediosPagos" />
@@ -4182,41 +4211,9 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             <End Role="CategoriaEmpleado" EntitySet="CategoriaEmpleado" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Comprobante_Table_CentroCosto" Association="Self.FK_Table_Comprobante_Table_CentroCosto">
-            <End Role="CentroCostos" EntitySet="CentroCostos" />
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Vehiculos_Combustibles" Association="Self.FK_Vehiculos_Combustibles">
             <End Role="Combustibles" EntitySet="Combustibles" />
             <End Role="Vehiculos" EntitySet="Vehiculos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Comprobante_Table_CondicionCompra" Association="Self.FK_Table_Comprobante_Table_CondicionCompra">
-            <End Role="CondicionesCompra" EntitySet="CondicionesCompra" />
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Comprobante_Table_Contable" Association="Self.FK_Table_Comprobante_Table_Contable">
-            <End Role="Contable" EntitySet="Contable" />
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Comprobante_Table_Estados" Association="Self.FK_Table_Comprobante_Table_Estados">
-            <End Role="Estados" EntitySet="Estados" />
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Comprobante_Table_TipoComprobante" Association="Self.FK_Table_Comprobante_Table_TipoComprobante">
-            <End Role="TiposComprobante" EntitySet="TiposComprobante" />
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Comprobante_Table_TipoFactura" Association="Self.FK_Table_Comprobante_Table_TipoFactura">
-            <End Role="TiposFactura" EntitySet="TiposFactura" />
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_DetallePago_Table_Comprobante" Association="Self.FK_Table_DetallePago_Table_Comprobante">
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-            <End Role="DetallesPago" EntitySet="DetallesPago" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_DetallesComprobanteArticulos_Table_Comprobante" Association="Self.FK_Table_DetallesComprobanteArticulos_Table_Comprobante">
-            <End Role="Comprobantes" EntitySet="Comprobantes" />
-            <End Role="DetallesComprobanteArticulos" EntitySet="DetallesComprobanteArticulos" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Empleado_Table_Departamento" Association="Self.FK_Table_Empleado_Table_Departamento">
             <End Role="Departamentos" EntitySet="Departamentos" />
@@ -4476,10 +4473,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             <End Role="ActividadMantenimiento" EntitySet="ActividadMantenimiento" />
             <End Role="DetalleActividadMantenimiento" EntitySet="DetalleActividadMantenimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK_DetalleMantenimientoRepuestos_Articulos" Association="ERP_SITEMModel.FK_DetalleMantenimientoRepuestos_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="DetalleMantenimientoRepuestos" EntitySet="DetalleMantenimientoRepuestos" />
-          </AssociationSet>
           <EntitySet Name="Mantenimiento" EntityType="ERP_SITEMModel.Mantenimiento" />
           <AssociationSet Name="FK_DetalleActividadMantenimiento_Mantenimiento" Association="ERP_SITEMModel.FK_DetalleActividadMantenimiento_Mantenimiento">
             <End Role="Mantenimiento" EntitySet="Mantenimiento" />
@@ -4501,6 +4494,109 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             <Parameter Name="fechainicio" Mode="In" Type="DateTime" />
             <Parameter Name="fechafin" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="Alicuotas" EntityType="ERP_SITEMModel.Alicuotas" />
+          <EntitySet Name="AperturaCaja" EntityType="ERP_SITEMModel.AperturaCaja" />
+          <EntitySet Name="ControlsAction" EntityType="ERP_SITEMModel.ControlsAction" />
+          <EntitySet Name="DestinoImpuesto" EntityType="ERP_SITEMModel.DestinoImpuesto" />
+          <EntitySet Name="DetalleCaja" EntityType="ERP_SITEMModel.DetalleCaja" />
+          <EntitySet Name="FamiliaArticulos" EntityType="ERP_SITEMModel.FamiliaArticulos" />
+          <EntitySet Name="ImpuestoIva" EntityType="ERP_SITEMModel.ImpuestoIva" />
+          <EntitySet Name="Impuestos" EntityType="ERP_SITEMModel.Impuestos" />
+          <EntitySet Name="PartidaDoble" EntityType="ERP_SITEMModel.PartidaDoble" />
+          <EntitySet Name="Recepciones" EntityType="ERP_SITEMModel.Recepciones" />
+          <EntitySet Name="TipoAlmacen" EntityType="ERP_SITEMModel.TipoAlmacen" />
+          <EntitySet Name="UnidadMedida" EntityType="ERP_SITEMModel.UnidadMedida" />
+          <EntitySet Name="DetalleRecepcionMateriales" EntityType="ERP_SITEMModel.DetalleRecepcionMateriales" />
+          <EntitySet Name="PlanCuentas" EntityType="ERP_SITEMModel.PlanCuentas" />
+          <AssociationSet Name="FK_ImpuestoIva_Alicuotas" Association="ERP_SITEMModel.FK_ImpuestoIva_Alicuotas">
+            <End Role="Alicuotas" EntitySet="Alicuotas" />
+            <End Role="ImpuestoIva" EntitySet="ImpuestoIva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_IngresoMateriales_Table_Almacen1" Association="ERP_SITEMModel.FK_Table_IngresoMateriales_Table_Almacen1">
+            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="Recepciones" EntitySet="Recepciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Impuestos_DestinoImpuesto" Association="ERP_SITEMModel.FK_Impuestos_DestinoImpuesto">
+            <End Role="DestinoImpuesto" EntitySet="DestinoImpuesto" />
+            <End Role="Impuestos" EntitySet="Impuestos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImpuestoIva_Impuestos" Association="ERP_SITEMModel.FK_ImpuestoIva_Impuestos">
+            <End Role="Impuestos" EntitySet="Impuestos" />
+            <End Role="ImpuestoIva" EntitySet="ImpuestoIva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanCuentas_PartidaDoble" Association="ERP_SITEMModel.FK_PlanCuentas_PartidaDoble">
+            <End Role="PartidaDoble" EntitySet="PartidaDoble" />
+            <End Role="PlanCuentas" EntitySet="PlanCuentas" />
+          </AssociationSet>
+          <EntitySet Name="Articulos" EntityType="ERP_SITEMModel.Articulos" />
+          <EntitySet Name="SubCategoriaProducto" EntityType="ERP_SITEMModel.SubCategoriaProducto" />
+          <AssociationSet Name="FK_Articulos_ImpuestoIva" Association="ERP_SITEMModel.FK_Articulos_ImpuestoIva">
+            <End Role="ImpuestoIva" EntitySet="ImpuestoIva" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleMantenimientoRepuestos_Articulos" Association="ERP_SITEMModel.FK_DetalleMantenimientoRepuestos_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="DetalleMantenimientoRepuestos" EntitySet="DetalleMantenimientoRepuestos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Articulos_Table_Categoria" Association="ERP_SITEMModel.FK_Table_Articulos_Table_Categoria">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Articulos_Table_Ubicacion" Association="ERP_SITEMModel.FK_Table_Articulos_Table_Ubicacion">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_DetallesComprobanteArticulos_Table_Articulos" Association="ERP_SITEMModel.FK_Table_DetallesComprobanteArticulos_Table_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="DetallesComprobanteArticulos" EntitySet="DetallesComprobanteArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategoriaProducto_Categorias" Association="ERP_SITEMModel.FK_SubCategoriaProducto_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="SubCategoriaProducto" EntitySet="SubCategoriaProducto" />
+          </AssociationSet>
+          <EntitySet Name="CentroCosto" EntityType="ERP_SITEMModel.CentroCosto" />
+          <EntitySet Name="Comprobantes" EntityType="ERP_SITEMModel.Comprobantes" />
+          <EntitySet Name="ConceptoGasto" EntityType="ERP_SITEMModel.ConceptoGasto" />
+          <AssociationSet Name="FK_Comprobantes_CentroCosto" Association="ERP_SITEMModel.FK_Comprobantes_CentroCosto">
+            <End Role="CentroCosto" EntitySet="CentroCosto" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comprobantes_ConceptoGasto" Association="ERP_SITEMModel.FK_Comprobantes_ConceptoGasto">
+            <End Role="ConceptoGasto" EntitySet="ConceptoGasto" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comprobantes_Proveedores" Association="ERP_SITEMModel.FK_Comprobantes_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Comprobante_Table_CondicionCompra" Association="ERP_SITEMModel.FK_Table_Comprobante_Table_CondicionCompra">
+            <End Role="CondicionesCompra" EntitySet="CondicionesCompra" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Comprobante_Table_Contable" Association="ERP_SITEMModel.FK_Table_Comprobante_Table_Contable">
+            <End Role="Contable" EntitySet="Contable" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Comprobante_Table_Estados" Association="ERP_SITEMModel.FK_Table_Comprobante_Table_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Comprobante_Table_TipoComprobante" Association="ERP_SITEMModel.FK_Table_Comprobante_Table_TipoComprobante">
+            <End Role="TiposComprobante" EntitySet="TiposComprobante" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Comprobante_Table_TipoFactura" Association="ERP_SITEMModel.FK_Table_Comprobante_Table_TipoFactura">
+            <End Role="TiposFactura" EntitySet="TiposFactura" />
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_DetallePago_Table_Comprobante" Association="ERP_SITEMModel.FK_Table_DetallePago_Table_Comprobante">
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+            <End Role="DetallesPago" EntitySet="DetallesPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_DetallesComprobanteArticulos_Table_Comprobante" Association="ERP_SITEMModel.FK_Table_DetallesComprobanteArticulos_Table_Comprobante">
+            <End Role="Comprobantes" EntitySet="Comprobantes" />
+            <End Role="DetallesComprobanteArticulos" EntitySet="DetallesComprobanteArticulos" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="ComprobantesGastos_Compras_Result">
           <Property Type="String" Name="NombreProveedor" Nullable="true" MaxLength="150" />
@@ -4905,18 +5001,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DetalleMantenimientoRepuestos_Articulos">
-          <End Type="ERP_SITEMModel.Articulos" Role="Articulos" Multiplicity="0..1" />
-          <End Type="ERP_SITEMModel.DetalleMantenimientoRepuestos" Role="DetalleMantenimientoRepuestos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IDArticulo" />
-            </Principal>
-            <Dependent Role="DetalleMantenimientoRepuestos">
-              <PropertyRef Name="IdRepuestos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Mantenimiento">
           <Key>
             <PropertyRef Name="IDMantenimiento" />
@@ -4999,6 +5083,479 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <Property Type="Double" Name="Total" Nullable="true" />
           <Property Type="String" Name="Estados" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="Alicuotas">
+          <Key>
+            <PropertyRef Name="IdAlicuota" />
+          </Key>
+          <Property Name="IdAlicuota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Porcentaje" Type="Double" />
+          <Property Name="Valor" Type="Decimal" Precision="5" Scale="4" />
+          <NavigationProperty Name="ImpuestoIva" Relationship="ERP_SITEMModel.FK_ImpuestoIva_Alicuotas" FromRole="Alicuotas" ToRole="ImpuestoIva" />
+        </EntityType>
+        <EntityType Name="AperturaCaja">
+          <Key>
+            <PropertyRef Name="AperturaCajaId" />
+          </Key>
+          <Property Name="AperturaCajaId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="FechaCierre" Type="DateTime" Precision="3" />
+          <Property Name="ImporteInicial" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ImporteCierre" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="UsuarioAperturaId" Type="Int32" />
+          <Property Name="UsuarioCierreId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ControlsAction">
+          <Key>
+            <PropertyRef Name="IdAction" />
+          </Key>
+          <Property Name="IdAction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControlAction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DestinoImpuesto">
+          <Key>
+            <PropertyRef Name="DestinoImpuestoId" />
+          </Key>
+          <Property Name="DestinoImpuestoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Destino" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Impuestos" Relationship="ERP_SITEMModel.FK_Impuestos_DestinoImpuesto" FromRole="DestinoImpuesto" ToRole="Impuestos" />
+        </EntityType>
+        <EntityType Name="DetalleCaja">
+          <Key>
+            <PropertyRef Name="DetalleDescripcionCajaId" />
+          </Key>
+          <Property Name="DetalleDescripcionCajaId" Type="Int32" Nullable="false" />
+          <Property Name="DetalleCaja1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FamiliaArticulos">
+          <Key>
+            <PropertyRef Name="FamiliaArticuloID" />
+          </Key>
+          <Property Name="FamiliaArticuloID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamiliaArticulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ImpuestoIva">
+          <Key>
+            <PropertyRef Name="IvaImpuestoID" />
+          </Key>
+          <Property Name="IvaImpuestoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdImpuesto" Type="Int32" />
+          <Property Name="IdAlicuota" Type="Int32" />
+          <NavigationProperty Name="Alicuotas" Relationship="ERP_SITEMModel.FK_ImpuestoIva_Alicuotas" FromRole="ImpuestoIva" ToRole="Alicuotas" />
+          <NavigationProperty Name="Impuestos" Relationship="ERP_SITEMModel.FK_ImpuestoIva_Impuestos" FromRole="ImpuestoIva" ToRole="Impuestos" />
+          <NavigationProperty Name="Articulos" Relationship="ERP_SITEMModel.FK_Articulos_ImpuestoIva" FromRole="ImpuestoIva" ToRole="Articulos" />
+        </EntityType>
+        <EntityType Name="Impuestos">
+          <Key>
+            <PropertyRef Name="IDImpuestos" />
+          </Key>
+          <Property Name="IDImpuestos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DestinoImpuestoId" Type="Int32" />
+          <NavigationProperty Name="DestinoImpuesto" Relationship="ERP_SITEMModel.FK_Impuestos_DestinoImpuesto" FromRole="Impuestos" ToRole="DestinoImpuesto" />
+          <NavigationProperty Name="ImpuestoIva" Relationship="ERP_SITEMModel.FK_ImpuestoIva_Impuestos" FromRole="Impuestos" ToRole="ImpuestoIva" />
+        </EntityType>
+        <EntityType Name="PartidaDoble">
+          <Key>
+            <PropertyRef Name="PartidadID" />
+          </Key>
+          <Property Name="PartidadID" Type="Int32" Nullable="false" />
+          <Property Name="PartidaDoble1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PlanCuentas" Relationship="ERP_SITEMModel.FK_PlanCuentas_PartidaDoble" FromRole="PartidaDoble" ToRole="PlanCuentas" />
+        </EntityType>
+        <EntityType Name="Recepciones">
+          <Key>
+            <PropertyRef Name="RecepcionID" />
+          </Key>
+          <Property Name="RecepcionID" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="NoRemito" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="ComprobanteID" Type="Int32" />
+          <Property Name="Observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacenes" Relationship="ERP_SITEMModel.FK_Table_IngresoMateriales_Table_Almacen1" FromRole="Recepciones" ToRole="Almacenes" />
+        </EntityType>
+        <EntityType Name="TipoAlmacen">
+          <Key>
+            <PropertyRef Name="TipoAlmacenID" />
+          </Key>
+          <Property Name="TipoAlmacenID" Type="Int32" Nullable="false" />
+          <Property Name="TipoAlmacen1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="UnidadMedidaID" />
+          </Key>
+          <Property Name="UnidadMedidaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnidadMedida1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DetalleRecepcionMateriales">
+          <Key>
+            <PropertyRef Name="RecepcionID" />
+            <PropertyRef Name="CodigoArticulo" />
+          </Key>
+          <Property Name="DetalleRecepcionArticuloID" Type="Int32" />
+          <Property Name="NombreArticulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UmID" Type="Int32" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="RecepcionID" Type="Int32" Nullable="false" />
+          <Property Name="CodigoArticulo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanCuentas">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="descriptionCuenta" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="parentID" Type="Int32" />
+          <Property Name="descriptionCuenta" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="depth" Type="Int32" />
+          <Property Name="pathIndex" Type="Int32" />
+          <Property Name="numericalmapping" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="operacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="partidadobleID" Type="Int32" />
+          <NavigationProperty Name="PartidaDoble" Relationship="ERP_SITEMModel.FK_PlanCuentas_PartidaDoble" FromRole="PlanCuentas" ToRole="PartidaDoble" />
+        </EntityType>
+        <Association Name="FK_ImpuestoIva_Alicuotas">
+          <End Type="ERP_SITEMModel.Alicuotas" Role="Alicuotas" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.ImpuestoIva" Role="ImpuestoIva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alicuotas">
+              <PropertyRef Name="IdAlicuota" />
+            </Principal>
+            <Dependent Role="ImpuestoIva">
+              <PropertyRef Name="IdAlicuota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_IngresoMateriales_Table_Almacen1">
+          <End Type="ERP_SITEMModel.Almacenes" Role="Almacenes" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Recepciones" Role="Recepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenes">
+              <PropertyRef Name="IdAlmacen" />
+            </Principal>
+            <Dependent Role="Recepciones">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Impuestos_DestinoImpuesto">
+          <End Type="ERP_SITEMModel.DestinoImpuesto" Role="DestinoImpuesto" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Impuestos" Role="Impuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DestinoImpuesto">
+              <PropertyRef Name="DestinoImpuestoId" />
+            </Principal>
+            <Dependent Role="Impuestos">
+              <PropertyRef Name="DestinoImpuestoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImpuestoIva_Impuestos">
+          <End Type="ERP_SITEMModel.Impuestos" Role="Impuestos" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.ImpuestoIva" Role="ImpuestoIva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Impuestos">
+              <PropertyRef Name="IDImpuestos" />
+            </Principal>
+            <Dependent Role="ImpuestoIva">
+              <PropertyRef Name="IdImpuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanCuentas_PartidaDoble">
+          <End Type="ERP_SITEMModel.PartidaDoble" Role="PartidaDoble" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.PlanCuentas" Role="PlanCuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartidaDoble">
+              <PropertyRef Name="PartidadID" />
+            </Principal>
+            <Dependent Role="PlanCuentas">
+              <PropertyRef Name="partidadobleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Articulos">
+          <Key>
+            <PropertyRef Name="IDArticulo" />
+          </Key>
+          <Property Name="IDArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUbicacion" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Iva" Type="Double" />
+          <Property Name="IDCategoria" Type="Int32" Nullable="false" />
+          <Property Name="SubCategoriaProductoID" Type="Int32" />
+          <Property Name="TipoBienUsoID" Type="Int32" />
+          <Property Name="UM" Type="Int32" />
+          <Property Name="TipoAlmacenDestino" Type="Int32" />
+          <Property Name="IvaCategoriaId" Type="Int32" />
+          <Property Name="FechaEntrada" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ImpuestoIva" Relationship="ERP_SITEMModel.FK_Articulos_ImpuestoIva" FromRole="Articulos" ToRole="ImpuestoIva" />
+          <NavigationProperty Name="DetalleMantenimientoRepuestos" Relationship="ERP_SITEMModel.FK_DetalleMantenimientoRepuestos_Articulos" FromRole="Articulos" ToRole="DetalleMantenimientoRepuestos" />
+          <NavigationProperty Name="Categorias" Relationship="ERP_SITEMModel.FK_Table_Articulos_Table_Categoria" FromRole="Articulos" ToRole="Categorias" />
+          <NavigationProperty Name="Ubicacion" Relationship="ERP_SITEMModel.FK_Table_Articulos_Table_Ubicacion" FromRole="Articulos" ToRole="Ubicacion" />
+          <NavigationProperty Name="DetallesComprobanteArticulos" Relationship="ERP_SITEMModel.FK_Table_DetallesComprobanteArticulos_Table_Articulos" FromRole="Articulos" ToRole="DetallesComprobanteArticulos" />
+        </EntityType>
+        <EntityType Name="SubCategoriaProducto">
+          <Key>
+            <PropertyRef Name="SubCategoriaProductoID" />
+          </Key>
+          <Property Name="SubCategoriaProductoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoriaProducto1" Type="Int32" />
+          <Property Name="CategoriaID" Type="Int32" />
+          <NavigationProperty Name="Categorias" Relationship="ERP_SITEMModel.FK_SubCategoriaProducto_Categorias" FromRole="SubCategoriaProducto" ToRole="Categorias" />
+        </EntityType>
+        <Association Name="FK_Articulos_ImpuestoIva">
+          <End Type="ERP_SITEMModel.ImpuestoIva" Role="ImpuestoIva" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Articulos" Role="Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImpuestoIva">
+              <PropertyRef Name="IvaImpuestoID" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="IvaCategoriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleMantenimientoRepuestos_Articulos">
+          <End Type="ERP_SITEMModel.Articulos" Role="Articulos" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.DetalleMantenimientoRepuestos" Role="DetalleMantenimientoRepuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="IDArticulo" />
+            </Principal>
+            <Dependent Role="DetalleMantenimientoRepuestos">
+              <PropertyRef Name="IdRepuestos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Articulos_Table_Categoria">
+          <End Type="ERP_SITEMModel.Categorias" Role="Categorias" Multiplicity="1" />
+          <End Type="ERP_SITEMModel.Articulos" Role="Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IDCategoria" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="IDCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Articulos_Table_Ubicacion">
+          <End Type="ERP_SITEMModel.Ubicacion" Role="Ubicacion" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Articulos" Role="Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="IdUbicacion" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="IdUbicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_DetallesComprobanteArticulos_Table_Articulos">
+          <End Type="ERP_SITEMModel.Articulos" Role="Articulos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ERP_SITEMModel.DetallesComprobanteArticulos" Role="DetallesComprobanteArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="IDArticulo" />
+            </Principal>
+            <Dependent Role="DetallesComprobanteArticulos">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategoriaProducto_Categorias">
+          <End Type="ERP_SITEMModel.Categorias" Role="Categorias" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.SubCategoriaProducto" Role="SubCategoriaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IDCategoria" />
+            </Principal>
+            <Dependent Role="SubCategoriaProducto">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CentroCosto">
+          <Key>
+            <PropertyRef Name="CentroCostoId" />
+          </Key>
+          <Property Name="CentroCostoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CentroCostoNombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Comprobantes_CentroCosto" FromRole="CentroCosto" ToRole="Comprobantes" />
+        </EntityType>
+        <EntityType Name="Comprobantes">
+          <Key>
+            <PropertyRef Name="IdComprobante" />
+          </Key>
+          <Property Name="IdComprobante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sucursal" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NoFactura" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+          <Property Name="IdTipoComprobante" Type="Int32" />
+          <Property Name="ConceptoGastoId" Type="Int32" />
+          <Property Name="IdTipoFactura" Type="Int32" />
+          <Property Name="Importe" Type="Double" />
+          <Property Name="Contable" Type="Int32" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="IdCondicionCompra" Type="Int32" />
+          <Property Name="IdEstado" Type="Int32" />
+          <Property Name="IIBB" Type="Double" />
+          <Property Name="Retenciones" Type="Double" />
+          <Property Name="ConceptosNograbado" Type="Double" />
+          <Property Name="PercepcionIva" Type="Double" />
+          <Property Name="ImporteNeto" Type="Double" />
+          <Property Name="CentroCostoID" Type="Int32" />
+          <NavigationProperty Name="CentroCosto" Relationship="ERP_SITEMModel.FK_Comprobantes_CentroCosto" FromRole="Comprobantes" ToRole="CentroCosto" />
+          <NavigationProperty Name="ConceptoGasto" Relationship="ERP_SITEMModel.FK_Comprobantes_ConceptoGasto" FromRole="Comprobantes" ToRole="ConceptoGasto" />
+          <NavigationProperty Name="Proveedores" Relationship="ERP_SITEMModel.FK_Comprobantes_Proveedores" FromRole="Comprobantes" ToRole="Proveedores" />
+          <NavigationProperty Name="CondicionesCompra" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_CondicionCompra" FromRole="Comprobantes" ToRole="CondicionesCompra" />
+          <NavigationProperty Name="Contable1" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_Contable" FromRole="Comprobantes" ToRole="Contable" />
+          <NavigationProperty Name="Estados" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_Estados" FromRole="Comprobantes" ToRole="Estados" />
+          <NavigationProperty Name="TiposComprobante" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_TipoComprobante" FromRole="Comprobantes" ToRole="TiposComprobante" />
+          <NavigationProperty Name="TiposFactura" Relationship="ERP_SITEMModel.FK_Table_Comprobante_Table_TipoFactura" FromRole="Comprobantes" ToRole="TiposFactura" />
+          <NavigationProperty Name="DetallesPago" Relationship="ERP_SITEMModel.FK_Table_DetallePago_Table_Comprobante" FromRole="Comprobantes" ToRole="DetallesPago" />
+          <NavigationProperty Name="DetallesComprobanteArticulos" Relationship="ERP_SITEMModel.FK_Table_DetallesComprobanteArticulos_Table_Comprobante" FromRole="Comprobantes" ToRole="DetallesComprobanteArticulos" />
+        </EntityType>
+        <EntityType Name="ConceptoGasto">
+          <Key>
+            <PropertyRef Name="IdConceptoGasto" />
+          </Key>
+          <Property Name="IdConceptoGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConceptoGasto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comprobantes" Relationship="ERP_SITEMModel.FK_Comprobantes_ConceptoGasto" FromRole="ConceptoGasto" ToRole="Comprobantes" />
+        </EntityType>
+        <Association Name="FK_Comprobantes_CentroCosto">
+          <End Type="ERP_SITEMModel.CentroCosto" Role="CentroCosto" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentroCosto">
+              <PropertyRef Name="CentroCostoId" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="CentroCostoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comprobantes_ConceptoGasto">
+          <End Type="ERP_SITEMModel.ConceptoGasto" Role="ConceptoGasto" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConceptoGasto">
+              <PropertyRef Name="IdConceptoGasto" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="ConceptoGastoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comprobantes_Proveedores">
+          <End Type="ERP_SITEMModel.Proveedores" Role="Proveedores" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedores" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Comprobante_Table_CondicionCompra">
+          <End Type="ERP_SITEMModel.CondicionesCompra" Role="CondicionesCompra" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CondicionesCompra">
+              <PropertyRef Name="IdCondicionCompra" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="IdCondicionCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Comprobante_Table_Contable">
+          <End Type="ERP_SITEMModel.Contable" Role="Contable" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contable">
+              <PropertyRef Name="IdContable" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="Contable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Comprobante_Table_Estados">
+          <End Type="ERP_SITEMModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Comprobante_Table_TipoComprobante">
+          <End Type="ERP_SITEMModel.TiposComprobante" Role="TiposComprobante" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposComprobante">
+              <PropertyRef Name="IdTipoComprobante" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="IdTipoComprobante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Comprobante_Table_TipoFactura">
+          <End Type="ERP_SITEMModel.TiposFactura" Role="TiposFactura" Multiplicity="0..1" />
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposFactura">
+              <PropertyRef Name="IdTipoFactura" />
+            </Principal>
+            <Dependent Role="Comprobantes">
+              <PropertyRef Name="IdTipoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_DetallePago_Table_Comprobante">
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ERP_SITEMModel.DetallesPago" Role="DetallesPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comprobantes">
+              <PropertyRef Name="IdComprobante" />
+            </Principal>
+            <Dependent Role="DetallesPago">
+              <PropertyRef Name="idComprobante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_DetallesComprobanteArticulos_Table_Comprobante">
+          <End Type="ERP_SITEMModel.Comprobantes" Role="Comprobantes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ERP_SITEMModel.DetallesComprobanteArticulos" Role="DetallesComprobanteArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comprobantes">
+              <PropertyRef Name="IdComprobante" />
+            </Principal>
+            <Dependent Role="DetallesComprobanteArticulos">
+              <PropertyRef Name="IdComprobante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5034,21 +5591,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Articulos">
-            <EntityTypeMapping TypeName="ERP_SITEMModel.Articulos">
-              <MappingFragment StoreEntitySet="Articulos">
-                <ScalarProperty Name="IDArticulo" ColumnName="IDArticulo" />
-                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
-                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
-                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="Iva" ColumnName="Iva" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Bancos">
             <EntityTypeMapping TypeName="ERP_SITEMModel.Bancos">
               <MappingFragment StoreEntitySet="Bancos">
@@ -5078,43 +5620,11 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CentroCostos">
-            <EntityTypeMapping TypeName="ERP_SITEMModel.CentroCostos">
-              <MappingFragment StoreEntitySet="CentroCostos">
-                <ScalarProperty Name="IdCentroCosto" ColumnName="IdCentroCosto" />
-                <ScalarProperty Name="CentroCosto" ColumnName="CentroCosto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Combustibles">
             <EntityTypeMapping TypeName="ERP_SITEMModel.Combustibles">
               <MappingFragment StoreEntitySet="Combustibles">
                 <ScalarProperty Name="IDCombustible" ColumnName="IDCombustible" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Comprobantes">
-            <EntityTypeMapping TypeName="ERP_SITEMModel.Comprobantes">
-              <MappingFragment StoreEntitySet="Comprobantes">
-                <ScalarProperty Name="IdComprobante" ColumnName="IdComprobante" />
-                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
-                <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
-                <ScalarProperty Name="IdTipoComprobante" ColumnName="IdTipoComprobante" />
-                <ScalarProperty Name="IdCentroCosto" ColumnName="IdCentroCosto" />
-                <ScalarProperty Name="IdTipoFactura" ColumnName="IdTipoFactura" />
-                <ScalarProperty Name="Importe" ColumnName="Importe" />
-                <ScalarProperty Name="Contable" ColumnName="Contable" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="IdCondicionCompra" ColumnName="IdCondicionCompra" />
-                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
-                <ScalarProperty Name="IIBB" ColumnName="IIBB" />
-                <ScalarProperty Name="Retenciones" ColumnName="Retenciones" />
-                <ScalarProperty Name="ConceptosNograbado" ColumnName="ConceptosNograbado" />
-                <ScalarProperty Name="PercepcionIva" ColumnName="PercepcionIva" />
-                <ScalarProperty Name="ImporteNeto" ColumnName="ImporteNeto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5303,19 +5813,6 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
               <MappingFragment StoreEntitySet="EstudiosRealizados">
                 <ScalarProperty Name="IDEstudios" ColumnName="IDEstudios" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="IngresoMateriales">
-            <EntityTypeMapping TypeName="ERP_SITEMModel.IngresoMateriales">
-              <MappingFragment StoreEntitySet="IngresoMateriales">
-                <ScalarProperty Name="iDingresoMateriales" ColumnName="iDingresoMateriales" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="NoRemito" ColumnName="NoRemito" />
-                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
-                <ScalarProperty Name="IdRecepcion" ColumnName="IdRecepcion" />
-                <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5683,6 +6180,7 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
           <EntitySetMapping Name="Vehiculos">
             <EntityTypeMapping TypeName="ERP_SITEMModel.Vehiculos">
               <MappingFragment StoreEntitySet="Vehiculos">
+                <ScalarProperty Name="DireccionRadicacion" ColumnName="DireccionRadicacion" />
                 <ScalarProperty Name="Gps" ColumnName="Gps" />
                 <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -6361,6 +6859,210 @@ advertencia 6002: La tabla o vista 'ERP_SITEM.dbo.View_Proveedores' no tiene def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Alicuotas">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.Alicuotas">
+              <MappingFragment StoreEntitySet="Alicuotas">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="IdAlicuota" ColumnName="IdAlicuota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AperturaCaja">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.AperturaCaja">
+              <MappingFragment StoreEntitySet="AperturaCaja">
+                <ScalarProperty Name="UsuarioCierreId" ColumnName="UsuarioCierreId" />
+                <ScalarProperty Name="UsuarioAperturaId" ColumnName="UsuarioAperturaId" />
+                <ScalarProperty Name="ImporteCierre" ColumnName="ImporteCierre" />
+                <ScalarProperty Name="ImporteInicial" ColumnName="ImporteInicial" />
+                <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="AperturaCajaId" ColumnName="AperturaCajaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ControlsAction">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.ControlsAction">
+              <MappingFragment StoreEntitySet="ControlsAction">
+                <ScalarProperty Name="ControlAction" ColumnName="ControlAction" />
+                <ScalarProperty Name="IdAction" ColumnName="IdAction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DestinoImpuesto">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.DestinoImpuesto">
+              <MappingFragment StoreEntitySet="DestinoImpuesto">
+                <ScalarProperty Name="Destino" ColumnName="Destino" />
+                <ScalarProperty Name="DestinoImpuestoId" ColumnName="DestinoImpuestoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleCaja">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.DetalleCaja">
+              <MappingFragment StoreEntitySet="DetalleCaja">
+                <ScalarProperty Name="DetalleCaja1" ColumnName="DetalleCaja" />
+                <ScalarProperty Name="DetalleDescripcionCajaId" ColumnName="DetalleDescripcionCajaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamiliaArticulos">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.FamiliaArticulos">
+              <MappingFragment StoreEntitySet="FamiliaArticulos">
+                <ScalarProperty Name="FamiliaArticulo" ColumnName="FamiliaArticulo" />
+                <ScalarProperty Name="FamiliaArticuloID" ColumnName="FamiliaArticuloID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImpuestoIva">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.ImpuestoIva">
+              <MappingFragment StoreEntitySet="ImpuestoIva">
+                <ScalarProperty Name="IdAlicuota" ColumnName="IdAlicuota" />
+                <ScalarProperty Name="IdImpuesto" ColumnName="IdImpuesto" />
+                <ScalarProperty Name="IvaImpuestoID" ColumnName="IvaImpuestoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Impuestos">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.Impuestos">
+              <MappingFragment StoreEntitySet="Impuestos">
+                <ScalarProperty Name="DestinoImpuestoId" ColumnName="DestinoImpuestoId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IDImpuestos" ColumnName="IDImpuestos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartidaDoble">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.PartidaDoble">
+              <MappingFragment StoreEntitySet="PartidaDoble">
+                <ScalarProperty Name="PartidaDoble1" ColumnName="PartidaDoble" />
+                <ScalarProperty Name="PartidadID" ColumnName="PartidadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recepciones">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.Recepciones">
+              <MappingFragment StoreEntitySet="Recepciones">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="ComprobanteID" ColumnName="ComprobanteID" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="NoRemito" ColumnName="NoRemito" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="RecepcionID" ColumnName="RecepcionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAlmacen">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.TipoAlmacen">
+              <MappingFragment StoreEntitySet="TipoAlmacen">
+                <ScalarProperty Name="TipoAlmacen1" ColumnName="TipoAlmacen" />
+                <ScalarProperty Name="TipoAlmacenID" ColumnName="TipoAlmacenID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadMedida">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.UnidadMedida">
+              <MappingFragment StoreEntitySet="UnidadMedida">
+                <ScalarProperty Name="UnidadMedida1" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="UnidadMedidaID" ColumnName="UnidadMedidaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleRecepcionMateriales">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.DetalleRecepcionMateriales">
+              <MappingFragment StoreEntitySet="DetalleRecepcionMateriales">
+                <ScalarProperty Name="CodigoArticulo" ColumnName="CodigoArticulo" />
+                <ScalarProperty Name="RecepcionID" ColumnName="RecepcionID" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="UmID" ColumnName="UmID" />
+                <ScalarProperty Name="NombreArticulo" ColumnName="NombreArticulo" />
+                <ScalarProperty Name="DetalleRecepcionArticuloID" ColumnName="DetalleRecepcionArticuloID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanCuentas">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.PlanCuentas">
+              <MappingFragment StoreEntitySet="PlanCuentas">
+                <ScalarProperty Name="partidadobleID" ColumnName="partidadobleID" />
+                <ScalarProperty Name="operacion" ColumnName="operacion" />
+                <ScalarProperty Name="numericalmapping" ColumnName="numericalmapping" />
+                <ScalarProperty Name="pathIndex" ColumnName="pathIndex" />
+                <ScalarProperty Name="depth" ColumnName="depth" />
+                <ScalarProperty Name="descriptionCuenta" ColumnName="descriptionCuenta" />
+                <ScalarProperty Name="parentID" ColumnName="parentID" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articulos">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.Articulos">
+              <MappingFragment StoreEntitySet="Articulos">
+                <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+                <ScalarProperty Name="IvaCategoriaId" ColumnName="IvaCategoriaId" />
+                <ScalarProperty Name="TipoAlmacenDestino" ColumnName="TipoAlmacenDestino" />
+                <ScalarProperty Name="UM" ColumnName="UM" />
+                <ScalarProperty Name="TipoBienUsoID" ColumnName="TipoBienUsoID" />
+                <ScalarProperty Name="SubCategoriaProductoID" ColumnName="SubCategoriaProductoID" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
+                <ScalarProperty Name="IDArticulo" ColumnName="IDArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategoriaProducto">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.SubCategoriaProducto">
+              <MappingFragment StoreEntitySet="SubCategoriaProducto">
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="SubCategoriaProducto1" ColumnName="SubCategoriaProducto" />
+                <ScalarProperty Name="SubCategoriaProductoID" ColumnName="SubCategoriaProductoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CentroCosto">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.CentroCosto">
+              <MappingFragment StoreEntitySet="CentroCosto">
+                <ScalarProperty Name="CentroCostoNombre" ColumnName="CentroCostoNombre" />
+                <ScalarProperty Name="CentroCostoId" ColumnName="CentroCostoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comprobantes">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.Comprobantes">
+              <MappingFragment StoreEntitySet="Comprobantes">
+                <ScalarProperty Name="CentroCostoID" ColumnName="CentroCostoID" />
+                <ScalarProperty Name="ImporteNeto" ColumnName="ImporteNeto" />
+                <ScalarProperty Name="PercepcionIva" ColumnName="PercepcionIva" />
+                <ScalarProperty Name="ConceptosNograbado" ColumnName="ConceptosNograbado" />
+                <ScalarProperty Name="Retenciones" ColumnName="Retenciones" />
+                <ScalarProperty Name="IIBB" ColumnName="IIBB" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdCondicionCompra" ColumnName="IdCondicionCompra" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Contable" ColumnName="Contable" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="IdTipoFactura" ColumnName="IdTipoFactura" />
+                <ScalarProperty Name="ConceptoGastoId" ColumnName="ConceptoGastoId" />
+                <ScalarProperty Name="IdTipoComprobante" ColumnName="IdTipoComprobante" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="IdComprobante" ColumnName="IdComprobante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConceptoGasto">
+            <EntityTypeMapping TypeName="ERP_SITEMModel.ConceptoGasto">
+              <MappingFragment StoreEntitySet="ConceptoGasto">
+                <ScalarProperty Name="ConceptoGasto1" ColumnName="ConceptoGasto" />
+                <ScalarProperty Name="IdConceptoGasto" ColumnName="IdConceptoGasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

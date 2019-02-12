@@ -106,7 +106,11 @@ namespace Controllers
             return _PagoRepository.GetPagosProveedores(fechainicio,fechafin);
         }
 
+        public IEnumerable<Pagos> GetAllpagos(DateTime fecha1, DateTime fecha2)
+        {
+            return _PagoRepository.GetAllpagos(fecha1,fecha2);
 
+        }
 
 
 

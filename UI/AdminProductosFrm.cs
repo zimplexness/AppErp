@@ -41,21 +41,7 @@ namespace ErpGestion
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f.GetType() == typeof(ProductoFrm))
-                {
-                    f.Activate();
-                    return;
-                }
-            }
           
-            ProductoFrm frmEditProducto = new ProductoFrm();
-
-         
-
-            frmEditProducto.FormClosed += AdminProductosFrm_FormClosed;
-            frmEditProducto.Show();
         }
 
         private void metroGridProveedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -85,6 +71,70 @@ namespace ErpGestion
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           
+        }
+
+        private void metroTextBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (metroTextBoxNombre.Text=="")
+            {
+                bindingSourceProductos.ResetBindings(true);
+            }
+            else
+
+            metroGridProductos.DataSource = articuloController.FiltrarArticulos(metroTextBoxNombre.Text);
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+           
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void metroTextBoxNombre_Click(object sender, EventArgs e)
+        {
+            metroTextBoxNombre.Clear();
+        }
+
+        private void metroTextBoxFilterRubro_Click(object sender, EventArgs e)
+        {
+            metroTextBoxFilterRubro.Clear();
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(ProductoFrm))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+
+            ProductoFrm frmEditProducto = new ProductoFrm();
+
+
+
+            frmEditProducto.FormClosed += AdminProductosFrm_FormClosed;
+            frmEditProducto.Show();
+        }
+
+        private void metroTile6_Click(object sender, EventArgs e)
+        {
             //abrir formulario de comprobantes
             foreach (Form f in this.MdiChildren)
             {
@@ -103,19 +153,9 @@ namespace ErpGestion
             frmEditProducto.Show();
         }
 
-        private void metroTextBoxNombre_TextChanged(object sender, EventArgs e)
+        private void metroTile5_Click(object sender, EventArgs e)
         {
-            if (metroTextBoxNombre.Text=="")
-            {
-                bindingSourceProductos.ResetBindings(true);
-            }
-            else
 
-            metroGridProductos.DataSource = articuloController.FiltrarArticulos(metroTextBoxNombre.Text);
-        }
-
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
             try
             {
                 DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Estas seguro que quieres eliminar el Producto seleccionado?", "Sistema de Gestion", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation & MessageBoxIcon.Warning);
@@ -136,6 +176,11 @@ namespace ErpGestion
 
                 throw new Exception(EX.Message);
             }
+        }
+
+        private void metroToggleFiltro_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

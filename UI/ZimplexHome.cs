@@ -648,16 +648,16 @@ namespace ErpGestion
             {
                 foreach (Form f in this.MdiChildren)
                 {
-                    if (f.GetType() == typeof(VehiculosFrm))
+                    if (f.GetType() == typeof(AdminVehiculosForm))
                     {
                         f.Activate();
                         return;
                     }
                 }
 
-                Form vehiculosfrm = new VehiculosFrm();
-                vehiculosfrm.MdiParent = this;
-                vehiculosfrm.Show();
+                Form adminVehiculos = new AdminVehiculosForm();
+                adminVehiculos.MdiParent = this;
+                adminVehiculos.Show();
             }
             else if (treeViewChild.SelectedNode.Text == "Mantenimientos")
             {
@@ -721,27 +721,46 @@ namespace ErpGestion
                 adminPolizas.Show();
 
             }
-          
-            //Pagos
-            if (treeViewChild.SelectedNode.Text == "Pagos")
+            else if (treeViewChild.SelectedNode.Text == "Talleres Mecanicos")
             {
                 foreach (Form f in this.MdiChildren)
                 {
-                    if (f.GetType() == typeof(PagosFrm))
+                    if (f.GetType() == typeof(AdminTalleresForm))
                     {
                         f.Activate();
                         return;
                     }
                 }
 
-                Form Pagosform = new PagosFrm();
+                Form adminTaller = new AdminTalleresForm();
+                adminTaller.MdiParent = this;
+                adminTaller.Show();
+
+            }
+
+
+            //Pagos
+            if (treeViewChild.SelectedNode.Text == "Pagos a Proveedores")
+            {
+                // MetroFramework.MetroMessageBox.Show(this, "Recurso no Encontrado", "Sistema de Gestion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation & MessageBoxIcon.Warning);
+                foreach (Form f in this.MdiChildren)
+                {
+                    if (f.GetType() == typeof(AdminPagosForm))
+                    {
+                        f.Activate();
+                        return;
+                    }
+                }
+
+                Form Pagosform = new AdminPagosForm();
                 Pagosform.MdiParent = this;
                 Pagosform.Show();
             }
-            else if (treeViewChild.SelectedNode.Text == "Reportes")
+             else  if (treeViewChild.SelectedNode.Text == "Reportes")
             {
                 MetroFramework.MetroMessageBox.Show(this, "Recurso no Encontrado", "Sistema de Gestion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation & MessageBoxIcon.Warning);
             }
+            
 
             //Stocks
             if (treeViewChild.SelectedNode.Text == "Materiales y Servicios")

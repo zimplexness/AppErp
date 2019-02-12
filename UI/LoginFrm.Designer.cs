@@ -217,6 +217,8 @@
             this.ClientSize = new System.Drawing.Size(457, 388);
             this.Controls.Add(this.metroPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoginFrm";
             this.Padding = new System.Windows.Forms.Padding(23, 69, 23, 23);
             this.Resizable = false;

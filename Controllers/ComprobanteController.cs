@@ -18,9 +18,7 @@ namespace Controllers
             comprobantes = new Comprobantes();
         }
 
-       public IEnumerable<CentroCostos> GetCentroCostos() {
-            return   _comprobanteRepository.GetCentroCostos();
-        }
+       
 
         public IEnumerable<CondicionesCompra> GetCondicionesCompra() {
           return _comprobanteRepository.GetCondicionesCompra(); 
@@ -176,6 +174,16 @@ namespace Controllers
             return _comprobanteRepository.DeleteComprobante(ID);
 
 
+        }
+
+        public IEnumerable<ConceptoGasto> GetAllConceptoGasto()
+        {
+            return _comprobanteRepository.GetAllConceptoGasto();
+        }
+
+        public IEnumerable<CentroCosto> GetAllCentroCosto()
+        {
+            return _comprobanteRepository.GetAllCentroCosto();
         }
 
     }

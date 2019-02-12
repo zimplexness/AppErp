@@ -26,7 +26,7 @@ namespace DL.Repositories
         IEnumerable<OrdenPago_Result> OrdenPago(int idpago);
         IEnumerable<SeleccionarMediosDePagos_Result> MediosPagos(int idpago);
         IEnumerable<SelectPagosProveedores_Result> GetPagosProveedores(DateTime fechainicio, DateTime fechafin);
-
+        IEnumerable<Pagos> GetAllpagos(DateTime fecha1,DateTime fecha2);
 
 
 

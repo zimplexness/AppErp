@@ -564,7 +564,7 @@
             // 
             this.metroDateTimeFechaBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTimeFechaBaja.Location = new System.Drawing.Point(6, 39);
-            this.metroDateTimeFechaBaja.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTimeFechaBaja.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTimeFechaBaja.Name = "metroDateTimeFechaBaja";
             this.metroDateTimeFechaBaja.Size = new System.Drawing.Size(121, 29);
             this.metroDateTimeFechaBaja.TabIndex = 141;

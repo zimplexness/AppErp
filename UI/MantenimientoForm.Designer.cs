@@ -39,8 +39,6 @@
             this.metroComboBoxActividad = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxTaller = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxVehiculo = new MetroFramework.Controls.MetroComboBox();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButtonAgregarPago = new MetroFramework.Controls.MetroButton();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
@@ -70,24 +68,27 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBoxPrecio = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroTextBoxTotal = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.metroTile5 = new MetroFramework.Controls.MetroTile();
+            this.groupBoxInfo = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridActividades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceActividadesMantenimiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceDetalleMantenimiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridRepuestos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceRepuesto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceDetalleRepuesto)).BeginInit();
+            this.groupBoxInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroComboBoxActividad
             // 
             this.metroComboBoxActividad.FormattingEnabled = true;
             this.metroComboBoxActividad.ItemHeight = 23;
-            this.metroComboBoxActividad.Location = new System.Drawing.Point(5, 189);
+            this.metroComboBoxActividad.Location = new System.Drawing.Point(101, 146);
             this.metroComboBoxActividad.Name = "metroComboBoxActividad";
             this.metroComboBoxActividad.Size = new System.Drawing.Size(283, 29);
             this.metroComboBoxActividad.TabIndex = 6;
@@ -97,7 +98,7 @@
             // 
             this.metroComboBoxTaller.FormattingEnabled = true;
             this.metroComboBoxTaller.ItemHeight = 23;
-            this.metroComboBoxTaller.Location = new System.Drawing.Point(5, 106);
+            this.metroComboBoxTaller.Location = new System.Drawing.Point(101, 56);
             this.metroComboBoxTaller.Name = "metroComboBoxTaller";
             this.metroComboBoxTaller.Size = new System.Drawing.Size(212, 29);
             this.metroComboBoxTaller.TabIndex = 4;
@@ -108,38 +109,16 @@
             // 
             this.metroComboBoxVehiculo.FormattingEnabled = true;
             this.metroComboBoxVehiculo.ItemHeight = 23;
-            this.metroComboBoxVehiculo.Location = new System.Drawing.Point(5, 52);
+            this.metroComboBoxVehiculo.Location = new System.Drawing.Point(101, 19);
             this.metroComboBoxVehiculo.Name = "metroComboBoxVehiculo";
             this.metroComboBoxVehiculo.Size = new System.Drawing.Size(212, 29);
             this.metroComboBoxVehiculo.TabIndex = 1;
             this.metroComboBoxVehiculo.UseSelectable = true;
             // 
-            // metroButton1
-            // 
-            this.metroButton1.BackgroundImage = global::ErpGestion.Properties.Resources.if_17_330399__1_;
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton1.Location = new System.Drawing.Point(685, 472);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(49, 46);
-            this.metroButton1.TabIndex = 15;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
-            // 
-            // metroButtonAgregarPago
-            // 
-            this.metroButtonAgregarPago.BackgroundImage = global::ErpGestion.Properties.Resources._1497285414_Checkmark;
-            this.metroButtonAgregarPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButtonAgregarPago.Location = new System.Drawing.Point(741, 472);
-            this.metroButtonAgregarPago.Name = "metroButtonAgregarPago";
-            this.metroButtonAgregarPago.Size = new System.Drawing.Size(49, 46);
-            this.metroButtonAgregarPago.TabIndex = 14;
-            this.metroButtonAgregarPago.UseSelectable = true;
-            this.metroButtonAgregarPago.Click += new System.EventHandler(this.metroButtonAgregarPago_Click);
-            // 
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(5, 167);
+            this.metroLabel11.Location = new System.Drawing.Point(6, 156);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(75, 19);
             this.metroLabel11.TabIndex = 26;
@@ -148,7 +127,7 @@
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(7, 84);
+            this.metroLabel9.Location = new System.Drawing.Point(6, 63);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(50, 19);
             this.metroLabel9.TabIndex = 19;
@@ -158,7 +137,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(5, 30);
+            this.metroLabel8.Location = new System.Drawing.Point(6, 29);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(70, 19);
             this.metroLabel8.TabIndex = 18;
@@ -167,7 +146,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(223, 84);
+            this.metroLabel7.Location = new System.Drawing.Point(1, 121);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(94, 19);
             this.metroLabel7.TabIndex = 17;
@@ -188,7 +167,7 @@
             this.metroTextBoxcomentario.CustomButton.UseSelectable = true;
             this.metroTextBoxcomentario.CustomButton.Visible = false;
             this.metroTextBoxcomentario.Lines = new string[0];
-            this.metroTextBoxcomentario.Location = new System.Drawing.Point(223, 106);
+            this.metroTextBoxcomentario.Location = new System.Drawing.Point(101, 91);
             this.metroTextBoxcomentario.MaxLength = 32767;
             this.metroTextBoxcomentario.Multiline = true;
             this.metroTextBoxcomentario.Name = "metroTextBoxcomentario";
@@ -207,7 +186,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(364, 28);
+            this.metroLabel5.Location = new System.Drawing.Point(334, 56);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(50, 19);
             this.metroLabel5.TabIndex = 11;
@@ -216,7 +195,7 @@
             // metroDateTimeFECHA
             // 
             this.metroDateTimeFECHA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTimeFECHA.Location = new System.Drawing.Point(364, 50);
+            this.metroDateTimeFECHA.Location = new System.Drawing.Point(398, 51);
             this.metroDateTimeFECHA.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTimeFECHA.Name = "metroDateTimeFECHA";
             this.metroDateTimeFECHA.Size = new System.Drawing.Size(131, 29);
@@ -225,7 +204,7 @@
             // LBLKM
             // 
             this.LBLKM.AutoSize = true;
-            this.LBLKM.Location = new System.Drawing.Point(223, 30);
+            this.LBLKM.Location = new System.Drawing.Point(339, 19);
             this.LBLKM.Name = "LBLKM";
             this.LBLKM.Size = new System.Drawing.Size(28, 19);
             this.LBLKM.TabIndex = 7;
@@ -247,7 +226,7 @@
             this.metroTextBoxKm.CustomButton.Visible = false;
             this.metroTextBoxKm.Lines = new string[] {
         "0"};
-            this.metroTextBoxKm.Location = new System.Drawing.Point(223, 50);
+            this.metroTextBoxKm.Location = new System.Drawing.Point(398, 17);
             this.metroTextBoxKm.MaxLength = 11;
             this.metroTextBoxKm.Name = "metroTextBoxKm";
             this.metroTextBoxKm.PasswordChar = '\0';
@@ -266,7 +245,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(281, 9);
+            this.metroLabel2.Location = new System.Drawing.Point(7, 31);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(225, 19);
             this.metroLabel2.TabIndex = 99;
@@ -306,7 +285,7 @@
             this.metroGridActividades.EnableHeadersVisualStyles = false;
             this.metroGridActividades.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridActividades.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridActividades.Location = new System.Drawing.Point(5, 224);
+            this.metroGridActividades.Location = new System.Drawing.Point(6, 181);
             this.metroGridActividades.Name = "metroGridActividades";
             this.metroGridActividades.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -390,7 +369,7 @@
             this.metroGridRepuestos.EnableHeadersVisualStyles = false;
             this.metroGridRepuestos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridRepuestos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridRepuestos.Location = new System.Drawing.Point(5, 386);
+            this.metroGridRepuestos.Location = new System.Drawing.Point(6, 343);
             this.metroGridRepuestos.Name = "metroGridRepuestos";
             this.metroGridRepuestos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -403,7 +382,7 @@
             this.metroGridRepuestos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGridRepuestos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridRepuestos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGridRepuestos.Size = new System.Drawing.Size(659, 125);
+            this.metroGridRepuestos.Size = new System.Drawing.Size(617, 125);
             this.metroGridRepuestos.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroGridRepuestos.TabIndex = 105;
             this.metroGridRepuestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentClick);
@@ -475,7 +454,7 @@
             this.metroTextBoxRepuesto.CustomButton.UseSelectable = true;
             this.metroTextBoxRepuesto.CustomButton.Visible = false;
             this.metroTextBoxRepuesto.Lines = new string[0];
-            this.metroTextBoxRepuesto.Location = new System.Drawing.Point(7, 349);
+            this.metroTextBoxRepuesto.Location = new System.Drawing.Point(6, 306);
             this.metroTextBoxRepuesto.MaxLength = 11;
             this.metroTextBoxRepuesto.Name = "metroTextBoxRepuesto";
             this.metroTextBoxRepuesto.PasswordChar = '\0';
@@ -493,7 +472,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(5, 327);
+            this.metroLabel4.Location = new System.Drawing.Point(6, 284);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(63, 19);
             this.metroLabel4.TabIndex = 104;
@@ -514,7 +493,7 @@
             this.metroTextBoxCant.CustomButton.UseSelectable = true;
             this.metroTextBoxCant.CustomButton.Visible = false;
             this.metroTextBoxCant.Lines = new string[0];
-            this.metroTextBoxCant.Location = new System.Drawing.Point(318, 349);
+            this.metroTextBoxCant.Location = new System.Drawing.Point(317, 306);
             this.metroTextBoxCant.MaxLength = 11;
             this.metroTextBoxCant.Name = "metroTextBoxCant";
             this.metroTextBoxCant.PasswordChar = '\0';
@@ -532,7 +511,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(323, 327);
+            this.metroLabel6.Location = new System.Drawing.Point(322, 284);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(62, 19);
             this.metroLabel6.TabIndex = 107;
@@ -553,7 +532,7 @@
             this.metroTextBoxPrecio.CustomButton.UseSelectable = true;
             this.metroTextBoxPrecio.CustomButton.Visible = false;
             this.metroTextBoxPrecio.Lines = new string[0];
-            this.metroTextBoxPrecio.Location = new System.Drawing.Point(397, 349);
+            this.metroTextBoxPrecio.Location = new System.Drawing.Point(401, 306);
             this.metroTextBoxPrecio.MaxLength = 11;
             this.metroTextBoxPrecio.Name = "metroTextBoxPrecio";
             this.metroTextBoxPrecio.PasswordChar = '\0';
@@ -571,32 +550,11 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(399, 327);
+            this.metroLabel10.Location = new System.Drawing.Point(401, 284);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(46, 19);
             this.metroLabel10.TabIndex = 109;
             this.metroLabel10.Text = "Precio";
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.BackgroundImage = global::ErpGestion.Properties.Resources._1497285414_Checkmark;
-            this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton2.Location = new System.Drawing.Point(467, 340);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(39, 40);
-            this.metroButton2.TabIndex = 12;
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
-            // 
-            // metroButton3
-            // 
-            this.metroButton3.BackgroundImage = global::ErpGestion.Properties.Resources.if_17_330399__1_;
-            this.metroButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton3.Location = new System.Drawing.Point(512, 340);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(36, 40);
-            this.metroButton3.TabIndex = 113;
-            this.metroButton3.UseSelectable = true;
             // 
             // metroTextBoxTotal
             // 
@@ -604,7 +562,7 @@
             // 
             // 
             this.metroTextBoxTotal.CustomButton.Image = null;
-            this.metroTextBoxTotal.CustomButton.Location = new System.Drawing.Point(54, 1);
+            this.metroTextBoxTotal.CustomButton.Location = new System.Drawing.Point(41, 1);
             this.metroTextBoxTotal.CustomButton.Name = "";
             this.metroTextBoxTotal.CustomButton.Size = new System.Drawing.Size(29, 29);
             this.metroTextBoxTotal.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -614,7 +572,7 @@
             this.metroTextBoxTotal.CustomButton.Visible = false;
             this.metroTextBoxTotal.Lines = new string[] {
         "0"};
-            this.metroTextBoxTotal.Location = new System.Drawing.Point(685, 406);
+            this.metroTextBoxTotal.Location = new System.Drawing.Point(552, 304);
             this.metroTextBoxTotal.MaxLength = 11;
             this.metroTextBoxTotal.Name = "metroTextBoxTotal";
             this.metroTextBoxTotal.PasswordChar = '\0';
@@ -623,7 +581,7 @@
             this.metroTextBoxTotal.SelectionLength = 0;
             this.metroTextBoxTotal.SelectionStart = 0;
             this.metroTextBoxTotal.ShortcutsEnabled = true;
-            this.metroTextBoxTotal.Size = new System.Drawing.Size(84, 31);
+            this.metroTextBoxTotal.Size = new System.Drawing.Size(71, 31);
             this.metroTextBoxTotal.TabIndex = 13;
             this.metroTextBoxTotal.Text = "0";
             this.metroTextBoxTotal.UseSelectable = true;
@@ -633,58 +591,122 @@
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(685, 386);
+            this.metroLabel13.Location = new System.Drawing.Point(552, 284);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(36, 19);
             this.metroLabel13.TabIndex = 115;
             this.metroLabel13.Text = "Total";
             // 
-            // metroButton4
+            // metroTile1
             // 
-            this.metroButton4.BackgroundImage = global::ErpGestion.Properties.Resources.if_flat_style_circle_add_1312548;
-            this.metroButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton4.Location = new System.Drawing.Point(294, 189);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(32, 29);
-            this.metroButton4.TabIndex = 7;
-            this.metroButton4.UseSelectable = true;
-            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile1.Location = new System.Drawing.Point(445, 474);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(86, 39);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroTile1.TabIndex = 117;
+            this.metroTile1.Text = "CANCELAR";
+            this.metroTile1.TileImage = global::ErpGestion.Properties.Resources.iconfinder_x_circle_3324917;
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            // 
+            // metroTile4
+            // 
+            this.metroTile4.ActiveControl = null;
+            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile4.Location = new System.Drawing.Point(537, 474);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(86, 39);
+            this.metroTile4.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroTile4.TabIndex = 116;
+            this.metroTile4.Text = "GUARDAR";
+            this.metroTile4.TileImage = global::ErpGestion.Properties.Resources.iconfinder_save_3325027;
+            this.metroTile4.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile4.UseSelectable = true;
+            this.metroTile4.UseTileImage = true;
+            this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
+            // 
+            // metroTile3
+            // 
+            this.metroTile3.ActiveControl = null;
+            this.metroTile3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile3.Location = new System.Drawing.Point(390, 136);
+            this.metroTile3.Name = "metroTile3";
+            this.metroTile3.Size = new System.Drawing.Size(75, 39);
+            this.metroTile3.TabIndex = 119;
+            this.metroTile3.Text = "NUEVO";
+            this.metroTile3.TileImage = global::ErpGestion.Properties.Resources.iconfinder_circle_add_226591;
+            this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile3.UseSelectable = true;
+            this.metroTile3.UseTileImage = true;
+            this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click);
+            // 
+            // metroTile5
+            // 
+            this.metroTile5.ActiveControl = null;
+            this.metroTile5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile5.Location = new System.Drawing.Point(471, 298);
+            this.metroTile5.Name = "metroTile5";
+            this.metroTile5.Size = new System.Drawing.Size(75, 39);
+            this.metroTile5.TabIndex = 120;
+            this.metroTile5.Text = "NUEVO";
+            this.metroTile5.TileImage = global::ErpGestion.Properties.Resources.iconfinder_circle_add_226591;
+            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile5.UseSelectable = true;
+            this.metroTile5.UseTileImage = true;
+            this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
+            // 
+            // groupBoxInfo
+            // 
+            this.groupBoxInfo.Controls.Add(this.metroTile5);
+            this.groupBoxInfo.Controls.Add(this.metroLabel11);
+            this.groupBoxInfo.Controls.Add(this.metroTile3);
+            this.groupBoxInfo.Controls.Add(this.metroLabel9);
+            this.groupBoxInfo.Controls.Add(this.metroTile1);
+            this.groupBoxInfo.Controls.Add(this.metroLabel7);
+            this.groupBoxInfo.Controls.Add(this.metroTile4);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxcomentario);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxTotal);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxVehiculo);
+            this.groupBoxInfo.Controls.Add(this.metroLabel13);
+            this.groupBoxInfo.Controls.Add(this.metroLabel5);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxPrecio);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxTaller);
+            this.groupBoxInfo.Controls.Add(this.metroLabel10);
+            this.groupBoxInfo.Controls.Add(this.metroDateTimeFECHA);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxCant);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxActividad);
+            this.groupBoxInfo.Controls.Add(this.metroLabel6);
+            this.groupBoxInfo.Controls.Add(this.LBLKM);
+            this.groupBoxInfo.Controls.Add(this.metroGridRepuestos);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxKm);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxRepuesto);
+            this.groupBoxInfo.Controls.Add(this.metroLabel8);
+            this.groupBoxInfo.Controls.Add(this.metroLabel4);
+            this.groupBoxInfo.Controls.Add(this.metroGridActividades);
+            this.groupBoxInfo.Location = new System.Drawing.Point(7, 53);
+            this.groupBoxInfo.Name = "groupBoxInfo";
+            this.groupBoxInfo.Size = new System.Drawing.Size(634, 521);
+            this.groupBoxInfo.TabIndex = 121;
+            this.groupBoxInfo.TabStop = false;
             // 
             // MantenimientoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 523);
-            this.Controls.Add(this.metroButton4);
-            this.Controls.Add(this.metroTextBoxTotal);
-            this.Controls.Add(this.metroLabel13);
-            this.Controls.Add(this.metroButton3);
-            this.Controls.Add(this.metroButton2);
-            this.Controls.Add(this.metroTextBoxPrecio);
-            this.Controls.Add(this.metroLabel10);
-            this.Controls.Add(this.metroTextBoxCant);
-            this.Controls.Add(this.metroLabel6);
-            this.Controls.Add(this.metroGridRepuestos);
-            this.Controls.Add(this.metroTextBoxRepuesto);
-            this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.metroGridActividades);
+            this.ClientSize = new System.Drawing.Size(650, 581);
             this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel8);
-            this.Controls.Add(this.metroTextBoxKm);
-            this.Controls.Add(this.LBLKM);
-            this.Controls.Add(this.metroComboBoxActividad);
-            this.Controls.Add(this.metroDateTimeFECHA);
-            this.Controls.Add(this.metroComboBoxTaller);
-            this.Controls.Add(this.metroLabel5);
-            this.Controls.Add(this.metroComboBoxVehiculo);
-            this.Controls.Add(this.metroTextBoxcomentario);
-            this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.metroButtonAgregarPago);
-            this.Controls.Add(this.metroLabel9);
-            this.Controls.Add(this.metroLabel11);
+            this.Controls.Add(this.groupBoxInfo);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MantenimientoForm";
             this.Padding = new System.Windows.Forms.Padding(23, 78, 23, 26);
             this.Resizable = false;
@@ -696,6 +718,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGridRepuestos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceRepuesto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceDetalleRepuesto)).EndInit();
+            this.groupBoxInfo.ResumeLayout(false);
+            this.groupBoxInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -705,8 +729,6 @@
         private MetroFramework.Controls.MetroComboBox metroComboBoxActividad;
         private MetroFramework.Controls.MetroComboBox metroComboBoxTaller;
         private MetroFramework.Controls.MetroComboBox metroComboBoxVehiculo;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButtonAgregarPago;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
@@ -725,13 +747,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox metroTextBoxPrecio;
         private MetroFramework.Controls.MetroLabel metroLabel10;
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroTextBox metroTextBoxTotal;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private System.Core.ComponentModel.ObjectBindingSource bindingSourceDetalleMantenimiento;
         private System.Core.ComponentModel.ObjectBindingSource bindingSourceDetalleRepuesto;
-        private MetroFramework.Controls.MetroButton metroButton4;
         private System.Core.ComponentModel.ObjectBindingSource objectBindingSourceActividadesMantenimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDetalleActividadMantenimientoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn actividadMantenimientoDetalleDataGridViewTextBoxColumn;
@@ -741,5 +760,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeDataGridViewTextBoxColumn;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroTile metroTile5;
+        private System.Windows.Forms.GroupBox groupBoxInfo;
     }
 }

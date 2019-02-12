@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxFilterInfo = new System.Windows.Forms.GroupBox();
             this.metroTextBoxNombre = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
@@ -41,7 +41,7 @@
             this.metroTextBoxCuit = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBoxFilterRubro = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.metroCheckBoxCuentas = new MetroFramework.Controls.MetroCheckBox();
             this.metroGridProveedores = new MetroFramework.Controls.MetroGrid();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Razon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,13 +54,13 @@
             this.Localidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.proveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.metroToggleFiltro = new MetroFramework.Controls.MetroToggle();
-            this.metroCheckBoxCuentas = new MetroFramework.Controls.MetroCheckBox();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.metroTile5 = new MetroFramework.Controls.MetroTile();
+            this.metroTile6 = new MetroFramework.Controls.MetroTile();
             this.groupBoxFilterInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridProveedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proveedoresBindingSource)).BeginInit();
@@ -70,7 +70,6 @@
             // groupBoxFilterInfo
             // 
             this.groupBoxFilterInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBoxFilterInfo.Controls.Add(this.metroCheckBoxCuentas);
             this.groupBoxFilterInfo.Controls.Add(this.metroTextBoxNombre);
             this.groupBoxFilterInfo.Controls.Add(this.metroLabel16);
             this.groupBoxFilterInfo.Controls.Add(this.metroTextBoxFilterRazon);
@@ -79,9 +78,9 @@
             this.groupBoxFilterInfo.Controls.Add(this.metroTextBoxCuit);
             this.groupBoxFilterInfo.Controls.Add(this.metroTextBoxFilterRubro);
             this.groupBoxFilterInfo.Controls.Add(this.metroLabel10);
-            this.groupBoxFilterInfo.Location = new System.Drawing.Point(-1, 72);
+            this.groupBoxFilterInfo.Location = new System.Drawing.Point(349, 52);
             this.groupBoxFilterInfo.Name = "groupBoxFilterInfo";
-            this.groupBoxFilterInfo.Size = new System.Drawing.Size(1106, 73);
+            this.groupBoxFilterInfo.Size = new System.Drawing.Size(823, 69);
             this.groupBoxFilterInfo.TabIndex = 35;
             this.groupBoxFilterInfo.TabStop = false;
             this.groupBoxFilterInfo.Text = "FILTROS";
@@ -103,7 +102,7 @@
             this.metroTextBoxNombre.CustomButton.UseSelectable = true;
             this.metroTextBoxNombre.CustomButton.Visible = false;
             this.metroTextBoxNombre.Lines = new string[0];
-            this.metroTextBoxNombre.Location = new System.Drawing.Point(6, 41);
+            this.metroTextBoxNombre.Location = new System.Drawing.Point(6, 35);
             this.metroTextBoxNombre.MaxLength = 32767;
             this.metroTextBoxNombre.Name = "metroTextBoxNombre";
             this.metroTextBoxNombre.PasswordChar = '\0';
@@ -122,7 +121,7 @@
             // metroLabel16
             // 
             this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(6, 19);
+            this.metroLabel16.Location = new System.Drawing.Point(6, 13);
             this.metroLabel16.Name = "metroLabel16";
             this.metroLabel16.Size = new System.Drawing.Size(69, 19);
             this.metroLabel16.TabIndex = 17;
@@ -144,7 +143,7 @@
             this.metroTextBoxFilterRazon.CustomButton.UseSelectable = true;
             this.metroTextBoxFilterRazon.CustomButton.Visible = false;
             this.metroTextBoxFilterRazon.Lines = new string[0];
-            this.metroTextBoxFilterRazon.Location = new System.Drawing.Point(207, 41);
+            this.metroTextBoxFilterRazon.Location = new System.Drawing.Point(207, 35);
             this.metroTextBoxFilterRazon.MaxLength = 32767;
             this.metroTextBoxFilterRazon.Name = "metroTextBoxFilterRazon";
             this.metroTextBoxFilterRazon.PasswordChar = '\0';
@@ -163,7 +162,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(408, 19);
+            this.metroLabel1.Location = new System.Drawing.Point(408, 13);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(37, 19);
             this.metroLabel1.TabIndex = 32;
@@ -172,7 +171,7 @@
             // metroLabel15
             // 
             this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(207, 19);
+            this.metroLabel15.Location = new System.Drawing.Point(207, 13);
             this.metroLabel15.Name = "metroLabel15";
             this.metroLabel15.Size = new System.Drawing.Size(105, 19);
             this.metroLabel15.TabIndex = 19;
@@ -194,7 +193,7 @@
             this.metroTextBoxCuit.CustomButton.UseSelectable = true;
             this.metroTextBoxCuit.CustomButton.Visible = false;
             this.metroTextBoxCuit.Lines = new string[0];
-            this.metroTextBoxCuit.Location = new System.Drawing.Point(408, 41);
+            this.metroTextBoxCuit.Location = new System.Drawing.Point(408, 35);
             this.metroTextBoxCuit.MaxLength = 32767;
             this.metroTextBoxCuit.Name = "metroTextBoxCuit";
             this.metroTextBoxCuit.PasswordChar = '\0';
@@ -226,7 +225,7 @@
             this.metroTextBoxFilterRubro.CustomButton.UseSelectable = true;
             this.metroTextBoxFilterRubro.CustomButton.Visible = false;
             this.metroTextBoxFilterRubro.Lines = new string[0];
-            this.metroTextBoxFilterRubro.Location = new System.Drawing.Point(538, 41);
+            this.metroTextBoxFilterRubro.Location = new System.Drawing.Point(543, 35);
             this.metroTextBoxFilterRubro.MaxLength = 32767;
             this.metroTextBoxFilterRubro.Name = "metroTextBoxFilterRubro";
             this.metroTextBoxFilterRubro.PasswordChar = '\0';
@@ -245,45 +244,38 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(538, 19);
+            this.metroLabel10.Location = new System.Drawing.Point(538, 13);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(60, 19);
             this.metroLabel10.TabIndex = 21;
             this.metroLabel10.Text = "RUBROS";
             // 
-            // linkLabel1
+            // metroCheckBoxCuentas
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.DarkTurquoise;
-            this.linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel1.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.linkLabel1.Location = new System.Drawing.Point(15, 19);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(115, 15);
-            this.linkLabel1.TabIndex = 29;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "NUEVO PROVEEDOR";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.metroCheckBoxCuentas.AutoSize = true;
+            this.metroCheckBoxCuentas.Location = new System.Drawing.Point(6, 116);
+            this.metroCheckBoxCuentas.Name = "metroCheckBoxCuentas";
+            this.metroCheckBoxCuentas.Size = new System.Drawing.Size(250, 15);
+            this.metroCheckBoxCuentas.TabIndex = 33;
+            this.metroCheckBoxCuentas.Text = "PROVEEDORES CON CUENTA CORRIENTES";
+            this.metroCheckBoxCuentas.UseSelectable = true;
+            this.metroCheckBoxCuentas.CheckedChanged += new System.EventHandler(this.metroCheckBox1_CheckedChanged);
             // 
             // metroGridProveedores
             // 
             this.metroGridProveedores.AllowUserToResizeRows = false;
-            this.metroGridProveedores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroGridProveedores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGridProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridProveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGridProveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.metroGridProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGridProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
@@ -296,28 +288,28 @@
             this.Provincia,
             this.Localidades,
             this.Rubro});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGridProveedores.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGridProveedores.DefaultCellStyle = dataGridViewCellStyle17;
             this.metroGridProveedores.EnableHeadersVisualStyles = false;
             this.metroGridProveedores.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridProveedores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridProveedores.Location = new System.Drawing.Point(6, 159);
+            this.metroGridProveedores.Location = new System.Drawing.Point(6, 137);
             this.metroGridProveedores.Name = "metroGridProveedores";
             this.metroGridProveedores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridProveedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(133)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridProveedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.metroGridProveedores.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGridProveedores.Size = new System.Drawing.Size(1201, 505);
@@ -388,74 +380,24 @@
             // 
             this.proveedoresBindingSource.DataSource = typeof(Entidades.Proveedores);
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel2.LinkColor = System.Drawing.Color.Teal;
-            this.linkLabel2.Location = new System.Drawing.Point(136, 19);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(46, 15);
-            this.linkLabel2.TabIndex = 36;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "EDITAR";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel3.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.linkLabel3.Location = new System.Drawing.Point(188, 19);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(60, 15);
-            this.linkLabel3.TabIndex = 37;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "ELIMINAR";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox2.Controls.Add(this.metroTile4);
+            this.groupBox2.Controls.Add(this.metroTile5);
             this.groupBox2.Controls.Add(this.metroToggleFiltro);
+            this.groupBox2.Controls.Add(this.metroTile6);
             this.groupBox2.Controls.Add(this.linkLabel4);
-            this.groupBox2.Controls.Add(this.linkLabel1);
-            this.groupBox2.Controls.Add(this.linkLabel3);
-            this.groupBox2.Controls.Add(this.linkLabel2);
-            this.groupBox2.Location = new System.Drawing.Point(6, 8);
+            this.groupBox2.Location = new System.Drawing.Point(6, 52);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(417, 58);
+            this.groupBox2.Size = new System.Drawing.Size(337, 58);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(508, 8);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(234, 19);
-            this.metroLabel2.TabIndex = 39;
-            this.metroLabel2.Text = "ADMINISTRACION DE PROVEEDORES";
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel4.LinkColor = System.Drawing.Color.Teal;
-            this.linkLabel4.Location = new System.Drawing.Point(266, 15);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(45, 15);
-            this.linkLabel4.TabIndex = 41;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "FILTRO";
             // 
             // metroToggleFiltro
             // 
             this.metroToggleFiltro.AutoSize = true;
-            this.metroToggleFiltro.Location = new System.Drawing.Point(245, 33);
+            this.metroToggleFiltro.Location = new System.Drawing.Point(249, 33);
             this.metroToggleFiltro.Name = "metroToggleFiltro";
             this.metroToggleFiltro.Size = new System.Drawing.Size(80, 19);
             this.metroToggleFiltro.Style = MetroFramework.MetroColorStyle.Blue;
@@ -465,16 +407,77 @@
             this.metroToggleFiltro.UseSelectable = true;
             this.metroToggleFiltro.CheckedChanged += new System.EventHandler(this.metroToggleFiltro_CheckedChanged);
             // 
-            // metroCheckBoxCuentas
+            // linkLabel4
             // 
-            this.metroCheckBoxCuentas.AutoSize = true;
-            this.metroCheckBoxCuentas.Location = new System.Drawing.Point(832, 41);
-            this.metroCheckBoxCuentas.Name = "metroCheckBoxCuentas";
-            this.metroCheckBoxCuentas.Size = new System.Drawing.Size(250, 15);
-            this.metroCheckBoxCuentas.TabIndex = 33;
-            this.metroCheckBoxCuentas.Text = "PROVEEDORES CON CUENTA CORRIENTES";
-            this.metroCheckBoxCuentas.UseSelectable = true;
-            this.metroCheckBoxCuentas.CheckedChanged += new System.EventHandler(this.metroCheckBox1_CheckedChanged);
+            this.linkLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.linkLabel4.LinkColor = System.Drawing.Color.Teal;
+            this.linkLabel4.Location = new System.Drawing.Point(284, 13);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(45, 15);
+            this.linkLabel4.TabIndex = 41;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "FILTRO";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(6, 30);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(234, 19);
+            this.metroLabel2.TabIndex = 39;
+            this.metroLabel2.Text = "ADMINISTRACION DE PROVEEDORES";
+            // 
+            // metroTile4
+            // 
+            this.metroTile4.ActiveControl = null;
+            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile4.Location = new System.Drawing.Point(6, 13);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(75, 39);
+            this.metroTile4.TabIndex = 57;
+            this.metroTile4.Text = "NUEVO";
+            this.metroTile4.TileImage = global::ErpGestion.Properties.Resources.iconfinder_circle_add_226591;
+            this.metroTile4.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile4.UseSelectable = true;
+            this.metroTile4.UseTileImage = true;
+            this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
+            // 
+            // metroTile5
+            // 
+            this.metroTile5.ActiveControl = null;
+            this.metroTile5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile5.Location = new System.Drawing.Point(168, 12);
+            this.metroTile5.Name = "metroTile5";
+            this.metroTile5.Size = new System.Drawing.Size(83, 39);
+            this.metroTile5.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroTile5.TabIndex = 59;
+            this.metroTile5.Text = "ELIMINAR";
+            this.metroTile5.TileImage = global::ErpGestion.Properties.Resources.iconfinder_trash_227551;
+            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile5.UseSelectable = true;
+            this.metroTile5.UseTileImage = true;
+            this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
+            // 
+            // metroTile6
+            // 
+            this.metroTile6.ActiveControl = null;
+            this.metroTile6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile6.Location = new System.Drawing.Point(87, 13);
+            this.metroTile6.Name = "metroTile6";
+            this.metroTile6.Size = new System.Drawing.Size(75, 39);
+            this.metroTile6.Style = MetroFramework.MetroColorStyle.Teal;
+            this.metroTile6.TabIndex = 58;
+            this.metroTile6.Text = "EDITAR";
+            this.metroTile6.TileImage = global::ErpGestion.Properties.Resources.iconfinder_edit_3_3324936;
+            this.metroTile6.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile6.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile6.UseSelectable = true;
+            this.metroTile6.UseTileImage = true;
+            this.metroTile6.Click += new System.EventHandler(this.metroTile6_Click);
             // 
             // AdminProveedorFrm
             // 
@@ -482,6 +485,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1212, 690);
+            this.Controls.Add(this.metroCheckBoxCuentas);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroGridProveedores);
             this.Controls.Add(this.groupBoxFilterInfo);
@@ -492,7 +496,6 @@
             this.Name = "AdminProveedorFrm";
             this.Padding = new System.Windows.Forms.Padding(23, 69, 23, 23);
             this.Resizable = false;
-            this.Text = "Proveedores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminProveedorFrm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminProveedorFrm_FormClosed);
             this.Load += new System.EventHandler(this.ProveedoresForm_Load);
@@ -514,7 +517,6 @@
         private MetroFramework.Controls.MetroTextBox metroTextBoxFilterRazon;
         private MetroFramework.Controls.MetroLabel metroLabel16;
         private MetroFramework.Controls.MetroTextBox metroTextBoxNombre;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox metroTextBoxCuit;
         private System.Windows.Forms.BindingSource proveedoresBindingSource;
@@ -530,12 +532,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Provincia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Localidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rubro;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroCheckBox metroCheckBoxCuentas;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private MetroFramework.Controls.MetroToggle metroToggleFiltro;
+        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile metroTile5;
+        private MetroFramework.Controls.MetroTile metroTile6;
     }
 }

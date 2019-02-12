@@ -17,7 +17,7 @@ namespace Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Almacenes()
         {
-            this.IngresoMateriales = new HashSet<IngresoMateriales>();
+            this.Recepciones = new HashSet<Recepciones>();
         }
     
         public int IdAlmacen { get; set; }
@@ -29,6 +29,6 @@ namespace Entidades
     
         public virtual Zonas Zonas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IngresoMateriales> IngresoMateriales { get; set; }
+        public virtual ICollection<Recepciones> Recepciones { get; set; }
     }
 }

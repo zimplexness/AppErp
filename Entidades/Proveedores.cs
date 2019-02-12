@@ -19,6 +19,7 @@ namespace Entidades
         {
             this.DetalleProveedor_ProductorSeguro = new HashSet<DetalleProveedor_ProductorSeguro>();
             this.PolizasSeguro = new HashSet<PolizasSeguro>();
+            this.Comprobantes = new HashSet<Comprobantes>();
         }
     
         public int IdProveedores { get; set; }
@@ -55,5 +56,7 @@ namespace Entidades
         public virtual CondicionesCompra CondicionesCompra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PolizasSeguro> PolizasSeguro { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comprobantes> Comprobantes { get; set; }
     }
 }

@@ -8,14 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Controllers;
+using Entidades;
 
 namespace ErpGestion
 {
     public partial class VehiculosFrm : MetroFramework.Forms.MetroForm
     {
+
+        public int IdVehiculo  { get; set; }
+        Vehiculos vehiculo;
+        MantenimientoVehiculoController mantenimientoVehiculo;
+        SharedController sharedController;
         public VehiculosFrm()
         {
             InitializeComponent();
+            vehiculo = new Vehiculos();
+            mantenimientoVehiculo = new MantenimientoVehiculoController();
+            sharedController = new SharedController();
         }
 
           VehiculosManager ObjVehiculo = new VehiculosManager();
@@ -25,52 +34,79 @@ namespace ErpGestion
         {
 
             //LLenar todos los combobox
-            VehiculosManager objvehiculo = new VehiculosManager();
-
-            metroComboBoxMarca.DataSource = objvehiculo.MarcasVehiculos();
+            
+            metroComboBoxMarca.DataSource = mantenimientoVehiculo.GetMarcasVehiculos();
             metroComboBoxMarca.DisplayMember = "Marcas";
             metroComboBoxMarca.ValueMember = "IDMarca";
 
-            metroComboBoxModelo.DataSource = objvehiculo.ModelosVehiculosTodos();
+            metroComboBoxModelo.DataSource = mantenimientoVehiculo.GetModelosVehiculos();
             metroComboBoxModelo.DisplayMember = "Modelo";
             metroComboBoxModelo.ValueMember = "IDModeloVehiculo";
 
-           metroComboBoxChoferes.DataSource = objvehiculo.Choferes();
+            metroComboBoxChoferes.DataSource = sharedController.GetChoferes();
             metroComboBoxChoferes.DisplayMember = "Chofer";
             metroComboBoxChoferes.ValueMember = "IDEmpleado";
 
-            metroComboBoxCombustible.DataSource = objvehiculo.Combustibles();
+            metroComboBoxCombustible.DataSource = mantenimientoVehiculo.GetCombustibles();
             metroComboBoxCombustible.DisplayMember = "Descripcion";
             metroComboBoxCombustible.ValueMember = "IDCombustible";
 
-            metroComboBoxPoliza.DataSource = objvehiculo.PolizaSeguros();
+            metroComboBoxPoliza.DataSource = mantenimientoVehiculo.GetPolizasSeguroActivas();
             metroComboBoxPoliza.DisplayMember = "Descripcion";
             metroComboBoxPoliza.ValueMember = "IDPolizaSeguro";
 
-            bindingSourceVehiculos.DataSource = objvehiculo.listaVehiculosActivos();
+            //GetVehiculo
+            vehiculo = mantenimientoVehiculo.GetVehiculosById(IdVehiculo);
 
-            metroGridvehiculos.DataSource = objvehiculo.listaVehiculosActivos();
+
+            if (vehiculo!=null&&vehiculo.IdPolizaSeguro!=null && vehiculo.IDCombustible != null)
+            {
+                metroCheckBoxActivo.Checked = vehiculo.Activo.Value;
+                metroCheckBoxGps.Checked = vehiculo.Gps.Value;
+                metroCheckBoxNeumaticos.Checked = vehiculo.NeumaticoRepuesto.Value;
+                metroTextBoxPatente.Text = vehiculo.Patente;
+                metroComboBoxMarca.SelectedValue = vehiculo.Marca.Value;
+                metroComboBoxModelo.SelectedValue = vehiculo.ModelosVehiculos.IDModeloVehiculo;
+                metroDateTimeFechaCompra.Value = vehiculo.FechaCompra.Value;
+                metroDateTimeFechaTransferencia.Value = vehiculo.FechaTransferencia.Value;
+                metroTextBoxNochasis.Text = vehiculo.Nochasis;
+                metroTextBoxNomotor.Text = vehiculo.NoMotor;
+                metroDateTimeVTV.Value = vehiculo.VigenciaVTV.Value;
+                metroComboBoxChoferes.Text = vehiculo.Empleados.Nombres+ vehiculo.Empleados.Apellidos;
+                metroTextBoxTitular.Text = vehiculo.Titular;
+                metroTextBoxKm.Text = vehiculo.KM.ToString();
+                metroComboBoxPoliza.SelectedValue = vehiculo.IdPolizaSeguro.Value;
+                metroComboBoxCombustible.SelectedValue = vehiculo.IDCombustible;
+                metroTextBoxyear.Text = vehiculo.Year.ToString();
+                metroTextBoxRadicacion.Text = vehiculo.DireccionRadicacion;
 
 
+            }
+            else if(vehiculo != null)
+            {
+                metroCheckBoxActivo.Checked = vehiculo.Activo.Value;
+                metroCheckBoxGps.Checked = vehiculo.Gps.Value;
+                metroCheckBoxNeumaticos.Checked = vehiculo.NeumaticoRepuesto.Value;
+                metroTextBoxPatente.Text = vehiculo.Patente;
+                metroComboBoxMarca.SelectedValue = vehiculo.Marca.Value;
+                metroComboBoxModelo.SelectedValue = vehiculo.ModelosVehiculos.IDModeloVehiculo;
+                metroDateTimeFechaCompra.Value = vehiculo.FechaCompra.Value;
+                metroDateTimeFechaTransferencia.Value = vehiculo.FechaTransferencia.Value;
+                metroTextBoxNochasis.Text = vehiculo.Nochasis;
+                metroTextBoxNomotor.Text = vehiculo.NoMotor;
+                metroDateTimeVTV.Value = vehiculo.VigenciaVTV.Value;
+                metroComboBoxChoferes.Text = vehiculo.Empleados.Nombres + vehiculo.Empleados.Apellidos;
+                metroTextBoxTitular.Text = vehiculo.Titular;
+                metroTextBoxKm.Text = vehiculo.KM.ToString();
+               // metroComboBoxPoliza.SelectedValue = vehiculo.IdPolizaSeguro.Value;
+                metroComboBoxCombustible.SelectedValue = vehiculo.IDCombustible;
+                metroTextBoxyear.Text = vehiculo.Year.ToString();
+                metroTextBoxRadicacion.Text = vehiculo.DireccionRadicacion;
+
+            }
            
 
-            //binding object 
-            PropertyDescriptor Activochk = bindingSourceVehiculos.GetItemProperties(null)["Activo"];
-            PropertyDescriptor gpschk = bindingSourceVehiculos.GetItemProperties(null)["Gps"];
-            metroCheckBoxActivo.Checked = (bool)Activochk.GetValue(bindingSourceVehiculos.Current);
-            metroTextBoxPatente.DataBindings.Add("Text", bindingSourceVehiculos, "Patente", true);
-            metroComboBoxMarca.DataBindings.Add("Text", bindingSourceVehiculos, "Marcas", true);
-            metroComboBoxModelo.DataBindings.Add("Text", bindingSourceVehiculos, "Modelo", true);
-            metroTextBoxNochasis.DataBindings.Add("Text", bindingSourceVehiculos, "Nochasis", true);
-            metroTextBoxNomotor.DataBindings.Add("Text", bindingSourceVehiculos, "NoMotor", true);
-            metroComboBoxCombustible.DataBindings.Add("Text", bindingSourceVehiculos, "TipoCombustible", true);
-            metroTextBoxyear.DataBindings.Add("Text", bindingSourceVehiculos, "Year", true);
-            metroDateTimeFechaCompra.DataBindings.Add("Text", bindingSourceVehiculos, "FechaCompra", true);
-            metroDateTimeFechaTransferencia.DataBindings.Add("Text", bindingSourceVehiculos, "FechaTransferencia", true);
-            metroDateTimeVTV.DataBindings.Add("Text", bindingSourceVehiculos, "VigenciaVTV", true);
-            metroComboBoxChoferes.DataBindings.Add("Text", bindingSourceVehiculos,"Chofer",true);
-            metroTextBoxTitular.DataBindings.Add("Text", bindingSourceVehiculos, "Titular", true);
-            metroTextBoxKm.DataBindings.Add("Text", bindingSourceVehiculos, "KM", true);
+           
 
 
 
@@ -81,69 +117,18 @@ namespace ErpGestion
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             
-            if (string.IsNullOrEmpty(metroTextBoxPatente.Text))
-            {
-                MessageBox.Show("Error,Tiene que insertar una patente ","Sistema de Gestion Integral",MessageBoxButtons.OK,MessageBoxIcon.Error);
-
-            }
-            else
-            {
-                if (ObjVehiculo.ValidateVehiculo(metroTextBoxPatente.Text)==1)
-                {
-                    DialogResult dialogresult = MessageBox.Show("El Vehiculo ya existe, Deseas Actualizarlo","Sistema de Gestion Integral",MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
-                    if (dialogresult==DialogResult.OK)
-                    {
-                        ObjVehiculo.UpdateVehiculo(metroCheckBoxActivo.Checked, metroTextBoxPatente.Text, (int)metroComboBoxMarca.SelectedValue,
-                            (int)metroComboBoxModelo.SelectedValue, metroTextBoxNochasis.Text, metroTextBoxNomotor.Text, (int)metroComboBoxPoliza.SelectedValue,
-                            metroCheckBoxNeumaticos.Checked, (int)metroComboBoxCombustible.SelectedValue, int.Parse(metroTextBoxyear.Text),metroDateTimeFechaCompra.Value,
-                            metroDateTimeFechaTransferencia.Value,metroDateTimeVTV.Value,(int)metroComboBoxChoferes.SelectedValue,metroTextBoxTitular.Text,int.Parse(metroTextBoxKm.Text)
-                            ,metroCheckBoxGps.Checked);
-                        MessageBox.Show("Se ha Actualizado con exito el vehiculo","Sistema de Gestion Integral",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    }
-
-
-                }
-                else
-                {
-                    DialogResult dialogresult2= MessageBox.Show("El Vehiculo no existe, Deseas Crearlo?", "Sistema de Gestion Integral", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                    if (dialogresult2==DialogResult.OK)
-                    {
-                        ObjVehiculo.InsertarVehiculo(
-                            metroCheckBoxActivo.Checked, 
-                            metroTextBoxPatente.Text, 
-                            (int)metroComboBoxMarca.SelectedValue,
-                           (int)metroComboBoxModelo.SelectedValue,
-                           metroTextBoxNochasis.Text,
-                           metroTextBoxNomotor.Text,
-                           (int)metroComboBoxPoliza.SelectedValue,
-                           metroCheckBoxNeumaticos.Checked, 
-                           (int)metroComboBoxCombustible.SelectedValue,
-                           int.Parse(metroTextBoxyear.Text),
-                           metroDateTimeFechaCompra.Value,
-                           metroDateTimeFechaTransferencia.Value,
-                           metroDateTimeVTV.Value,
-                           (int)metroComboBoxChoferes.SelectedValue,
-                           metroTextBoxTitular.Text,
-                           int.Parse(metroTextBoxKm.Text), metroCheckBoxGps.Checked
-                           );
-                        MessageBox.Show("Se ha Insertado el Vehiculo Con Exito", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                   
-                }
-            }
         }
 
         private void metroTextBoxFiltrarApellido_TextChanged(object sender, EventArgs e)
         {
 
-            metroGridvehiculos.DataSource = new VehiculosManager().FiltrarVehiculosxPatentes(metroTextBoxFiltrarPantente.Text);
+            
         }
 
         private void metroComboBoxMarca_Leave(object sender, EventArgs e)
         {
 
-            metroComboBoxModelo.DataSource = new  VehiculosManager().ModelosVehiculos((int)metroComboBoxMarca.SelectedValue);
+            metroComboBoxModelo.DataSource = mantenimientoVehiculo.GetModeloxMarca((int)metroComboBoxMarca.SelectedValue);
             metroComboBoxModelo.DisplayMember = "Modelo";
             metroComboBoxModelo.ValueMember = "IDModeloVehiculo";
         }
@@ -157,7 +142,7 @@ namespace ErpGestion
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
-            bindingSourceVehiculos.DataSource = new VehiculosManager().FiltrarVehiculosxPatentes(toolStripTextBoxFilter.Text);
+           
         }
 
         private void metroTextBoxMarca_TextChanged(object sender, EventArgs e)
@@ -168,13 +153,7 @@ namespace ErpGestion
         private void metroTextBoxAnno_TextChanged(object sender, EventArgs e)
         {
 
-            if (metroTextBoxAnno.Text == "")
-            {
-                metroGridvehiculos.DataSource = new VehiculosManager().listaVehiculosActivos();
-            }
-            else { 
-            metroGridvehiculos.DataSource = new VehiculosManager().FiltrarVehiculosxYear(int.Parse(metroTextBoxAnno.Text.ToString()));
-             }
+           
         }
 
         private void metroTextBoxMarca_TextChanged_1(object sender, EventArgs e)
@@ -184,17 +163,89 @@ namespace ErpGestion
 
         private void metroTextBoxBrand_TextChanged(object sender, EventArgs e)
         {
-            if (metroTextBoxBrand.Text=="")
-            {
-                metroGridvehiculos.DataSource = new VehiculosManager().listaVehiculosActivos();
-
-            }
-            metroGridvehiculos.DataSource = new VehiculosManager().FiltrarVehiculosxMarca(metroTextBoxBrand.Text);
         }
 
         private void metroTabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroButtonAgregarPago_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (vehiculo != null)
+                {
+                    vehiculo.Activo = metroCheckBoxActivo.Checked;
+                    vehiculo.Gps = metroCheckBoxGps.Checked;
+                    vehiculo.NeumaticoRepuesto = metroCheckBoxNeumaticos.Checked;
+                    vehiculo.Patente = metroTextBoxPatente.Text;
+                    vehiculo.Marca = (int)metroComboBoxMarca.SelectedValue;
+                    vehiculo.Modelo = (int)metroComboBoxModelo.SelectedValue;
+                    vehiculo.FechaCompra = metroDateTimeFechaCompra.Value;
+                    vehiculo.FechaTransferencia = metroDateTimeFechaTransferencia.Value;
+                    vehiculo.Nochasis = metroTextBoxNochasis.Text;
+                    vehiculo.NoMotor = metroTextBoxNomotor.Text;
+                    vehiculo.VigenciaVTV = metroDateTimeVTV.Value;
+                    vehiculo.IdChofer = (int)metroComboBoxChoferes.SelectedValue;
+                    vehiculo.Titular = metroTextBoxTitular.Text;
+                    vehiculo.KM = int.Parse(metroTextBoxKm.Text);
+                    vehiculo.IdPolizaSeguro = (int)metroComboBoxPoliza.SelectedValue;
+                    vehiculo.IDCombustible = (int)metroComboBoxCombustible.SelectedValue;
+                    vehiculo.Year = int.Parse(metroTextBoxyear.Text);
+                    vehiculo.DireccionRadicacion = metroTextBoxRadicacion.Text;
+                    mantenimientoVehiculo.AddorUpdateVehiculo(vehiculo);
+
+                }
+                else
+                {
+                    vehiculo = new Vehiculos();
+                    vehiculo.Activo = metroCheckBoxActivo.Checked;
+                    vehiculo.Gps = metroCheckBoxGps.Checked;
+                    vehiculo.NeumaticoRepuesto = metroCheckBoxNeumaticos.Checked;
+                    vehiculo.Patente = metroTextBoxPatente.Text;
+                    vehiculo.Marca = (int)metroComboBoxMarca.SelectedValue;
+                    vehiculo.Modelo = (int)metroComboBoxModelo.SelectedValue;
+                    vehiculo.FechaCompra = metroDateTimeFechaCompra.Value;
+                    vehiculo.FechaTransferencia = metroDateTimeFechaTransferencia.Value;
+                    vehiculo.Nochasis = metroTextBoxNochasis.Text;
+                    vehiculo.NoMotor = metroTextBoxNomotor.Text;
+                    vehiculo.VigenciaVTV = metroDateTimeVTV.Value;
+                    vehiculo.IdChofer = (int)metroComboBoxChoferes.SelectedValue;
+                    vehiculo.Titular = metroTextBoxTitular.Text;
+                    vehiculo.KM = int.Parse(metroTextBoxKm.Text);
+                    vehiculo.IdPolizaSeguro = (int)metroComboBoxPoliza.SelectedValue;
+                    vehiculo.IDCombustible = (int)metroComboBoxCombustible.SelectedValue;
+                    vehiculo.Year = int.Parse(metroTextBoxyear.Text);
+                    vehiculo.DireccionRadicacion = metroTextBoxRadicacion.Text;
+                    mantenimientoVehiculo.AddorUpdateVehiculo(vehiculo);
+
+                }
+
+                MetroFramework.MetroMessageBox.Show(this, "Mantenimeinto Agregado con exito", "Sistema de Gestiòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

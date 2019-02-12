@@ -233,6 +233,106 @@ namespace ErpGestion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_circle_add_226591 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_circle-add_226591", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_circle_check_226590 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_circle-check_226590", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_edit_3_3324936 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_edit-3_3324936", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_magnifying_glass_226571 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_magnifying-glass_226571", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_plus_325963 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_plus_325963", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_plus_3325019 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_plus_3325019", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_printer_226565 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_printer_226565", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_save_3325027 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_save_3325027", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_trash_227551 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_trash_227551", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_x_circle_3324917 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_x-circle_3324917", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_038_028_share_link_friends_send_android_material_3171669 {
             get {
                 object obj = ResourceManager.GetObject("if_038_028_share_link_friends_send_android_material_3171669", resourceCulture);

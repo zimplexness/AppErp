@@ -94,20 +94,30 @@ namespace ErpGestion
 
         private void metroButtonAgregarPago_Click_1(object sender, EventArgs e)
         {
+           
+        }
+
+        private void PolizaSeguroFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
             try
             {
-                if (PolizaObject!=null)
+                if (PolizaObject != null)
                 {
                     PolizaObject.Nopoliza = metroTextBoxNoPoliza.Text;
                     PolizaObject.Descripcion = metroTextBoxDescripcionPoliza.Text;
                     PolizaObject.FechaEmision = metroDateTimeFechaEmision.Value;
                     PolizaObject.FechaFin = metroDateTimeFechaFin.Value;
-                    PolizaObject.IDCompania=new ProveedorController().GetProveedorByName(metroTextBoxProveedor.Text).IdProveedores;
+                    PolizaObject.IDCompania = new ProveedorController().GetProveedorByName(metroTextBoxProveedor.Text).IdProveedores;
                     PolizaObject.Activa = metroCheckBoxActivo.Checked;
 
-                    if (MantenimientoVehiculo.AddorUpdatePolizas(PolizaObject)!=null)
+                    if (MantenimientoVehiculo.AddorUpdatePolizas(PolizaObject) != null)
                     {
-                        MessageBox.Show("Poliza agregada con exito","Sistema de Gestion Integral",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("Poliza agregada con exito", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                 }
@@ -127,8 +137,8 @@ namespace ErpGestion
                         this.Close();
                     }
                 }
-              
-                
+
+
 
 
             }
@@ -139,9 +149,14 @@ namespace ErpGestion
             }
         }
 
-        private void PolizaSeguroFrm_FormClosing(object sender, FormClosingEventArgs e)
+        private void metroButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

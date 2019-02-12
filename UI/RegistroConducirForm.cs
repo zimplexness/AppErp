@@ -62,16 +62,23 @@ namespace ErpGestion
         private void metroButtonAgregarPago_Click(object sender, EventArgs e)
         {
 
+           
+
+
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
             try
             {
-                if (RegistrosConducir!=null)
+                if (RegistrosConducir != null)
                 {
                     RegistrosConducir.EmpleadoID = (int)metroComboBoxEmpleado.SelectedValue;
                     RegistrosConducir.TipoRegistroID = (int)metroComboBoxTipoRegistro.SelectedValue;
                     RegistrosConducir.FechaEmision = metroDateTimeFechaEmision.Value;
                     RegistrosConducir.FechaVencimiento = metroDateTimeFechaFin.Value;
                     MantenimientoVehiculoController.AddOrUpdateRegistro(RegistrosConducir);
-                    MessageBox.Show("Registro Ingresado con exito","Sistema de Gestion Integral", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("Registro Ingresado con exito", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -92,8 +99,16 @@ namespace ErpGestion
 
                 throw new Exception(ex.Message);
             }
+        }
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

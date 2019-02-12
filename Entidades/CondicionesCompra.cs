@@ -17,16 +17,16 @@ namespace Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CondicionesCompra()
         {
-            this.Comprobantes = new HashSet<Comprobantes>();
             this.Proveedores = new HashSet<Proveedores>();
+            this.Comprobantes = new HashSet<Comprobantes>();
         }
     
         public int IdCondicionCompra { get; set; }
         public string Condiciondecompra { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comprobantes> Comprobantes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Proveedores> Proveedores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comprobantes> Comprobantes { get; set; }
     }
 }

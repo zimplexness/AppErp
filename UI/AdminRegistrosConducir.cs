@@ -58,15 +58,59 @@ namespace ErpGestion
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+           
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+           
+        }
+
+        private void metroTextBoxFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(metroTextBoxFiltro.Text)!=true)
+            {
+                bindingSourceRegistrosConducir.DataSource = MantenimientoVehiculoController.FilterRegistrosConducirxDni(metroTextBoxFiltro.Text);
+            }
+            else
+            {
+                bindingSourceRegistrosConducir.DataSource = MantenimientoVehiculoController.GetAllRegistros();
+            }
+           
+            
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
             RegistroConducirForm registrosConducir = new RegistroConducirForm();
             registrosConducir.FormClosing += AdminRegistrosConducir_FormClosing;
 
             registrosConducir.Show();
         }
 
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void metroTile6_Click(object sender, EventArgs e)
         {
-
             int ID = (int)metroGridRegistros.CurrentRow.Cells["iDRegistroConducirDataGridViewTextBoxColumn"].Value;
             RegistroConducirForm registrosConducir = new RegistroConducirForm();
             registrosConducir.FormClosing += AdminRegistrosConducir_FormClosing;
@@ -74,7 +118,7 @@ namespace ErpGestion
             registrosConducir.Show();
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void metroTile5_Click(object sender, EventArgs e)
         {
             try
             {
@@ -96,20 +140,6 @@ namespace ErpGestion
 
                 throw new Exception(EX.Message);
             }
-        }
-
-        private void metroTextBoxFiltro_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(metroTextBoxFiltro.Text)!=true)
-            {
-                bindingSourceRegistrosConducir.DataSource = MantenimientoVehiculoController.FilterRegistrosConducirxDni(metroTextBoxFiltro.Text);
-            }
-            else
-            {
-                bindingSourceRegistrosConducir.DataSource = MantenimientoVehiculoController.GetAllRegistros();
-            }
-           
-            
         }
     }
 }

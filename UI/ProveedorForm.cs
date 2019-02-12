@@ -98,6 +98,11 @@ namespace ErpGestion
                 }
                 else
                 {
+
+
+
+
+
                     metroTextBoxNOMBRE.Text = _proveedores.Nombre;
                     metroTextBoxRAZON.Text = _proveedores.Razon;
                     metroTextBoxCUIT.Text = _proveedores.Cuit;
@@ -110,9 +115,8 @@ namespace ErpGestion
                     metroTextBoxEmail.Text = _proveedores.Email;
                     metroTextBoxWeb.Text = _proveedores.Web;
                     metroTextBoxContacto.Text = _proveedores.Contacto;
-                    
-                   
                     metroTextBoxObservaciones.Text = _proveedores.Comentario;
+                    metroComboBoxRubros.SelectedValue = _proveedores.IDRubro;
 
                 }
                
@@ -136,6 +140,31 @@ namespace ErpGestion
 
         private void metroButtonAgregarPago_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        #region IFindProvincia Members
+
+        public void Selected(Provincias provincias)
+        {
+            //_proveedores.Provincias.IDProvincias = provincias.IDProvincias;
+            //metroTextBoxProvincia.Text = provincias.Provincias1;
+        }
+
+
+
+
+
+        #endregion
+
+        private void metroButtonProvincia_Click(object sender, EventArgs e)
+        {
+            //FindProvinciasFrm findProvinciasFrm = new FindProvinciasFrm(this,);
+            //findProvinciasFrm.ShowDialog();
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
             try
             {
                 if (string.IsNullOrEmpty(metroTextBoxNOMBRE.Text) || string.IsNullOrEmpty(metroTextBoxRAZON.Text) ||
@@ -147,7 +176,7 @@ namespace ErpGestion
                 else
                 {
 
-                    if (_proveedores!=null)
+                    if (_proveedores != null)
                     {
                         if (string.IsNullOrEmpty(metroTextBoxVencimiento.Text))
                         {
@@ -197,7 +226,7 @@ namespace ErpGestion
                             this.Close();
 
                         }
-                       
+
 
                     }
                     else
@@ -205,26 +234,26 @@ namespace ErpGestion
                         if (string.IsNullOrEmpty(metroTextBoxVencimiento.Text))
                         {
                             _proveedores = new Proveedores();
-                        _proveedores.Nombre = metroTextBoxNOMBRE.Text;
-                        _proveedores.Razon = metroTextBoxRAZON.Text;
-                        _proveedores.Cuit = metroTextBoxCUIT.Text;
-                        _proveedores.IngresosBrutos = metroTextBoxIIBB.Text;
-                        _proveedores.Direccion = metroTextBoxDIRECCION.Text;
-                        _proveedores.IDProvincia = (int)metroComboBoxProvincia.SelectedValue;
-                        _proveedores.IDLocalidad = (int)metroComboBoxLocalidades.SelectedValue;
-                        _proveedores.IDRubro = (int)metroComboBoxRubros.SelectedValue;
-                        _proveedores.FechaIngreso = metroDateTimeFECHA.Value;
-                        _proveedores.Telefono = metroTextBoxTELEFONO.Text;
-                        _proveedores.Email = metroTextBoxEmail.Text;
-                        _proveedores.Web = metroTextBoxWeb.Text;
-                        _proveedores.Contacto = metroTextBoxContacto.Text;
-                        _proveedores.CondicionCompra = (int)metroComboBoxCondicionCompra.SelectedValue;
-                        _proveedores.CuentaCorriente = metroCheckBoxActivo.Checked;
-                        _proveedores.Vencimiento =0;
-                        _proveedores.Comentario = metroTextBoxObservaciones.Text;
-                        proveedorController.AddorUpdateProveedores(_proveedores);
-                        MessageBox.Show("Proveedor Agregado con exito", "Sistema de Gestion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                            _proveedores.Nombre = metroTextBoxNOMBRE.Text;
+                            _proveedores.Razon = metroTextBoxRAZON.Text;
+                            _proveedores.Cuit = metroTextBoxCUIT.Text;
+                            _proveedores.IngresosBrutos = metroTextBoxIIBB.Text;
+                            _proveedores.Direccion = metroTextBoxDIRECCION.Text;
+                            _proveedores.IDProvincia = (int)metroComboBoxProvincia.SelectedValue;
+                            _proveedores.IDLocalidad = (int)metroComboBoxLocalidades.SelectedValue;
+                            _proveedores.IDRubro = (int)metroComboBoxRubros.SelectedValue;
+                            _proveedores.FechaIngreso = metroDateTimeFECHA.Value;
+                            _proveedores.Telefono = metroTextBoxTELEFONO.Text;
+                            _proveedores.Email = metroTextBoxEmail.Text;
+                            _proveedores.Web = metroTextBoxWeb.Text;
+                            _proveedores.Contacto = metroTextBoxContacto.Text;
+                            _proveedores.CondicionCompra = (int)metroComboBoxCondicionCompra.SelectedValue;
+                            _proveedores.CuentaCorriente = metroCheckBoxActivo.Checked;
+                            _proveedores.Vencimiento = 0;
+                            _proveedores.Comentario = metroTextBoxObservaciones.Text;
+                            proveedorController.AddorUpdateProveedores(_proveedores);
+                            MessageBox.Show("Proveedor Agregado con exito", "Sistema de Gestion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
 
                         }
                         else
@@ -268,24 +297,14 @@ namespace ErpGestion
             }
         }
 
-        #region IFindProvincia Members
-
-        public void Selected(Provincias provincias)
+        private void metroButton1_Click(object sender, EventArgs e)
         {
-            //_proveedores.Provincias.IDProvincias = provincias.IDProvincias;
-            //metroTextBoxProvincia.Text = provincias.Provincias1;
+
         }
 
-
-
-
-
-        #endregion
-
-        private void metroButtonProvincia_Click(object sender, EventArgs e)
+        private void metroTile1_Click(object sender, EventArgs e)
         {
-            //FindProvinciasFrm findProvinciasFrm = new FindProvinciasFrm(this,);
-            //findProvinciasFrm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -31,13 +31,10 @@ namespace DL
         public virtual DbSet<ActividadMantenimiento> ActividadMantenimiento { get; set; }
         public virtual DbSet<AfectadoEmpresaCliente> AfectadoEmpresaCliente { get; set; }
         public virtual DbSet<Almacenes> Almacenes { get; set; }
-        public virtual DbSet<Articulos> Articulos { get; set; }
         public virtual DbSet<Bancos> Bancos { get; set; }
         public virtual DbSet<CategoriaEmpleado> CategoriaEmpleado { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
-        public virtual DbSet<CentroCostos> CentroCostos { get; set; }
         public virtual DbSet<Combustibles> Combustibles { get; set; }
-        public virtual DbSet<Comprobantes> Comprobantes { get; set; }
         public virtual DbSet<CondicionesCompra> CondicionesCompra { get; set; }
         public virtual DbSet<Contable> Contable { get; set; }
         public virtual DbSet<CuentaCorriente> CuentaCorriente { get; set; }
@@ -54,7 +51,6 @@ namespace DL
         public virtual DbSet<EstadoCivil> EstadoCivil { get; set; }
         public virtual DbSet<Estados> Estados { get; set; }
         public virtual DbSet<EstudiosRealizados> EstudiosRealizados { get; set; }
-        public virtual DbSet<IngresoMateriales> IngresoMateriales { get; set; }
         public virtual DbSet<Localidades> Localidades { get; set; }
         public virtual DbSet<MarcasVehiculos> MarcasVehiculos { get; set; }
         public virtual DbSet<MediosPago> MediosPago { get; set; }
@@ -110,6 +106,25 @@ namespace DL
         public virtual DbSet<TiposRegistrosConducir> TiposRegistrosConducir { get; set; }
         public virtual DbSet<DetalleActividadMantenimiento> DetalleActividadMantenimiento { get; set; }
         public virtual DbSet<Mantenimiento> Mantenimiento { get; set; }
+        public virtual DbSet<Alicuotas> Alicuotas { get; set; }
+        public virtual DbSet<AperturaCaja> AperturaCaja { get; set; }
+        public virtual DbSet<ControlsAction> ControlsAction { get; set; }
+        public virtual DbSet<DestinoImpuesto> DestinoImpuesto { get; set; }
+        public virtual DbSet<DetalleCaja> DetalleCaja { get; set; }
+        public virtual DbSet<FamiliaArticulos> FamiliaArticulos { get; set; }
+        public virtual DbSet<ImpuestoIva> ImpuestoIva { get; set; }
+        public virtual DbSet<Impuestos> Impuestos { get; set; }
+        public virtual DbSet<PartidaDoble> PartidaDoble { get; set; }
+        public virtual DbSet<Recepciones> Recepciones { get; set; }
+        public virtual DbSet<TipoAlmacen> TipoAlmacen { get; set; }
+        public virtual DbSet<UnidadMedida> UnidadMedida { get; set; }
+        public virtual DbSet<DetalleRecepcionMateriales> DetalleRecepcionMateriales { get; set; }
+        public virtual DbSet<PlanCuentas> PlanCuentas { get; set; }
+        public virtual DbSet<Articulos> Articulos { get; set; }
+        public virtual DbSet<SubCategoriaProducto> SubCategoriaProducto { get; set; }
+        public virtual DbSet<CentroCosto> CentroCosto { get; set; }
+        public virtual DbSet<Comprobantes> Comprobantes { get; set; }
+        public virtual DbSet<ConceptoGasto> ConceptoGasto { get; set; }
     
         public virtual ObjectResult<ComprobantesGastos_Compras_Result> ComprobantesGastos_Compras(Nullable<System.DateTime> fechainicio, Nullable<System.DateTime> fechafin)
         {

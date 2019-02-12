@@ -8,115 +8,108 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Controllers;
+using Entidades;
 
 namespace ErpGestion
 {
     public partial class TallerFrm : MetroFramework.Forms.MetroForm
     {
+        public int IDTaller { get; set; }
+        MantenimientoVehiculoController mantenimientoVehiculo;
+        SharedController sharedController;
+        Talleres taller;
         public TallerFrm()
         {
             InitializeComponent();
+            mantenimientoVehiculo = new MantenimientoVehiculoController();
+            sharedController = new SharedController();
+            taller = new Talleres();
         }
 
         private void TallerFrm_Load(object sender, EventArgs e)
         {
-            bindingSourceTaller.DataSource = new TallerManager().TalleresMecanicos();
-            metroGridTalleres.DataSource = bindingSourceTaller;
+           //Fill Comboboxes
 
-
-            metroComboBoxlocalidad.DataSource = new Provincia_localidad().ListarLocalidades();
+            metroComboBoxlocalidad.DataSource = sharedController.GetLocalidades();
             metroComboBoxlocalidad.DisplayMember = "Localidades1";
             metroComboBoxlocalidad.ValueMember = "IdLocalidad";
 
-            metroComboBoxtipotaller.DataSource = new TallerManager().TiposTaller();
+            metroComboBoxtipotaller.DataSource = mantenimientoVehiculo.GetAllTiposTalleres();
             metroComboBoxtipotaller.DisplayMember = "DescripcionTaller";
             metroComboBoxtipotaller.ValueMember = "IdTipoTaller";
 
-            metroTextBoxNombre.DataBindings.Add("Text", bindingSourceTaller, "NombreTaller", true);
-            metroTextBoxencargado.DataBindings.Add("Text", bindingSourceTaller, "NombreEncargado", true);
-            metroTextBoxdireccion.DataBindings.Add("Text", bindingSourceTaller, "Direccion", true);
-            metroComboBoxlocalidad.DataBindings.Add("Text", bindingSourceTaller, "Localidades", true);
-            metroTextBoxtelefono.DataBindings.Add("Text", bindingSourceTaller, "TelefonoCotacto", true);
-            metroComboBoxtipotaller.DataBindings.Add("Text", bindingSourceTaller, "DescripcionTaller", true);
-        }
+            taller = mantenimientoVehiculo.GetTallerByID(IDTaller);
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(metroTextBoxNombre.Text) || string.IsNullOrEmpty(metroTextBoxdireccion.Text) || string.IsNullOrEmpty(metroTextBoxencargado.Text))
+            if (taller!=null)
             {
-
-                MessageBox.Show("Error, debe insertar los datos", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else
-            {
-                if (new TallerManager().validateTaller(metroTextBoxNombre.Text, metroTextBoxdireccion.Text) == 1)
-                {
-                    DialogResult dialogresult = MessageBox.Show("Ya existe el Taller, Desea Actualizarlo?", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (dialogresult == DialogResult.OK)
-                    {
-                        new TallerManager().
-                            UpdateTaller(metroTextBoxNombre.Text, metroTextBoxdireccion.Text,
-                            (int)metroComboBoxlocalidad.SelectedValue,
-                            metroTextBoxtelefono.Text,
-                            metroTextBoxencargado.Text,
-                            (int)metroComboBoxtipotaller.SelectedValue
-                            );
-
-                        MessageBox.Show("Se actualizo con exito", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-
-
-                    }
-                }
-                else
-                {
-
-                    DialogResult dialogresult1 = MessageBox.Show("No Existe el taller, Desea Crearlo?", "Sistema Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                    if (dialogresult1 == DialogResult.OK)
-                    {
-                        new TallerManager().InsertarTaller(metroTextBoxNombre.Text, metroTextBoxdireccion.Text,
-                            (int)metroComboBoxlocalidad.SelectedValue,
-                            metroTextBoxtelefono.Text,
-                            metroTextBoxencargado.Text,
-                            (int)metroComboBoxtipotaller.SelectedValue);
-                        MessageBox.Show("Se inserto con exito", "Sistema de Gestion Integral", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-
-
-
-
-                }
-
-
-
-            }
-        }
-
-        private void toolStripTextBoxFiltroNombre_TextChanged(object sender, EventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(toolStripTextBoxFiltroNombre.Text))
-            {
-                bindingSourceTaller.DataSource = new TallerManager().TalleresMecanicos();
-                
-
-            }
-            else
-            {
-                bindingSourceTaller.DataSource = new TallerManager().FiltrarxNombres(toolStripTextBoxFiltroNombre.Text);
+                metroTextBoxNombre.Text = taller.NombreTaller;
+                metroTextBoxencargado.Text = taller.NombreEncargado;
+                metroComboBoxtipotaller.SelectedValue = taller.IdTipoTaller;
+                metroTextBoxdireccion.Text = taller.Direccion;
+                metroComboBoxlocalidad.SelectedValue = taller.IDLocalidad;
+                metroTextBoxtelefono.Text = taller.TelefonoCotacto;
             }
 
             
         }
 
-        private void metroTabPageNuevoTaller_Click(object sender, EventArgs e)
+        private void metroButtonAgregarPago_Click(object sender, EventArgs e)
         {
+           
+        }
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(metroTextBoxNombre.Text))
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Ingrese el nombre del taller", "Sistema de Gestiòn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else
+                {
+                    if (taller != null)
+                    {
+                        taller.NombreTaller = metroTextBoxNombre.Text;
+                        taller.NombreEncargado = metroTextBoxencargado.Text;
+                        taller.IdTipoTaller = (int)metroComboBoxtipotaller.SelectedValue;
+                        taller.Direccion = metroTextBoxdireccion.Text;
+                        taller.IDLocalidad = (int)metroComboBoxlocalidad.SelectedValue;
+                        taller.TelefonoCotacto = metroTextBoxtelefono.Text;
+                        mantenimientoVehiculo.AddorUpdateTaller(taller);
+                    }
+                    else
+                    {
+                        taller = new Talleres();
+                        taller.NombreTaller = metroTextBoxNombre.Text;
+                        taller.NombreEncargado = metroTextBoxencargado.Text;
+                        taller.IdTipoTaller = (int)metroComboBoxtipotaller.SelectedValue;
+                        taller.Direccion = metroTextBoxdireccion.Text;
+                        taller.IDLocalidad = (int)metroComboBoxlocalidad.SelectedValue;
+                        taller.TelefonoCotacto = metroTextBoxtelefono.Text;
+                        mantenimientoVehiculo.AddorUpdateTaller(taller);
+
+                    }
+                    MetroFramework.MetroMessageBox.Show(this, "Taller ingresado con exito", "Sistema de Gestiòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

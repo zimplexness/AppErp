@@ -12,17 +12,14 @@ namespace Entidades
     using System;
     using System.Collections.Generic;
     
-    public partial class IngresoMateriales
+    public partial class DetalleRecepcionMateriales
     {
-        public int iDingresoMateriales { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
-        public string NoRemito { get; set; }
-        public Nullable<int> IdAlmacen { get; set; }
-        public Nullable<int> IdRecepcion { get; set; }
-        public Nullable<int> idArticulo { get; set; }
-        public Nullable<double> Cantidad { get; set; }
-    
-        public virtual Almacenes Almacenes { get; set; }
-        public virtual Articulos Articulos { get; set; }
+        public Nullable<int> DetalleRecepcionArticuloID { get; set; }
+        public string NombreArticulo { get; set; }
+        public Nullable<int> UmID { get; set; }
+        public Nullable<decimal> Cantidad { get; set; }
+        public Nullable<decimal> PrecioUnitario { get; set; }
+        public int RecepcionID { get; set; }
+        public int CodigoArticulo { get; set; }
     }
 }

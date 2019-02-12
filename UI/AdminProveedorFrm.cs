@@ -370,5 +370,71 @@ namespace ErpGestion
 
             }
         }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+
+            FrmEditProveedor frmEditProveedor = new FrmEditProveedor();
+            frmEditProveedor.FormClosed += AdminProveedorFrm_FormClosed;
+            frmEditProveedor.Show();
+        }
+
+        private void metroTile6_Click(object sender, EventArgs e)
+        {
+            //abrir formulario de comprobantes
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(FrmEditProveedor))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            string cuit = metroGridProveedores.CurrentRow.Cells["Cuit"].Value.ToString();
+            FrmEditProveedor frmEditProveedor = new FrmEditProveedor();
+
+            frmEditProveedor.cuit = cuit;
+
+            frmEditProveedor.FormClosed += AdminProveedorFrm_FormClosed;
+            frmEditProveedor.Show();
+        }
+
+        private void metroTile5_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Estas seguro que quieres eliminar el Proveedor seleccionado?", "Sistema de Gestion", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation & MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    ProveedorController.DeleteProveedores(metroGridProveedores.CurrentRow.Cells["Cuit"].Value.ToString());
+                    MetroFramework.MetroMessageBox.Show(this, "Proveedor elimminado con exito", "Sistema de Gestiòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+
+            }
+            catch (Exception EX)
+            {
+
+                throw new Exception(EX.Message);
+            }
+        }
     }
 }

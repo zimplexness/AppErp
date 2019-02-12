@@ -64,10 +64,7 @@ namespace ErpGestion
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            RubroForm rubroForm = new RubroForm();
-            rubroForm.FormClosed += rubroForm_Form_Closed;
-
-            rubroForm.ShowDialog();
+           
         }
 
         private void metroGridRubro_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -81,11 +78,7 @@ namespace ErpGestion
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            RubroForm frmrubro = new RubroForm();
-            frmrubro.IDRubro = int.Parse(metroGridRubro.CurrentRow.Cells["iDRubroProveedorDataGridViewTextBoxColumn"].Value.ToString());
-            frmrubro.Edition = true;
-            frmrubro.FormClosed += rubroForm_Form_Closed;
-            frmrubro.Show();
+           
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -98,6 +91,38 @@ namespace ErpGestion
 
             bindingSourceRubros.DataSource = proveedorController.GetRubroProveedor();
             bindingSourceRubros.ResetBindings(true);
+
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            RubroForm rubroForm = new RubroForm();
+            rubroForm.FormClosed += rubroForm_Form_Closed;
+
+            rubroForm.ShowDialog();
+        }
+
+        private void metroTile6_Click(object sender, EventArgs e)
+        {
+            RubroForm frmrubro = new RubroForm();
+            frmrubro.IDRubro = int.Parse(metroGridRubro.CurrentRow.Cells["iDRubroProveedorDataGridViewTextBoxColumn"].Value.ToString());
+            frmrubro.Edition = true;
+            frmrubro.FormClosed += rubroForm_Form_Closed;
+            frmrubro.Show();
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
 
         }
     }

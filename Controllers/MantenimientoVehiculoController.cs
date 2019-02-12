@@ -165,5 +165,88 @@ namespace Controllers
             return mantenimientoVehiculoRepository.DeletePolizaSeguro(ID);
         }
 
+        public IEnumerable<Vehiculos> FilterVehiculoByPatente(string Patente)
+        {
+            return mantenimientoVehiculoRepository.FilterVehiculoByPatente(Patente);
+        }
+
+        public IEnumerable<Vehiculos> FilterVehiculosbyMarca(string marca)
+        {
+            return mantenimientoVehiculoRepository.FilterVehiculosbyMarca(marca);
+        }
+
+        public IEnumerable<Vehiculos> FilterVehiculosbyYear(int year)
+        {
+            return mantenimientoVehiculoRepository.FilterVehiculosbyYear(year);
+        }
+
+        public IEnumerable<Vehiculos> FilterVehiculosModelos(string modelo)
+        {
+            return mantenimientoVehiculoRepository.FilterVehiculosModelos(modelo);
+        }
+
+        public IEnumerable<MarcasVehiculos> GetMarcasVehiculos()
+        {
+            return mantenimientoVehiculoRepository.GetMarcasVehiculos();
+        }
+
+        public IEnumerable<ModelosVehiculos> GetModeloxMarca(int IdMarca)
+        {
+            return mantenimientoVehiculoRepository.GetModeloxMarca(IdMarca);
+        }
+        public IEnumerable<Combustibles> GetCombustibles()
+        {
+            return mantenimientoVehiculoRepository.GetCombustibles();
+        }
+        public Vehiculos AddorUpdateVehiculo(Vehiculos vehiculos)
+        {
+            return mantenimientoVehiculoRepository.AddorUpdateVehiculo(vehiculos);
+        }
+        public Vehiculos GetVehiculosById(int Id)
+        {
+            return mantenimientoVehiculoRepository.GetVehiculosById(Id);
+        }
+        public IEnumerable<ModelosVehiculos> GetModelosVehiculos()
+        {
+            return mantenimientoVehiculoRepository.GetModelosVehiculos();
+        }
+        public Vehiculos DeleteVehiculo(int ID)
+        {
+            return mantenimientoVehiculoRepository.DeleteVehiculo(ID);
+        }
+
+        public IEnumerable<Talleres> GetAllTalleres()
+        {
+            return mantenimientoVehiculoRepository.GetAllTalleres();
+        }
+
+        public IEnumerable<Talleres> FilterByTaller(string nombre)
+        {
+            return mantenimientoVehiculoRepository.FilterByTaller(nombre);
+        }
+
+        public IEnumerable<Talleres> FilterByDireccion(string direccion)
+        {
+            return mantenimientoVehiculoRepository.FilterByDireccion(direccion);
+        }
+
+        public Talleres GetTallerByID(int ID)
+        {
+            return mantenimientoVehiculoRepository.GetTallerByID(ID);
+        }
+        public Talleres AddorUpdateTaller(Talleres taller)
+        {
+            return mantenimientoVehiculoRepository.AddorUpdateTaller(taller);
+        }
+
+        public IEnumerable<TipoTaller> GetAllTiposTalleres()
+        {
+            return mantenimientoVehiculoRepository.GetAllTiposTalleres();
+        }
+        public Talleres DeleteTaller(int ID)
+        {
+            return mantenimientoVehiculoRepository.DeleteTaller(ID);
+        }
+
     }
 }

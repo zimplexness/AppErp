@@ -18,6 +18,7 @@ namespace Entidades
         public Categorias()
         {
             this.Articulos = new HashSet<Articulos>();
+            this.SubCategoriaProducto = new HashSet<SubCategoriaProducto>();
         }
     
         public int IDCategoria { get; set; }
@@ -25,5 +26,7 @@ namespace Entidades
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Articulos> Articulos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubCategoriaProducto> SubCategoriaProducto { get; set; }
     }
 }

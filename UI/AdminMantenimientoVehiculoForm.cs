@@ -55,23 +55,7 @@ namespace ErpGestion
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //abrir formulario de comprobantes
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f.GetType() == typeof(MantenimientoForm))
-                {
-                    f.Activate();
-                    return;
-                }
-            }
-            int IdMantenimiento = (int)metroGridMantenimientos.CurrentRow.Cells["iDMantenimientoDataGridViewTextBoxColumn"].Value;
             
-            MantenimientoForm mantenimientoForm = new MantenimientoForm();
-
-            mantenimientoForm.IDMantenimiento = IdMantenimiento;
-            mantenimientoForm.Edition = true;
-            mantenimientoForm.FormClosed += AdminMantenimientoVehiculoForm_FormClosed;
-            mantenimientoForm.Show();
 
            
         }
@@ -90,22 +74,7 @@ namespace ErpGestion
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            //abrir formulario de comprobantes
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f.GetType() == typeof(MantenimientoForm))
-                {
-                    f.Activate();
-                    return;
-                }
-            }
-            //int IdMantenimiento = (int)metroGridMantenimientos.CurrentRow.Cells["iDMantenimientoDataGridViewTextBoxColumn"].Value;
-            MantenimientoForm mantenimientoForm = new MantenimientoForm();
-
-            //mantenimientoForm.IDMantenimiento = IdMantenimiento;
-            mantenimientoForm.Edition = false;
-            mantenimientoForm.FormClosed += AdminMantenimientoVehiculoForm_FormClosed;
-            mantenimientoForm.Show();
+           
         }
 
         private void metroGridMantenimientos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -131,13 +100,59 @@ namespace ErpGestion
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+          
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            //abrir formulario de comprobantes
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(MantenimientoForm))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            //int IdMantenimiento = (int)metroGridMantenimientos.CurrentRow.Cells["iDMantenimientoDataGridViewTextBoxColumn"].Value;
+            MantenimientoForm mantenimientoForm = new MantenimientoForm();
+
+            //mantenimientoForm.IDMantenimiento = IdMantenimiento;
+            mantenimientoForm.Edition = false;
+            mantenimientoForm.FormClosed += AdminMantenimientoVehiculoForm_FormClosed;
+            mantenimientoForm.Show();
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            //abrir formulario de comprobantes
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(MantenimientoForm))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            int IdMantenimiento = (int)metroGridMantenimientos.CurrentRow.Cells["iDMantenimientoDataGridViewTextBoxColumn"].Value;
+
+            MantenimientoForm mantenimientoForm = new MantenimientoForm();
+
+            mantenimientoForm.IDMantenimiento = IdMantenimiento;
+            mantenimientoForm.Edition = true;
+            mantenimientoForm.FormClosed += AdminMantenimientoVehiculoForm_FormClosed;
+            mantenimientoForm.Show();
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
             try
             {
                 DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Estas seguro que quieres eliminar el Mantenimiento seleccionado?", "Sistema de Gestion", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation & MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     mantenimientoVehiculo.DeleteManteniento((int)metroGridMantenimientos.CurrentRow.Cells["iDMantenimientoDataGridViewTextBoxColumn"].Value);
-                        //((int)metroGridRegistros.CurrentRow.Cells["iDRegistroConducirDataGridViewTextBoxColumn"].Value);
+                    //((int)metroGridRegistros.CurrentRow.Cells["iDRegistroConducirDataGridViewTextBoxColumn"].Value);
                     MetroFramework.MetroMessageBox.Show(this, "Proveedor elimminado con exito", "Sistema de Gestiòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     bindingSourceMantenimientos.DataSource = mantenimientoVehiculo.GetMantenimientos();
                     bindingSourceMantenimientos.ResetBindings(true);

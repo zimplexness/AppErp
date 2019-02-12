@@ -36,13 +36,12 @@
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBoxTotalGeneral = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTextBoxProductTest = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
             this.metroGridTest = new MetroFramework.Controls.MetroGrid();
-            this.objectBindingSourceArticulos = new System.Core.ComponentModel.ObjectBindingSource(this.components);
-            this.bindingSourceComprobantes = new System.Core.ComponentModel.ObjectBindingSource(this.components);
+            this.IvaCalculado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBoxPrecioTest = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBoxIvaTest = new MetroFramework.Controls.MetroTextBox();
@@ -65,9 +64,7 @@
             this.metroTextBoxRetenciones = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBoxIIBB = new MetroFramework.Controls.MetroTextBox();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroTextBoxProveedor = new MetroFramework.Controls.MetroTextBox();
-            this.metroButtonCancelarComprobante = new MetroFramework.Controls.MetroButton();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTimeVencimiento = new MetroFramework.Controls.MetroDateTime();
@@ -83,31 +80,39 @@
             this.metroComboBoxTipoFactura = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBoxCentroCosto = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBoxTipoComprobante = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.metroComboBoxConcepto = new MetroFramework.Controls.MetroComboBox();
+            this.groupBoxInfo = new System.Windows.Forms.GroupBox();
+            this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBoxCentroCosto = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.objectBindingSourceCentro = new System.Core.ComponentModel.ObjectBindingSource(this.components);
             this.idTableDetallesComprobanteArticulosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.articulosNombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.objectBindingSourceArticulos = new System.Core.ComponentModel.ObjectBindingSource(this.components);
             this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ivaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IvaCalculado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceComprobantes = new System.Core.ComponentModel.ObjectBindingSource(this.components);
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridTest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceArticulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceComprobantes)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.metroPanelGastos.SuspendLayout();
+            this.groupBoxInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceCentro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceComprobantes)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(779, 101);
+            this.metroLabel13.Location = new System.Drawing.Point(879, 75);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(98, 19);
             this.metroLabel13.TabIndex = 59;
@@ -129,7 +134,7 @@
             this.metroTextBoxTotalGeneral.CustomButton.Visible = false;
             this.metroTextBoxTotalGeneral.Lines = new string[] {
         "00,00"};
-            this.metroTextBoxTotalGeneral.Location = new System.Drawing.Point(781, 123);
+            this.metroTextBoxTotalGeneral.Location = new System.Drawing.Point(881, 97);
             this.metroTextBoxTotalGeneral.MaxLength = 32767;
             this.metroTextBoxTotalGeneral.Name = "metroTextBoxTotalGeneral";
             this.metroTextBoxTotalGeneral.PasswordChar = '\0';
@@ -147,7 +152,7 @@
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Controls.Add(this.metroButton2);
+            this.metroPanel1.Controls.Add(this.metroTile2);
             this.metroPanel1.Controls.Add(this.metroTextBoxProductTest);
             this.metroPanel1.Controls.Add(this.metroLabel20);
             this.metroPanel1.Controls.Add(this.metroLabel21);
@@ -160,9 +165,9 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(9, 156);
+            this.metroPanel1.Location = new System.Drawing.Point(6, 138);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(872, 222);
+            this.metroPanel1.Size = new System.Drawing.Size(764, 209);
             this.metroPanel1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel1.TabIndex = 57;
             this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -171,17 +176,22 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // metroButton2
+            // metroTile2
             // 
-            this.metroButton2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton2.BackgroundImage = global::ErpGestion.Properties.Resources._1497285708_Cancel;
-            this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton2.Location = new System.Drawing.Point(667, 36);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(39, 36);
-            this.metroButton2.TabIndex = 33;
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile2.Location = new System.Drawing.Point(667, 23);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(86, 39);
+            this.metroTile2.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroTile2.TabIndex = 110;
+            this.metroTile2.Text = "CANCELAR";
+            this.metroTile2.TileImage = global::ErpGestion.Properties.Resources.iconfinder_x_circle_3324917;
+            this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile2.UseSelectable = true;
+            this.metroTile2.UseTileImage = true;
+            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
             // 
             // metroTextBoxProductTest
             // 
@@ -198,7 +208,7 @@
             this.metroTextBoxProductTest.CustomButton.UseSelectable = true;
             this.metroTextBoxProductTest.CustomButton.Visible = false;
             this.metroTextBoxProductTest.Lines = new string[0];
-            this.metroTextBoxProductTest.Location = new System.Drawing.Point(3, 45);
+            this.metroTextBoxProductTest.Location = new System.Drawing.Point(3, 35);
             this.metroTextBoxProductTest.MaxLength = 32767;
             this.metroTextBoxProductTest.Name = "metroTextBoxProductTest";
             this.metroTextBoxProductTest.PasswordChar = '\0';
@@ -216,7 +226,7 @@
             // metroLabel20
             // 
             this.metroLabel20.AutoSize = true;
-            this.metroLabel20.Location = new System.Drawing.Point(595, 20);
+            this.metroLabel20.Location = new System.Drawing.Point(595, 10);
             this.metroLabel20.Name = "metroLabel20";
             this.metroLabel20.Size = new System.Drawing.Size(46, 19);
             this.metroLabel20.TabIndex = 32;
@@ -225,7 +235,7 @@
             // metroLabel21
             // 
             this.metroLabel21.AutoSize = true;
-            this.metroLabel21.Location = new System.Drawing.Point(524, 23);
+            this.metroLabel21.Location = new System.Drawing.Point(524, 13);
             this.metroLabel21.Name = "metroLabel21";
             this.metroLabel21.Size = new System.Drawing.Size(25, 19);
             this.metroLabel21.TabIndex = 31;
@@ -269,7 +279,7 @@
             this.metroGridTest.EnableHeadersVisualStyles = false;
             this.metroGridTest.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridTest.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridTest.Location = new System.Drawing.Point(3, 78);
+            this.metroGridTest.Location = new System.Drawing.Point(3, 68);
             this.metroGridTest.Name = "metroGridTest";
             this.metroGridTest.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -282,33 +292,22 @@
             this.metroGridTest.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGridTest.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridTest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGridTest.Size = new System.Drawing.Size(786, 126);
+            this.metroGridTest.Size = new System.Drawing.Size(750, 126);
             this.metroGridTest.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroGridTest.TabIndex = 27;
             this.metroGridTest.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroGridTest.UseStyleColors = true;
             // 
-            // objectBindingSourceArticulos
+            // IvaCalculado
             // 
-            this.objectBindingSourceArticulos.AutoCreateObjects = false;
-            this.objectBindingSourceArticulos.DataSource = typeof(Entidades.Articulos);
-            // 
-            // bindingSourceComprobantes
-            // 
-            this.bindingSourceComprobantes.AutoCreateObjects = false;
-            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties"))));
-            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties1"))));
-            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties2"))));
-            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties3"))));
-            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties4"))));
-            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties5"))));
-            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties6"))));
-            this.bindingSourceComprobantes.DataSource = typeof(Entidades.DetallesComprobanteArticulos);
+            this.IvaCalculado.DataPropertyName = "IvaCalculado";
+            this.IvaCalculado.HeaderText = "Iva Calculado";
+            this.IvaCalculado.Name = "IvaCalculado";
             // 
             // metroLabel22
             // 
             this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(440, 20);
+            this.metroLabel22.Location = new System.Drawing.Point(440, 10);
             this.metroLabel22.Name = "metroLabel22";
             this.metroLabel22.Size = new System.Drawing.Size(62, 19);
             this.metroLabel22.TabIndex = 30;
@@ -329,7 +328,7 @@
             this.metroTextBoxPrecioTest.CustomButton.UseSelectable = true;
             this.metroTextBoxPrecioTest.CustomButton.Visible = false;
             this.metroTextBoxPrecioTest.Lines = new string[0];
-            this.metroTextBoxPrecioTest.Location = new System.Drawing.Point(595, 45);
+            this.metroTextBoxPrecioTest.Location = new System.Drawing.Point(595, 35);
             this.metroTextBoxPrecioTest.MaxLength = 32767;
             this.metroTextBoxPrecioTest.Name = "metroTextBoxPrecioTest";
             this.metroTextBoxPrecioTest.PasswordChar = '\0';
@@ -360,7 +359,7 @@
             this.metroTextBoxIvaTest.CustomButton.UseSelectable = true;
             this.metroTextBoxIvaTest.CustomButton.Visible = false;
             this.metroTextBoxIvaTest.Lines = new string[0];
-            this.metroTextBoxIvaTest.Location = new System.Drawing.Point(524, 45);
+            this.metroTextBoxIvaTest.Location = new System.Drawing.Point(524, 35);
             this.metroTextBoxIvaTest.MaxLength = 32767;
             this.metroTextBoxIvaTest.Name = "metroTextBoxIvaTest";
             this.metroTextBoxIvaTest.PasswordChar = '\0';
@@ -390,7 +389,7 @@
             this.metroTextBoxCantTest.CustomButton.UseSelectable = true;
             this.metroTextBoxCantTest.CustomButton.Visible = false;
             this.metroTextBoxCantTest.Lines = new string[0];
-            this.metroTextBoxCantTest.Location = new System.Drawing.Point(440, 45);
+            this.metroTextBoxCantTest.Location = new System.Drawing.Point(440, 35);
             this.metroTextBoxCantTest.MaxLength = 32767;
             this.metroTextBoxCantTest.Name = "metroTextBoxCantTest";
             this.metroTextBoxCantTest.PasswordChar = '\0';
@@ -408,7 +407,7 @@
             // metroLabel23
             // 
             this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(3, 20);
+            this.metroLabel23.Location = new System.Drawing.Point(3, 10);
             this.metroLabel23.Name = "metroLabel23";
             this.metroLabel23.Size = new System.Drawing.Size(125, 19);
             this.metroLabel23.TabIndex = 24;
@@ -420,7 +419,7 @@
             this.groupBox2.Controls.Add(this.metroComboBoxMedioPago);
             this.groupBox2.Controls.Add(this.metroLabel19);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Location = new System.Drawing.Point(652, 384);
+            this.groupBox2.Location = new System.Drawing.Point(776, 263);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(232, 84);
             this.groupBox2.TabIndex = 56;
@@ -452,7 +451,7 @@
             this.groupBox1.Controls.Add(this.metroPanelGastos);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(9, 384);
+            this.groupBox1.Location = new System.Drawing.Point(6, 353);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(637, 125);
             this.groupBox1.TabIndex = 55;
@@ -734,18 +733,6 @@
             this.metroTextBoxIIBB.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.metroTextBoxIIBB.Leave += new System.EventHandler(this.metroTextBoxIIBB_Leave);
             // 
-            // metroButton1
-            // 
-            this.metroButton1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton1.BackgroundImage = global::ErpGestion.Properties.Resources._1497285414_Checkmark;
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton1.Location = new System.Drawing.Point(845, 474);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(40, 44);
-            this.metroButton1.TabIndex = 39;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
-            // 
             // metroTextBoxProveedor
             // 
             // 
@@ -761,7 +748,7 @@
             this.metroTextBoxProveedor.CustomButton.UseSelectable = true;
             this.metroTextBoxProveedor.CustomButton.Visible = false;
             this.metroTextBoxProveedor.Lines = new string[0];
-            this.metroTextBoxProveedor.Location = new System.Drawing.Point(378, 67);
+            this.metroTextBoxProveedor.Location = new System.Drawing.Point(478, 41);
             this.metroTextBoxProveedor.MaxLength = 32767;
             this.metroTextBoxProveedor.Name = "metroTextBoxProveedor";
             this.metroTextBoxProveedor.PasswordChar = '\0';
@@ -777,22 +764,10 @@
             this.metroTextBoxProveedor.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.metroTextBoxProveedor.TextChanged += new System.EventHandler(this.metroTextBoxProveedor_TextChanged);
             // 
-            // metroButtonCancelarComprobante
-            // 
-            this.metroButtonCancelarComprobante.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButtonCancelarComprobante.BackgroundImage = global::ErpGestion.Properties.Resources._1497285708_Cancel;
-            this.metroButtonCancelarComprobante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButtonCancelarComprobante.Location = new System.Drawing.Point(792, 474);
-            this.metroButtonCancelarComprobante.Name = "metroButtonCancelarComprobante";
-            this.metroButtonCancelarComprobante.Size = new System.Drawing.Size(47, 42);
-            this.metroButtonCancelarComprobante.TabIndex = 22;
-            this.metroButtonCancelarComprobante.UseSelectable = true;
-            this.metroButtonCancelarComprobante.Click += new System.EventHandler(this.metroButtonCancelarComprobante_Click);
-            // 
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(555, 97);
+            this.metroLabel10.Location = new System.Drawing.Point(552, 71);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(118, 19);
             this.metroLabel10.TabIndex = 21;
@@ -801,7 +776,7 @@
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(435, 99);
+            this.metroLabel9.Location = new System.Drawing.Point(432, 73);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(47, 19);
             this.metroLabel9.TabIndex = 20;
@@ -810,7 +785,7 @@
             // metroDateTimeVencimiento
             // 
             this.metroDateTimeVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTimeVencimiento.Location = new System.Drawing.Point(557, 121);
+            this.metroDateTimeVencimiento.Location = new System.Drawing.Point(554, 95);
             this.metroDateTimeVencimiento.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTimeVencimiento.Name = "metroDateTimeVencimiento";
             this.metroDateTimeVencimiento.Size = new System.Drawing.Size(116, 29);
@@ -819,7 +794,7 @@
             // metroDateTimeFecha
             // 
             this.metroDateTimeFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTimeFecha.Location = new System.Drawing.Point(435, 121);
+            this.metroDateTimeFecha.Location = new System.Drawing.Point(432, 95);
             this.metroDateTimeFecha.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTimeFecha.Name = "metroDateTimeFecha";
             this.metroDateTimeFecha.Size = new System.Drawing.Size(116, 29);
@@ -830,7 +805,7 @@
             // 
             this.metroComboBoxContable.FormattingEnabled = true;
             this.metroComboBoxContable.ItemHeight = 23;
-            this.metroComboBoxContable.Location = new System.Drawing.Point(287, 121);
+            this.metroComboBoxContable.Location = new System.Drawing.Point(284, 95);
             this.metroComboBoxContable.Name = "metroComboBoxContable";
             this.metroComboBoxContable.Size = new System.Drawing.Size(142, 29);
             this.metroComboBoxContable.TabIndex = 8;
@@ -839,7 +814,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(291, 99);
+            this.metroLabel8.Location = new System.Drawing.Point(288, 73);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(62, 19);
             this.metroLabel8.TabIndex = 16;
@@ -849,7 +824,7 @@
             // 
             this.metroComboBoxCondicionCompra.FormattingEnabled = true;
             this.metroComboBoxCondicionCompra.ItemHeight = 23;
-            this.metroComboBoxCondicionCompra.Location = new System.Drawing.Point(9, 121);
+            this.metroComboBoxCondicionCompra.Location = new System.Drawing.Point(6, 95);
             this.metroComboBoxCondicionCompra.Name = "metroComboBoxCondicionCompra";
             this.metroComboBoxCondicionCompra.Size = new System.Drawing.Size(272, 29);
             this.metroComboBoxCondicionCompra.TabIndex = 7;
@@ -858,7 +833,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(9, 99);
+            this.metroLabel7.Location = new System.Drawing.Point(6, 73);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(140, 19);
             this.metroLabel7.TabIndex = 14;
@@ -867,7 +842,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(808, 42);
+            this.metroLabel6.Location = new System.Drawing.Point(908, 16);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(73, 19);
             this.metroLabel6.TabIndex = 13;
@@ -876,7 +851,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(743, 42);
+            this.metroLabel5.Location = new System.Drawing.Point(843, 16);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(55, 19);
             this.metroLabel5.TabIndex = 12;
@@ -897,7 +872,7 @@
             this.metroTextBoxNoFactura.CustomButton.UseSelectable = true;
             this.metroTextBoxNoFactura.CustomButton.Visible = false;
             this.metroTextBoxNoFactura.Lines = new string[0];
-            this.metroTextBoxNoFactura.Location = new System.Drawing.Point(806, 64);
+            this.metroTextBoxNoFactura.Location = new System.Drawing.Point(906, 38);
             this.metroTextBoxNoFactura.MaxLength = 8;
             this.metroTextBoxNoFactura.Name = "metroTextBoxNoFactura";
             this.metroTextBoxNoFactura.PasswordChar = '\0';
@@ -930,7 +905,7 @@
             this.metroTextBoxPuntoV.CustomButton.UseSelectable = true;
             this.metroTextBoxPuntoV.CustomButton.Visible = false;
             this.metroTextBoxPuntoV.Lines = new string[0];
-            this.metroTextBoxPuntoV.Location = new System.Drawing.Point(743, 64);
+            this.metroTextBoxPuntoV.Location = new System.Drawing.Point(843, 38);
             this.metroTextBoxPuntoV.MaxLength = 4;
             this.metroTextBoxPuntoV.Name = "metroTextBoxPuntoV";
             this.metroTextBoxPuntoV.PasswordChar = '\0';
@@ -952,7 +927,7 @@
             // 
             this.metroComboBoxTipoFactura.FormattingEnabled = true;
             this.metroComboBoxTipoFactura.ItemHeight = 23;
-            this.metroComboBoxTipoFactura.Location = new System.Drawing.Point(665, 67);
+            this.metroComboBoxTipoFactura.Location = new System.Drawing.Point(765, 41);
             this.metroComboBoxTipoFactura.Name = "metroComboBoxTipoFactura";
             this.metroComboBoxTipoFactura.Size = new System.Drawing.Size(53, 29);
             this.metroComboBoxTipoFactura.TabIndex = 4;
@@ -961,7 +936,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(656, 42);
+            this.metroLabel4.Location = new System.Drawing.Point(756, 16);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(81, 19);
             this.metroLabel4.TabIndex = 8;
@@ -970,60 +945,147 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(389, 42);
+            this.metroLabel3.Location = new System.Drawing.Point(478, 19);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(71, 19);
             this.metroLabel3.TabIndex = 6;
             this.metroLabel3.Text = "Proveedor";
             // 
-            // metroComboBoxCentroCosto
-            // 
-            this.metroComboBoxCentroCosto.FormattingEnabled = true;
-            this.metroComboBoxCentroCosto.ItemHeight = 23;
-            this.metroComboBoxCentroCosto.Location = new System.Drawing.Point(154, 67);
-            this.metroComboBoxCentroCosto.Name = "metroComboBoxCentroCosto";
-            this.metroComboBoxCentroCosto.Size = new System.Drawing.Size(218, 29);
-            this.metroComboBoxCentroCosto.TabIndex = 2;
-            this.metroComboBoxCentroCosto.UseSelectable = true;
-            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(158, 42);
+            this.metroLabel2.Location = new System.Drawing.Point(258, 16);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(106, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(66, 19);
             this.metroLabel2.TabIndex = 4;
-            this.metroLabel2.Text = "Centro de Costo";
+            this.metroLabel2.Text = "Concepto";
             this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // metroComboBoxTipoComprobante
-            // 
-            this.metroComboBoxTipoComprobante.FormattingEnabled = true;
-            this.metroComboBoxTipoComprobante.ItemHeight = 23;
-            this.metroComboBoxTipoComprobante.Location = new System.Drawing.Point(9, 67);
-            this.metroComboBoxTipoComprobante.Name = "metroComboBoxTipoComprobante";
-            this.metroComboBoxTipoComprobante.Size = new System.Drawing.Size(142, 29);
-            this.metroComboBoxTipoComprobante.TabIndex = 1;
-            this.metroComboBoxTipoComprobante.UseSelectable = true;
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(9, 42);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel1.TabIndex = 2;
-            this.metroLabel1.Text = "Tipo Comprobante";
             // 
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(353, 9);
+            this.metroLabel14.Location = new System.Drawing.Point(2, 37);
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(198, 19);
             this.metroLabel14.TabIndex = 60;
             this.metroLabel14.Text = "FORMULARIO COMPROBANTE";
             this.metroLabel14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile1.Location = new System.Drawing.Point(803, 436);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(86, 39);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroTile1.TabIndex = 109;
+            this.metroTile1.Text = "CANCELAR";
+            this.metroTile1.TileImage = global::ErpGestion.Properties.Resources.iconfinder_x_circle_3324917;
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            // 
+            // metroTile4
+            // 
+            this.metroTile4.ActiveControl = null;
+            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.metroTile4.Location = new System.Drawing.Point(895, 436);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(86, 39);
+            this.metroTile4.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroTile4.TabIndex = 108;
+            this.metroTile4.Text = "GUARDAR";
+            this.metroTile4.TileImage = global::ErpGestion.Properties.Resources.iconfinder_save_3325027;
+            this.metroTile4.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile4.UseSelectable = true;
+            this.metroTile4.UseTileImage = true;
+            this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
+            // 
+            // metroComboBoxConcepto
+            // 
+            this.metroComboBoxConcepto.FormattingEnabled = true;
+            this.metroComboBoxConcepto.ItemHeight = 23;
+            this.metroComboBoxConcepto.Location = new System.Drawing.Point(258, 41);
+            this.metroComboBoxConcepto.Name = "metroComboBoxConcepto";
+            this.metroComboBoxConcepto.Size = new System.Drawing.Size(215, 29);
+            this.metroComboBoxConcepto.TabIndex = 111;
+            this.metroComboBoxConcepto.UseSelectable = true;
+            this.metroComboBoxConcepto.UseStyleColors = true;
+            // 
+            // groupBoxInfo
+            // 
+            this.groupBoxInfo.Controls.Add(this.metroLabel24);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxCentroCosto);
+            this.groupBoxInfo.Controls.Add(this.metroLabel1);
+            this.groupBoxInfo.Controls.Add(this.groupBox2);
+            this.groupBoxInfo.Controls.Add(this.metroTile4);
+            this.groupBoxInfo.Controls.Add(this.metroTile1);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxConcepto);
+            this.groupBoxInfo.Controls.Add(this.metroLabel8);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxContable);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxCondicionCompra);
+            this.groupBoxInfo.Controls.Add(this.groupBox1);
+            this.groupBoxInfo.Controls.Add(this.metroPanel1);
+            this.groupBoxInfo.Controls.Add(this.metroDateTimeFecha);
+            this.groupBoxInfo.Controls.Add(this.metroLabel7);
+            this.groupBoxInfo.Controls.Add(this.metroDateTimeVencimiento);
+            this.groupBoxInfo.Controls.Add(this.metroLabel13);
+            this.groupBoxInfo.Controls.Add(this.metroLabel6);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxTotalGeneral);
+            this.groupBoxInfo.Controls.Add(this.metroLabel9);
+            this.groupBoxInfo.Controls.Add(this.metroLabel5);
+            this.groupBoxInfo.Controls.Add(this.metroLabel2);
+            this.groupBoxInfo.Controls.Add(this.metroLabel10);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxNoFactura);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxPuntoV);
+            this.groupBoxInfo.Controls.Add(this.metroLabel3);
+            this.groupBoxInfo.Controls.Add(this.metroTextBoxProveedor);
+            this.groupBoxInfo.Controls.Add(this.metroLabel4);
+            this.groupBoxInfo.Controls.Add(this.metroComboBoxTipoFactura);
+            this.groupBoxInfo.Location = new System.Drawing.Point(2, 59);
+            this.groupBoxInfo.Name = "groupBoxInfo";
+            this.groupBoxInfo.Size = new System.Drawing.Size(1019, 484);
+            this.groupBoxInfo.TabIndex = 112;
+            this.groupBoxInfo.TabStop = false;
+            // 
+            // metroLabel24
+            // 
+            this.metroLabel24.AutoSize = true;
+            this.metroLabel24.Location = new System.Drawing.Point(6, 19);
+            this.metroLabel24.Name = "metroLabel24";
+            this.metroLabel24.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel24.TabIndex = 114;
+            this.metroLabel24.Text = "Centro Costo";
+            this.metroLabel24.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // metroComboBoxCentroCosto
+            // 
+            this.metroComboBoxCentroCosto.FormattingEnabled = true;
+            this.metroComboBoxCentroCosto.ItemHeight = 23;
+            this.metroComboBoxCentroCosto.Location = new System.Drawing.Point(6, 41);
+            this.metroComboBoxCentroCosto.Name = "metroComboBoxCentroCosto";
+            this.metroComboBoxCentroCosto.Size = new System.Drawing.Size(243, 29);
+            this.metroComboBoxCentroCosto.TabIndex = 113;
+            this.metroComboBoxCentroCosto.UseSelectable = true;
+            this.metroComboBoxCentroCosto.UseStyleColors = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(7, -174);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel1.TabIndex = 112;
+            this.metroLabel1.Text = "Concepto";
+            this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // objectBindingSourceCentro
+            // 
+            this.objectBindingSourceCentro.AutoCreateObjects = false;
             // 
             // idTableDetallesComprobanteArticulosDataGridViewTextBoxColumn
             // 
@@ -1040,6 +1102,11 @@
             this.articulosNombreDataGridViewTextBoxColumn.Name = "articulosNombreDataGridViewTextBoxColumn";
             this.articulosNombreDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.articulosNombreDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // objectBindingSourceArticulos
+            // 
+            this.objectBindingSourceArticulos.AutoCreateObjects = false;
+            this.objectBindingSourceArticulos.DataSource = typeof(Entidades.Articulos);
             // 
             // cantidadDataGridViewTextBoxColumn
             // 
@@ -1059,51 +1126,31 @@
             this.ivaDataGridViewTextBoxColumn.HeaderText = "Iva";
             this.ivaDataGridViewTextBoxColumn.Name = "ivaDataGridViewTextBoxColumn";
             // 
-            // IvaCalculado
-            // 
-            this.IvaCalculado.DataPropertyName = "IvaCalculado";
-            this.IvaCalculado.HeaderText = "Iva Calculado";
-            this.IvaCalculado.Name = "IvaCalculado";
-            // 
             // importeDataGridViewTextBoxColumn
             // 
             this.importeDataGridViewTextBoxColumn.DataPropertyName = "Importe";
             this.importeDataGridViewTextBoxColumn.HeaderText = "Importe";
             this.importeDataGridViewTextBoxColumn.Name = "importeDataGridViewTextBoxColumn";
             // 
+            // bindingSourceComprobantes
+            // 
+            this.bindingSourceComprobantes.AutoCreateObjects = false;
+            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties"))));
+            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties1"))));
+            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties2"))));
+            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties3"))));
+            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties4"))));
+            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties5"))));
+            this.bindingSourceComprobantes.BindableProperties.Add(((System.Core.ComponentModel.BindableProperty)(resources.GetObject("bindingSourceComprobantes.BindableProperties6"))));
+            this.bindingSourceComprobantes.DataSource = typeof(Entidades.DetallesComprobanteArticulos);
+            // 
             // ComprobantesFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 524);
+            this.ClientSize = new System.Drawing.Size(1038, 556);
+            this.Controls.Add(this.groupBoxInfo);
             this.Controls.Add(this.metroLabel14);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.metroButtonCancelarComprobante);
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroLabel13);
-            this.Controls.Add(this.metroTextBoxTotalGeneral);
-            this.Controls.Add(this.metroComboBoxTipoComprobante);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.metroComboBoxCentroCosto);
-            this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.metroComboBoxTipoFactura);
-            this.Controls.Add(this.metroTextBoxProveedor);
-            this.Controls.Add(this.metroTextBoxPuntoV);
-            this.Controls.Add(this.metroTextBoxNoFactura);
-            this.Controls.Add(this.metroLabel10);
-            this.Controls.Add(this.metroLabel5);
-            this.Controls.Add(this.metroLabel9);
-            this.Controls.Add(this.metroLabel6);
-            this.Controls.Add(this.metroDateTimeVencimiento);
-            this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.metroDateTimeFecha);
-            this.Controls.Add(this.metroComboBoxCondicionCompra);
-            this.Controls.Add(this.metroComboBoxContable);
-            this.Controls.Add(this.metroLabel8);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1114,13 +1161,16 @@
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridTest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceArticulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceComprobantes)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.metroPanelGastos.ResumeLayout(false);
             this.metroPanelGastos.PerformLayout();
+            this.groupBoxInfo.ResumeLayout(false);
+            this.groupBoxInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceCentro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSourceArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceComprobantes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1137,7 +1187,6 @@
         private MetroFramework.Controls.MetroTextBox metroTextBoxRetenciones;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroTextBox metroTextBoxIIBB;
-        private MetroFramework.Controls.MetroButton metroButtonCancelarComprobante;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroDateTime metroDateTimeVencimiento;
@@ -1153,11 +1202,7 @@
         private MetroFramework.Controls.MetroComboBox metroComboBoxTipoFactura;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxCentroCosto;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxTipoComprobante;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroButton metroButton1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroComboBox metroComboBoxMedioPago;
@@ -1176,7 +1221,6 @@
         private MetroFramework.Controls.MetroTextBox metroTextBoxTotal;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroTextBox metroTextBoxSubTotal;
-        private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroTextBox metroTextBoxTotalGeneral;
         private MetroFramework.Controls.MetroLabel metroLabel14;
@@ -1189,5 +1233,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ivaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IvaCalculado;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeDataGridViewTextBoxColumn;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxConcepto;
+        private System.Windows.Forms.GroupBox groupBoxInfo;
+        private System.Core.ComponentModel.ObjectBindingSource objectBindingSourceCentro;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxCentroCosto;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel24;
     }
 }

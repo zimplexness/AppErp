@@ -13,6 +13,6 @@ namespace DL.Repositories
         IEnumerable<Localidades> GetLocalidades();
         IEnumerable<Provincias> GetProvincias();
         IEnumerable<EmpresasClientes> GetAfectadoEmpresa();
-        
+        IEnumerable<Choferes> GetChoferes();
     }
 }
